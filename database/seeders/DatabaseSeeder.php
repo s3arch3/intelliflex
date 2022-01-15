@@ -14,5 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        // Calls the UserSeeder that I created.
+        $this->call([
+            UserSeeder::class // For user credentials for my groupmates.
+        ]);
     }
 }
