@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         // Calls the UserSeeder that I created.
         $this->call([
-            UserSeeder::class // For user credentials for my groupmates.
+            UserSeeder::class, // For user credentials for my groupmates.
+            QuizSeeder::class // For quiz seeds
         ]);
     }
 }
