@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\GoalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +23,11 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+// quizzes.index, quizzes.create, etc.
+Route::resource('quizzes', QuizController::class);
+// groups.index
+Route::resource("groups", GroupController::class);
+// goals.index
+Route::resource('goals', GoalController::class);
