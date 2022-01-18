@@ -3,6 +3,7 @@
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +32,5 @@ Route::resource('quizzes', QuizController::class);
 Route::resource('groups', GroupController::class);
 // goals.index
 Route::resource('goals', GoalController::class);
+//quetions
+Route::resource('questions', QuestionController::class);
