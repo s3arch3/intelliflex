@@ -1,0 +1,352 @@
+CREATE A NEW PROJECT
+--------------------
+- laravel new <project-name>
+- cd <project-name>
+- php artisan serve (start server)
+
+CONNECT DATABASE
+----------------
+- go to .env in root folder
+- DB_DATABASE=<database-name>
+
+INSTALL JETSTREAM
+-----------------
+composer require laravel/jetstream (add the jetstream to project)
+php artisan jetstream:install livewire (install with livewire)
+php artisan vendor:publish --tag=jetstream-views (publish the jetstream components to \resources\views\vendor\jetstream)
+
+MAKE COMPONENT
+--------------
+php artisan make:component QuizList
+
+
+NPM RUN DEV and RUN WATCH
+-------------------------
+npm run dev && npm run watch
+- runs whatever scripts is in package.json
+
+INSTALL DEBUGBAR
+----------------
+composer require barryvdh/laravel-debugbar --dev
+php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+
+
+
+ADDITIONAL COMMANDS
+-------------------
+php artisan migrate:fresh --seed
+php artisan route:list (view all routes)
+php artisan make:seeder UserSeeder (create a seeder)
+php artisan db:seed (run all seeder/s)
+php artisan db:seed --class=UserSeeder (run a specific seeder)
+
+
+
+NAMING CONVENTIONS
+------------------
+PROJECT NAME   | intelliflex (lowercase)
+MODEL          | Question, BlogPost (PascalCase, singular)
+CONTROLLER     | QuestionController (PascalCase, singular, +"Controller" at the end)
+VIEW           | question.show = show.blade.php, question.create = create.blade.php (lowercase, singular, actions)
+DATABASE TABLE | questions, user_goals (snake_case, plural)
+TABLE COLUMN   | user_id, created_at (snake_case)
+MODEL PROPERTY | $this->created_at, $this->title (snake_case)
+PRIMARY KEY    | id
+PIVOT TABLE    | post_user, task_user
+FOREIGN KEYS   | comment_id, user_id (singular version of model name + underscore + field)
+VARIABLES      | $users, $quizResults (camelCase)
+
+
+
+BLADE DIRECTIVES
+@csrf - is put inside of forms to grant them Cross Site Request Forgery (CSRF)
+@auth - to check whether the user is logged in or not
+
+
+
+ROUTE NAMES
+
+♦ QUIZ ACTIONS ♦
+----------------
+INDEX   | /quiz                | List all created Solo quizzes
+CREATE  | /quiz/create         | When clicked "Create Quiz"
+STORE   | /quiz                | After clicking "Confirm Quiz"
+SHOW    | /quiz/{quiz_id}      | When clicked "Show Quiz"
+EDIT    | /quiz/{quiz_id}/edit | When clicked "Edit Quiz"
+UPDATE  | /quiz/{quiz_id}      | When clicked "Update Quiz"
+DESTROY | /quiz/{quiz_id}      | When clicked "Destroy Quiz"
+
+
+♦ QUESTION ACTIONS ♦
+--------------------
+INDEX   | /questions                     | List all created questions
+CREATE  | /questions/create              | When clicked "Create Question"
+STORE   | /questions                     | After clicking "Confirm Question"
+SHOW    | /questions/{questions_id}      | When clicked "Show Question"
+EDIT    | /questions/{questions_id}/edit | When clicked "Edit Question"
+UPDATE  | /questions/{questions_id}      | When clicked "Update Question"
+DESTROY | /questions/{questions_id}      | When clicked "Destroy Question"
+
+
+♦ FLEX ACTIONS ♦
+----------------
+INDEX   | /flex                | List all flex groups currently owned. Applies to professors only.
+CREATE  | /flex/create         | Create a flex group. (Group Name, Group Code, Invite Emails)
+STORE   | /flex                | After clicking Confirm Flex Group"
+SHOW    | /flex/{flex_id}      | When clicked a particular flex group to show details such as Group Name, Group Code, Owner (top), List of Members (names).
+EDIT    | /flex/{flex_id}/edit | When clicked edit flex group to regenerate code or add/remove members.
+UPDATE  | /flex/{flex_id}      | When clicked "Update Flex Group".
+DESTROY | /flex/{flex_id}      | When clicked "Destroy Flex Group".
+
+
+♦ GOALS ACTIONS ♦
+-----------------
+INDEX   | /goals                | List all goals and their corresponding progress. Two sections, system goals, and user goals.
+CREATE  | /goals/create         | Create own goal. Select the quiz name, and select goal value.
+STORE   | /goals                | After clicking "Confirm Goal".
+SHOW    | /goals/{goal_id}      | When clicked a particular goal, show name and progress.
+EDIT    | /goals/{goal_id}/edit | When clicked "Edit Goal" to change goal value and what quiz. Only applies to user goals, not system goals.
+UPDATE  | /goals/{goal_id}      | When clicked "Update Goal". Only applies to user goals, not system goals.
+DESTROY | /goals/{goal_id}      | When clicked "Destroy Goal". Only applies to user goals, not system goals.
+
+
+♦ ONBOARDING ACTIONS ♦
+----------------------
+INDEX   | /onboarding
+
+- Selection between Professor and Student.
+- Showing graphics and basic controls on a carousel. Can be continued or skipped.
+
+
+♦ PROFILE ACTIONS ♦
+-------------------
+SHOW    | /profile/{user_id}
+
+- Profile data as follows:
+- A. Username - Max 20 characters.
+- B. About - Max 50 characters.
+- C. Profile Picture - Image.
+- D. Achievements - Retrieved from achievement data. Checks if user profile set it to Public or Private.
+- E. Tutorial - Activate the /onboarding again. Add FAQ section?
+- F. Contact - Numbers only, max 11 characters.
+
+
+♦ HOME ACTIONS ♦
+----------------
+INDEX   | /home
+
+- Show Home/Dashboard
+- A. Public Section - Includes Text, Photo, and Quiz posts by the user and other users as well.
+- B. Quiz History - Shows the 5 recent quizzes that the user took. (quiz name, score, total items)
+- C. Goals History - Shows the 5 recent goals that the user achieved. (can add motivational quotes)
+- D. Flex Quizzes - Shows the ongoing flex quizzes that the user's professor had issued.
+- E. Misc - Intelliflex graphic, and some data from profile section.
+
+♦ WELCOME ACTIONS ♦
+-------------------
+/welcome
+/login
+/register
+
+
+
+
+
+
+♠ SEEDERS ♠
+-----------
+Users
+- Admin
+- Professor
+- Student
+
+
+
+
+
+
+ROUTE NAMING CONVENTION
+---------------------------------------------------------------
+| Verb      | URI                  | Action  | Route Name     |
+---------------------------------------------------------------
+| GET       | /photos              | index   | photos.index   |
+| GET       | /photos/create       | create  | photos.create  |
+| POST      | /photos              | store   | photos.store   |
+| GET       | /photos/{photo}      | show    | photos.show    |
+| GET       | /photos/{photo}/edit | edit    | photos.edit    |
+| PUT/PATCH | /photos/{photo}      | update  | photos.update  |
+| DELETE    | /photos/{photo}      | destroy | photos.destroy |
+---------------------------------------------------------------
+
+INDEX - show all items
+CREATE - create an item
+STORE - store an item to the database
+SHOW - show a single entry
+EDIT - edit a single entry
+UPDATE - update a single entry
+DESTROY - delete a single entry
+
+
+
+INTELLIFLEX FAQ
+
+Q: I am a professor, how can I create a quiz for my class?
+A: I. Go to Solo and create a quiz.
+   II. Click "Assign" to flex group.
+   III. Choose flex group in the dropdown, adjust the details such as time and requirement.
+   IV. Click Confirm.
+
+Goals
+- Aside from default goals, users can set their own goals and share them publicly.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE:
+> On Git Bash
+- laravel new intelliflex
+- cd intelliflex
+- php artisan serve (start server)
+
+> Laravel Jetstream and Livewire
+- composer require laravel/jetstream (install jetstream)
+- php artisan jetstream:install livewire
+- npm install && npm run dev
+- add database to .env file
+- php artisan migrate (reflect database changes)
+
+> phpMyAdmin
+- start XAMPP (Apache and MySQL)
+- go to http://127.0.0.1:8080/phpmyadmin
+- create new database "intelliflex"
+
+> debugbar
+- composer require barryvdh/laravel-debugbar --dev
+- php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+
+
+LOCATIONS:
+- resoruces/views/vendor/jetstream (contains components of jetstream that's editable)
+- /.env (edit your database connection)
+- public/img (storage of image assets)
+
+NOTES:
+- php artisan vendor:publish --tag=jetstream-views (new folder resoruces/views/vendor/jetstream)
+- @intelliflex123!
+- "npm run dev && npm run watch" to compile css realtime
+- database/sql contains the importable sql table "intelliflex"
+- renamed app to "Intelliflex"
+- resources/lang/en/intelliflex.php contains default strings. address them by {{ __('intelliflex.name') }}
+- lowercase comments on custom dev by me
+__('messages.welcome', ['name' => 'dayle'])
+
+
+
+
+
+
+
+
+
+
+
+DOCUMENTATION NOTES:
+
+PROJECT TECHNICAL REQUIREMENTS:
+∎ XAMPP
+∎ Composer: https://getcomposer.org/
+- 1.75 MB
+- https://www.youtube.com/watch?v=tb8b7AMnk1g
+- PHP version 8.0.3 | C:\xampp\php\php.exe | Proxy: none | Add to System path: C:\xampp\php
+∎ Laravel: https://laravel.com/docs/8.x/installation#the-laravel-installer
+- Open CMD
+- cmd: composer global require laravel/installer
+- cmd: *cd to project installation directory e.g. "cd D:\_temp"*
+- cmd: laravel new intelliflex
+- cmd: cd intelliflex
+- cmd: php artisan serve
+- browser: http://127.0.0.1:8000
+∎ phpMyAdmin:
+- start from XAMPP 
+- DB_DATABASE=db_intelliflex (your database name as imported)
+- DB_USERNAME=root (your username in local PC)
+- DB_PASSWORD=pass (your password in local PC)
+∎ Tailwind CSS:
+- npm install
+
+
+
+
+LEARNINGS:
+Controller
+Router
+View
+Layout
+Install Jetstream: composer require laravel/jetstream
+Make a controller: php artisan make:controller IntelliflexController
+Make a model: php artisan make:model tb_userdata
+Views are found at: /resources/views
+{{-- Blade comments look like these T_T --}}
+$cfg['NavigationTreeEnableGrouping'] = false; -- put in phpMyAdmin/config.inc.php to stop grouping databases with similar prefixes
+
+
+        // User 1
+        DB::table('users')->insert([
+            'name' => 'Serge Ivon E. Vibiesca',
+            'email' => '21vibiesca@gmail.com',
+            'password' => Hash::make('@intelliflex123!')
+        ]);
+        // User 2
+        DB::table('users')->insert([
+            'name' => 'Marie Joy B. Barruela',
+            'email' => 'barruela.mjoy@gmail.com',
+            'password' => Hash::make('@intelliflex123!')
+        ]);
+        // User 3
+        DB::table('users')->insert([
+            'name' => 'Cyrus Jeurell Y. Villanueva',
+            'email' => 'sairasujeurell@gmail.com',
+            'password' => Hash::make('@intelliflex123!')
+        ]);
+        // User 4
+        DB::table('users')->insert([
+            'name' => 'Julius John S. Aluran',
+            'email' => 'aluran12@gmail.com',
+            'password' => Hash::make('@intelliflex123!')
+        ]);
+
+
+DATABASE:
+∎ DATABASE NAME: db_intelliflex
+∎ TABLE 1 NAME: tb_userdata (contains basic end user information)
+- userdata_id
+- userdata_type (0=admin; 1=student; 2=professor)
+- userdata_firstName
+- userdata_lastName
+- userdata_email
+- userdata_password (validations: 10 characters, 1 number, 1 lowercase, 1 uppercase)
+
+∎ TABLE 2 NAME: tb_quizdata (contains the semester, subjects, topics, and question)TABLE NAME: db_userdata
+
+
+
+TECH STACK:
+∎ PHP: The back-end programming language used in this web application.
+∎ Laravel: The back-end programming framework used in this web application.
+∎ Bootstrap: The front-end framework used in this web application.
