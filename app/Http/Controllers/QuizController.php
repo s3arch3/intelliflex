@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {
+
     public function index()
     {
-        $quizzes = Quiz::all();
+        $userID = Auth::user()->id;
+        $quizzes = Quiz::where('user_id', $userID)->orderBy('name')->get();
         return view('quizzes.index', ['quizzes' => $quizzes]);
     }
 
@@ -20,6 +23,9 @@ class QuizController extends Controller
 
     public function store(Request $request)
     {
+        //user id
+        $userID = Auth::user()->id;
+
         // initiate isActive value
         $isActive = 0;
 
@@ -31,16 +37,17 @@ class QuizController extends Controller
 
         // create a quiz item array to be stored
         $newQuizItem = [
+            'user_id' => $userID,
             'name' => $request->input('name'),
             'description' => $request->input('quizDesc'),
             'is_active' => $isActive,
             'times_completed' => '0' // default value for new quizzes
         ];
 
-        //on this line
+        // on this line
         Quiz::create($newQuizItem);
 
-        return back();
+        return back(); // refresh
     }
 
     public function show($id)
