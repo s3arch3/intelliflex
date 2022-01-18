@@ -18,8 +18,8 @@ class CreateQuizzesTable extends Migration
             // $table->foreignId('user_id');
             // $table->foreignId('subject_id');
             $table->boolean('is_active');
-            $table->string('quiz_name', config('constants.quiz_name_max_length'));
-            $table->string('quiz_description', config('constants.quiz_description_max_length'));
+            $table->string('name', config('constants.quiz_name_max_length'));
+            $table->string('description', config('constants.quiz_description_max_length'));
             $table->integer('times_completed');
             $table->timestamps();
         });

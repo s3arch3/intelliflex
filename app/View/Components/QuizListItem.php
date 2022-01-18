@@ -11,17 +11,17 @@ class QuizListItem extends Component
      *
      * @return void
      */
-    public $quiz_name;
-    public $quiz_description;
+    public $name;
+    public $description;
     public $times_completed;
     public $is_active;
     public $id;
 
-    public function __construct($quizName="", $quizDescription="", $timesCompleted="", $isActive="", $id="")
+    public function __construct($name="", $description="", $timesCompleted="", $isActive="", $id="")
     {
 
-        $this->quiz_name = $quizName;
-        $this->quiz_description = $quizDescription;
+        $this->name = $name;
+        $this->description = $description;
         $this->times_completed = $timesCompleted;
         $this->is_active = $isActive;
         $this->id = $id;

@@ -7,10 +7,10 @@
             </div>
             <div class="flex-1 min-w-0">
                 <a href={{ route('quizzes.show', $id) }} class="underline text-sm font-medium text-yellow truncate dark:text-yellow-500">
-                    {{ $quiz_name." (ID ".$id.")" }}
+                    {{ $name." (ID ".$id.")" }}
                 </a>
                 <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                    {{ $quiz_description }}
+                    {{ $description }}
                 </p>
             </div>
             <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">

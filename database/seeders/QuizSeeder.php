@@ -16,14 +16,14 @@ class QuizSeeder extends Seeder
     {
         DB::table('quizzes')->insert([
             'is_active' => 1,
-            'quiz_name' => 'Quiz#1',
-            'quiz_description' => 'This is the description for Quiz#1.',
+            'name' => 'Quiz#1',
+            'description' => 'This is the description for Quiz#1.',
             'times_completed' => 0,
         ]);
         DB::table('quizzes')->insert([
             'is_active' => 1,
-            'quiz_name' => 'Quiz#2',
-            'quiz_description' => 'This is the description for Quiz#2.',
+            'name' => 'Quiz#2',
+            'description' => 'This is the description for Quiz#2.',
             'times_completed' => 0,
         ]);
     }

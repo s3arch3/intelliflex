@@ -5,18 +5,19 @@
         </h2>
     </x-slot>
 
+    {{-- BACK TO QUIZZES LIST --}}
     <x-jet-button>
         <a href="{{ route('quizzes.index') }}">
             GO BACK
         </a>
     </x-jet-button>
 
-    {{-- CREATE FORM --}}
+    {{-- FORM FOR QUIZ CREATION --}}
     <div class="w-2/3  bg-orange-400 block">
         <form method="POST" action="{{ route('quizzes.store') }}">
             @csrf {{-- Little csrf guy protecting us from cross site attacks <3 --}}
-            <label for="quizName">What's the Name of Your Quiz, Sir?</label> <br/>
-            <input id="quizName" name="quizName" type="text"> <br/>
+            <label for="name">What's the Name of Your Quiz, Sir?</label> <br/>
+            <input id="name" name="name" type="text"> <br/>
 
             <label for="quizDesc">Provide a Description, Sir.</label> <br/>
             <input id="quizDesc" name="quizDesc" type="text"> <br/>

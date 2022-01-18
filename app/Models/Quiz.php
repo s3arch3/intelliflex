@@ -19,8 +19,8 @@ class Quiz extends Model
     // allowing the user to escalate themselves to an administrator.
 
     protected $fillable=[
-        'quiz_name',
-        'quiz_description',
+        'name',
+        'description',
         'is_active',
         'times_completed'
     ];

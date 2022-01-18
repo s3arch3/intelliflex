@@ -4,18 +4,18 @@
             {{ __('Quizzes') }}
         </h2>
     </x-slot>
-    Welcome to quizzes section.
 
-    {{-- CREATE QUIZ --}}
+    {{-- CREATE QUIZ BUTTON --}}
     <x-jet-button>
         <a href="{{ route('quizzes.create') }}">
             {{ __('CREATE QUIZ') }}
         </a>
     </x-jet-button>
 
+    {{-- QUIZZES LIST --}}
     <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
         @foreach ($quizzes as $quiz)
-            <x-quiz-list-item :quiz_name="$quiz->quiz_name" :quiz_description="$quiz->quiz_description"
+            <x-quiz-list-item :name="$quiz->name" :description="$quiz->description"
                 :times_completed="$quiz->times_completed" :is_active="$quiz->is_active" :id="$quiz->id" />
         @endforeach
     </ul>
