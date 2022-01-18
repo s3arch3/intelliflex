@@ -15,11 +15,11 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('user_id');
-            // $table->quizId('question_id');
-            $table->boolean('is_active');
-            $table->string('answer', config('constants.question_max_length'));
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('question_id')->references('id')->on('questions');
+            $table->string('answer', config('constants.answer_max_length'));
             $table->string('explanation', config('constants.explanation_max_length'));
+            $table->boolean('is_checked');
             $table->timestamps();
         });
     }

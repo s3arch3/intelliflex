@@ -5,13 +5,14 @@
         </h2>
     </x-slot>
 
+    {{-- BACK TO THAT QUIZ ITEM DETAILS --}}
     <x-jet-button>
         <a href="{{ route('quizzes.index') }}">
             GO BACK
         </a>
     </x-jet-button>
 
-    {{-- CREATE FORM --}}
+    {{-- CREATE QUESTION FORM --}}
     <div class="w-2/3  bg-orange-400 block">
         <form method="POST" action="{{ route('questions.store') }}">
             @csrf {{-- Little csrf guy protecting us from cross site attacks <3 --}}
