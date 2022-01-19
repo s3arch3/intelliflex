@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 use Illuminate\Support\Facades\Auth;
@@ -56,8 +57,9 @@ class QuizController extends Controller
 
     public function show($id)
     {
-        $quizItem = Quiz::findOrFail($id);
-        return view('quizzes.show', ['quizItem' => $quizItem]);
+        $quizItem = Quiz::findOrFail($id); // get that quiz item
+        $questions = Question::where('quiz_id', $id)->orderBy('id')->get(); // get all questions related to this quiz item
+        return view('quizzes.show', ['quizItem' => $quizItem, 'questions' => $questions]);
     }
 
     public function edit($id)

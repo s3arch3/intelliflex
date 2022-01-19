@@ -6,24 +6,24 @@
                     alt="">
             </div>
             <div class="flex-1 min-w-0">
-                <a href={{ route('quizzes.show', $id) }} class="underline text-sm font-medium text-yellow truncate dark:text-yellow-500">
-                    {{ $name." (ID ".$id.")" }}
+                <a href=""
+                    class="underline text-sm font-medium text-yellow truncate dark:text-yellow-500">
+                    {{ 'Question #'.$questionNumber.' '.$question}}
                 </a>
                 <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                    {{ $description }}
+                    {{ $explanationQuestion }}
                 </p>
             </div>
             <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                {{ $timesCompleted }}
                 Active?:
                 {{ $isActive }}
                 <x-jet-button class="ml-4">
-                    <a href="{{ route('quizzes.edit', $id) }}">
+                    <a href="">
                         {{ __('Edit') }}
                     </a>
                 </x-jet-button>
 
-                <form method="POST" action="{{ route('quizzes.destroy', $id) }}">
+                <form method="POST" action="">
                     @csrf
                     @method('DELETE')
                     <x-jet-button class="ml-4">
@@ -31,6 +31,8 @@
                     </x-jet-button>
                 </form>
             </div>
+
+            {{-- dropdownofanswershere --}}
         </div>
     </li>
 </div>
