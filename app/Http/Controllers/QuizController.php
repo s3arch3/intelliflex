@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 class QuizController extends Controller
 {
 
+    public function countTotalQuestions($id){
+        // count from questions where quizID = $id
+    }
+
     public function index()
     {
         $userID = Auth::user()->id;

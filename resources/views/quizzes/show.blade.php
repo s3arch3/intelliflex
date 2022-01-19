@@ -14,7 +14,7 @@
 
     {{-- CREATE QUESTION BUTTON --}}
     <x-jet-button>
-        <a href="{{ route('questions.create') }}">
+        <a href="{{ route('questions.create', ['quizID' => $quizItem->id]) }}">
             ADD QUESTION
         </a>
     </x-jet-button>

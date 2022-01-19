@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class Answer extends Model
 {
     use HasFactory;
-    protected $table="questions"; // override table name
+    protected $table="answers"; // override table name
 
     protected $fillable=[
         'user_id',
-        'quiz_id',
-        'is_active',
-        'question',
+        'question_id',
+        'answer',
         'explanation',
+        'is_checked',
     ];
 }

@@ -18,7 +18,7 @@ class CreateAnswersTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('question_id')->references('id')->on('questions');
             $table->string('answer', config('constants.answer_max_length'));
-            $table->string('explanation', config('constants.explanation_max_length'));
+            $table->string('explanation', config('constants.explanation_max_length'))->nullable(true);
             $table->boolean('is_checked');
             $table->timestamps();
         });
