@@ -1,3 +1,81 @@
+{"_token":"MVyoYEe17xBsiLWKnGzxqb1jHkbp5pujUtn7Ncbm","quiz":{"name":"qwe","description":"asd","is_active":"on"}}
+
+quiz.create form names/data
+quiz[name]
+quiz[description]
+quiz[is_active]
+
+withCount - returns a model with count for ex withCount('questions'), then address it as 'questions_count' on blade
+
+revise quiz
+
+quiz controller index
+quiz index
+quiz show
+quiz controller show
+question create
+question controller create
+
+instantiate model relationships
+create question form array data
+handle validation in controller + loop thru array
+
+answers(table) | answer | is_checked
+------------------------------------
+0 (id)         | A      | 1
+1              | B      | 0
+2              | C      | 0
+3              | D      | 0
+
+
+
+NEXT STEPS
+polish quiz
+- validation
+polish question
+- validation
+
+develop start quiz feature
+
+
+
+IN CONTROLLER
+
+$data = $request->validate([
+	'questiondd' => ['required', Rule::unique('questions')],
+        'explanation' => 'required',
+        'is_active' => 'required',
+        'answers.*.answer' => 'required',
+        'answers.*.is_checked' => 'present'
+]);
+
+IN BLADE
+
+@error('questiondd')
+<span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
+@enderror
+
+@error('answers.0.answer')
+<span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
+@enderror
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 CREATE A NEW PROJECT
 --------------------
 - laravel new <project-name>

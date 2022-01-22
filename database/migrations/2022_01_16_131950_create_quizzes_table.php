@@ -17,10 +17,10 @@ class CreateQuizzesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             // $table->foreignId('subject_id'); LATER
-            $table->boolean('is_active');
+            $table->enum('is_active', ['0', '1'])->default('1');
             $table->string('name', config('constants.quiz_name_max_length'));
             $table->string('description', config('constants.quiz_description_max_length'));
-            $table->integer('times_completed');
+            $table->integer('times_completed')->default(0);
             $table->timestamps();
         });
     }

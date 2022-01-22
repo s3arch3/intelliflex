@@ -17,13 +17,14 @@
         <form method="POST" action="{{ route('quizzes.store') }}">
             @csrf {{-- Little csrf guy protecting us from cross site attacks <3 --}}
             <label for="name">What's the Name of Your Quiz, Sir?</label> <br/>
-            <input id="name" name="name" type="text"> <br/>
+            <input id="name" name="quiz[name]" type="text"> <br/>
 
-            <label for="quizDesc">Provide a Description, Sir.</label> <br/>
-            <input id="quizDesc" name="quizDesc" type="text"> <br/>
+            <label for="description">Provide a Description, Sir.</label> <br/>
 
-            <label for="isActive">Is Your Quiz Active, Sir?</label> <br/>
-            <input id="isActive" name="isActive" type="checkbox"> <br/>
+            <input id="description" name="quiz[description]" type="text"> <br/>
+
+            <label for="is_active">Is Your Quiz Active, Sir?</label> <br/>
+            <input id="is_active" name="quiz[is_active]" type="checkbox"> <br/>
 
             <x-jet-button>
                 <input type="submit" value="I'm Done Sire.">

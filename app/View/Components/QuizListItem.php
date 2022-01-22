@@ -16,14 +16,16 @@ class QuizListItem extends Component
     public $timesCompleted;
     public $isActive;
     public $id;
+    public $questionsCount;
 
-    public function __construct($name="", $description="", $timesCompleted="", $isActive="", $id="")
+    public function __construct($name="", $description="", $timesCompleted="", $isActive="", $id="", $questionsCount="")
     {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->isActive = $isActive;
         $this->timesCompleted = $timesCompleted;
+        $this->questionsCount = $questionsCount;
     }
 
     /**

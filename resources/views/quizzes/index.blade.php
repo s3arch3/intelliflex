@@ -16,7 +16,7 @@
     <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
         @foreach ($quizzes as $quiz)
             <x-quiz-list-item :name="$quiz->name" :description="$quiz->description"
-                :timesCompleted="$quiz->times_completed" :isActive="$quiz->is_active" :id="$quiz->id" />
+                :timesCompleted="$quiz->times_completed" :isActive="$quiz->is_active" :id="$quiz->id" :questionsCount="$quiz->questions_count" />
         @endforeach
     </ul>
 </x-app-layout>

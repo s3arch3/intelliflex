@@ -14,9 +14,12 @@
                 </p>
             </div>
             <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                {{ $timesCompleted }}
+                Questions Count:
+                [{{ $questionsCount }}]
+                Times Completed:
+                [{{ $timesCompleted }}]
                 Active?:
-                {{ $isActive }}
+                [{{ $isActive }}]
                 <x-jet-button class="ml-4">
                     <a href="{{ route('quizzes.edit', $id) }}">
                         {{ __('Edit') }}

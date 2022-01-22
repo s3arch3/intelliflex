@@ -6,19 +6,14 @@ use App\Models\Question;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class QuizController extends Controller
 {
-
-    public function countTotalQuestions($id){
-        // count from questions where quizID = $id
-    }
-
     public function index()
     {
-        $userID = Auth::user()->id;
-        $quizzes = Quiz::where('user_id', $userID)->orderBy('name')->get();
-        return view('quizzes.index', ['quizzes' => $quizzes]);
+        $quizzes = Quiz::withCount('questions')->paginate(100);
+        return view('quizzes.index', compact('quizzes'));
     }
 
     public function create()
@@ -28,37 +23,20 @@ class QuizController extends Controller
 
     public function store(Request $request)
     {
-        //user id
-        $userID = Auth::user()->id;
-
-        // initiate isActive value
-        $isActive = 0;
-
-        if ($request->input('isActive') === 'on'){
-            $isActive = 1;
-        }else{
-            $isActive = 0;
-        }
-
-        // create a quiz item array to be stored
-        $newQuizItem = [
-            'user_id' => $userID,
-            'name' => $request->input('name'),
-            'description' => $request->input('quizDesc'),
-            'is_active' => $isActive,
-            'times_completed' => '0' // default value for new quizzes
-        ];
-
-        // on this line
-        Quiz::create($newQuizItem);
-
-        return back(); // refresh
+        $quizItem = Auth::user()->quizzes()->create([
+            'name' => $request->quiz['name'],
+            'description' => $request->quiz['description'],
+            'is_active' => array_key_exists('is_active', $request->quiz) ? '1' : '0', // array_key_exists because is_active key is passed if the checkbox is checked only
+            'times_completed' => 0,
+        ]);
+        return back();
     }
 
     public function show($id)
     {
+        // $questions = Question::where('quiz_id', $id)->orderBy('id')->get(); // get all questions related to this quiz item
         $quizItem = Quiz::findOrFail($id); // get that quiz item
-        $questions = Question::where('quiz_id', $id)->orderBy('id')->get(); // get all questions related to this quiz item
+        $questions = $quizItem->questions()->paginate(100);
         return view('quizzes.show', ['quizItem' => $quizItem, 'questions' => $questions]);
     }
 
@@ -93,7 +71,9 @@ class QuizController extends Controller
     public function destroy($id)
     {
         Quiz::destroy($id);
+        // $flight = Flight::find(1);
 
+        // $flight->delete();
         return back();
     }
 }

@@ -19,10 +19,24 @@ class Quiz extends Model
     // allowing the user to escalate themselves to an administrator.
 
     protected $fillable=[
-        'user_id',
         'name',
         'description',
         'is_active',
         'times_completed'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    // public function quizHeaders()
+    // {
+    //     return $this->hasMany(QuizHeader::class);
+    // }
 }
