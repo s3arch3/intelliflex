@@ -49,7 +49,7 @@ class QuizController extends Controller
 
     public function update(Request $request, $id)
     {
-        $user = Auth::user()->quizzes()->where('id', $id)->update([
+        $user = Quiz::where('id', $id)->update([
             'name' => $request->quiz['name'],
             'description' => $request->quiz['description'],
             'is_active' => array_key_exists('is_active', $request->quiz) ? '1' : '0' // array_key_exists because is_active key is passed if the checkbox is checked only

@@ -52,19 +52,35 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $questionItem = Question::findOrFail($id);
+        $answers = $questionItem->answers()->get();
+        return view('questions.edit', ['questionItem' => $questionItem, 'answers' => $answers]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        // $question = Auth::user()->questions()->where('id', $id)->update([
+
+        $question = Question::where('id', $id)->update([
+            'question' => $request->question['question'],
+            'explanation' => $request->question['explanation'],
+            'is_active' => array_key_exists('is_active', $request->question) ? '1' : '0', // array_key_exists because is_active key is passed if the checkbox is checked only
+        ]);
+
+        $answers = $question->answers()->where('question_id', $question->id)->get();
+
+        $i = 0;
+        foreach ($answers as $answer){
+            $answer->update(['answer' => $request->answers[$i]['answer'], 'explanation' => $request->answers[$i]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'A' ? '1' : '0']);
+            $i++;
+        }
+        //     ['answer' => $request->answers[1]['answer'], 'explanation' => $request->answers[1]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'B' ? '1' : '0'],
+        //     ['answer' => $request->answers[2]['answer'], 'explanation' => $request->answers[2]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'C' ? '1' : '0'],
+        //     ['answer' => $request->answers[3]['answer'], 'explanation' => $request->answers[3]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'D' ? '1' : '0']
+        // ]);
+
+        return back();
+        // $answers = $question->answers()->where('question_id', $question->id)->update([
     }
 
     /**

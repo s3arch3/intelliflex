@@ -12,8 +12,9 @@ class QuestionListItem extends Component
      * ERRORS WHEN SNAKE CASE ON THE BLADE CALL
      */
 
-    //question details
-    public $index; //for the loop in the quizzes/show be passed here
+    // question details
+    public $index; // for the loop in the quizzes/show be passed here
+    public $id; // for edit route purposes
     public $question;
     public $explanation;
     public $isActive;
@@ -21,12 +22,14 @@ class QuestionListItem extends Component
 
     public function __construct(
         $index = "",
+        $id = "",
         $question = "",
         $explanation = "",
         $isActive = "",
         $answers = ""
     ) {
         $this->index = $index;
+        $this->id = $id;
         $this->question = $question;
         $this->explanation = $explanation;
         $this->isActive = $isActive;

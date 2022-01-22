@@ -33,6 +33,7 @@
             {{-- {{ $question }} --}}
             <x-question-list-item
                 :index="$loop->index+1"
+                :id="$question->id"
                 :question="$question->question"
                 :explanation="$question->explanation"
                 :isActive="$question->is_active"

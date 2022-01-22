@@ -18,7 +18,7 @@
                 [{{ $isActive }}]
 
                 <x-jet-button class="ml-4">
-                    <a href="">
+                    <a href="{{ route('questions.edit', $id) }}">
                         {{ __('Edit') }}
                     </a>
                 </x-jet-button>
