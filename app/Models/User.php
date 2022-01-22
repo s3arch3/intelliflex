@@ -66,6 +66,11 @@ class User extends Authenticatable
 
     public function questions()
     {
-        return $this->hasManyThrough(Question::class, Quiz::class);
+        return $this->hasManyThrough(
+            Question::class,
+            Quiz::class,
+            'user_id',
+            'quiz_id'
+        );
     }
 }

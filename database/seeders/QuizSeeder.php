@@ -28,5 +28,12 @@ class QuizSeeder extends Seeder
             'description' => 'This is the description for Quiz#2.',
             'times_completed' => 0,
         ]);
+        DB::table('quizzes')->insert([
+            'user_id' => 1,
+            'is_active' => 1,
+            'name' => 'Quiz#3',
+            'description' => 'This is the description for Quiz#3.',
+            'times_completed' => 0,
+        ]);
     }
 }

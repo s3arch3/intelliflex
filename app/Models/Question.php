@@ -13,8 +13,12 @@ class Question extends Model
     protected $fillable=[
         'user_id',
         'quiz_id',
-        'is_active',
         'question',
         'explanation',
+        'is_active'
     ];
+
+    public function answers(){
+        return $this->hasMany(Answer::class);
+    }
 }

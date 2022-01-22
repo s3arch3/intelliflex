@@ -22,14 +22,20 @@
     {{-- QUIZ DESCRIPTION --}}
     <div class="w-2/3  bg-orange-400 block">
         <form>
-            <label>QUIZ ID: {{ $quizItem->id }}</label> <br />
-            <label>QUIZ NAME: {{ $quizItem->name }}</label> <br />
-            <label>QUIZ DESC: {{ $quizItem->description }}</label> <br />
-            <label>ACTIVE: @if ($quizItem->is_active === 1) YES @else NO @endif</label> <br />
+            <label>QUIZ ID: {{ $quizItem->id }}</label> <br>
+            <label>QUIZ NAME: {{ $quizItem->name }}</label> <br>
+            <label>QUIZ DESC: {{ $quizItem->description }}</label> <br>
+            <label>ACTIVE: @if ($quizItem->is_active === 1) YES @else NO @endif</label> <br>
         </form>
     </div>
+    <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+        @foreach ($questions as $question)
+            {{ $question }}
+            <br>
+        @endforeach
+    </ul>
 
-    QUESTIONS UNDER THIS QUIZ
+    {{-- QUESTIONS UNDER THIS QUIZ
     <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
         @foreach ($questions as $question)
             <x-question-list-item :questionNumber="$loop->index+1" :userID=null :quizID=null
@@ -39,6 +45,6 @@
                 :explanationAnswerC=null :explanationAnswerD=null
                 :isCheckedA=null :isCheckedB=null :isCheckedC=null :isCheckedD=null />
         @endforeach
-    </ul>
+    </ul> --}}
 
 </x-app-layout>

@@ -26,107 +26,27 @@ class QuestionController extends Controller
      */
     public function create(Request $request)
     {
-        $quizID = $request->input('quizID', 0); // get parameter from quiz details, add question button
-        return view('questions.create', ['quizID' => $quizID]);
+        return view('questions.create', ['quizID' => $request->input('quizID')]);
     }
 
     public function store(Request $request)
     {
-        //user id
-        $userID = Auth::user()->id;
+        $question = Auth::user()->questions()->create([
+            'user_id' => Auth::user()->id,
+            'quiz_id' => $request->input('quizID'),
+            'question' => $request->question['question'],
+            'explanation' => $request->question['explanation'],
+            'is_active' => array_key_exists('is_active', $request->question) ? '1' : '0', // array_key_exists because is_active key is passed if the checkbox is checked only
+        ]);
 
-        //quiz id
-        $quizID = $request->input('quizID');
+        $answers = $question->answers()->createMany([
+            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[0]['answer'], 'explanation' => $request->answers[0]['explanation'], 'is_checked' => array_key_exists('is_selected', $request->answers[0]) ? '1' : '0'],
+            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[1]['answer'], 'explanation' => $request->answers[1]['explanation'], 'is_checked' => array_key_exists('is_selected', $request->answers[1]) ? '1' : '0'],
+            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[2]['answer'], 'explanation' => $request->answers[2]['explanation'], 'is_checked' => array_key_exists('is_selected', $request->answers[2]) ? '1' : '0'],
+            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[3]['answer'], 'explanation' => $request->answers[3]['explanation'], 'is_checked' => array_key_exists('is_selected', $request->answers[3]) ? '1' : '0']
+        ]);
 
-        // initiate isActive value
-        $isActive = 0;
-
-        if ($request->input('isActive') === 'on') {
-            $isActive = 1;
-        } else {
-            $isActive = 0;
-        }
-
-        // create a question item array to be stored
-        $newQuestionItem = new Question();
-
-        $newQuestionItem->user_id = $userID;
-        $newQuestionItem->quiz_id = $quizID;
-        $newQuestionItem->is_active = $isActive;
-        $newQuestionItem->question = $request->input('question');
-        $newQuestionItem->explanation = $request->input('explanation');
-
-        // save question
-        $newQuestionItem->save();
-
-        ////////////////////////////////////
-        // answer creation part
-
-        // initiate isActive value
-        $isCheckedA = 0; // 0 is wrong and 1 is right
-        $isCheckedB = 0; // 0 is wrong and 1 is right
-        $isCheckedC = 0; // 0 is wrong and 1 is right
-        $isCheckedD = 0; // 0 is wrong and 1 is right
-
-        switch($request->input('selectedAnswer')){
-            case ('letterA'):
-                $isCheckedA = 1;
-            break;
-
-            case ('letterB'):
-                $isCheckedB = 1;
-            break;
-
-            case ('letterC'):
-                $isCheckedC = 1;
-            break;
-
-            case ('letterD'):
-                $isCheckedD = 1;
-            break;
-
-            default:
-            break;
-        }
-
-        // requestA and check their is_checked value
-
-        $answerItemA = new Answer(); // instantiate an Answer model first
-        $answerItemB = new Answer(); // instantiate an Answer model first
-        $answerItemC = new Answer(); // instantiate an Answer model first
-        $answerItemD = new Answer(); // instantiate an Answer model first
-
-        $answerItemA->user_id = $userID;
-        $answerItemB->user_id = $userID;
-        $answerItemC->user_id = $userID;
-        $answerItemD->user_id = $userID;
-
-        $answerItemA->question_id = $newQuestionItem->id; // id can be accessed on newQuestionItem because save() is already called above.
-        $answerItemB->question_id = $newQuestionItem->id; // id can be accessed on newQuestionItem because save() is already called above.
-        $answerItemC->question_id = $newQuestionItem->id; // id can be accessed on newQuestionItem because save() is already called above.
-        $answerItemD->question_id = $newQuestionItem->id; // id can be accessed on newQuestionItem because save() is already called above.
-
-        $answerItemA->answer = $request->input('answerA');
-        $answerItemB->answer = $request->input('answerB');
-        $answerItemC->answer = $request->input('answerC');
-        $answerItemD->answer = $request->input('answerD');
-
-        $answerItemA->explanation = $request->input('explanationA');
-        $answerItemB->explanation = $request->input('explanationB');
-        $answerItemC->explanation = $request->input('explanationC');
-        $answerItemD->explanation = $request->input('explanationD');
-
-        $answerItemA->is_checked = $isCheckedA;
-        $answerItemB->is_checked = $isCheckedB;
-        $answerItemC->is_checked = $isCheckedC;
-        $answerItemD->is_checked = $isCheckedD;
-
-        $answerItemA->save();
-        $answerItemB->save();
-        $answerItemC->save();
-        $answerItemD->save();
-
-        return back(); // refresh
+        return back();
     }
 
     /**

@@ -27,6 +27,29 @@ answers(table) | answer | is_checked
 2              | C      | 0
 3              | D      | 0
 
+question
+explanation
+is_active
+
+answers[0][answer]
+answers[1][answer]
+answers[2][answer]
+answers[3][answer]
+
+
+answers{
+	'question' = 'What's 1+1?',
+	'explanation' = 'Use addition',
+	'is_active' = 'on',
+	[
+	{'answer' => 'answer for letter A', 'explanation' => 'exp for letter A'},
+	{'answer' => 'answer for letter B', 'explanation' => 'exp for letter B'},
+	{'answer' => 'answer for letter C', 'explanation' => 'exp for letter C'},
+	{'answer' => 'answer for letter D', 'explanation' => 'exp for letter D'},
+	]
+	'selected_letter' = 'A'
+};
+
 
 
 NEXT STEPS

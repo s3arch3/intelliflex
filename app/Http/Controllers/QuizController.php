@@ -48,32 +48,17 @@ class QuizController extends Controller
 
     public function update(Request $request, $id)
     {
-        $quizItem = Quiz::findOrFail($id); // get the entry first
-
-        // initiate isActive value
-        $isActive = 0;
-
-        if ($request->input('isActive') === 'on'){
-            $isActive = 1;
-        }else{
-            $isActive = 0;
-        }
-
-        $quizItem->name = $request->input('name', 'default'); // modify name
-        $quizItem->description = $request->input('quizDesc', 'default');  // modify desc
-        $quizItem->is_active = $isActive;  // modify active state
-
-        $quizItem->save(); // save all modifications
-
-        return view('quizzes.edit', ['quizItem' => $quizItem]);
+        $user = Auth::user()->quizzes()->where('id', $id)->update([
+            'name' => $request->quiz['name'],
+            'description' => $request->quiz['description'],
+            'is_active' => array_key_exists('is_active', $request->quiz) ? '1' : '0' // array_key_exists because is_active key is passed if the checkbox is checked only
+        ]);
+        return back();
     }
 
     public function destroy($id)
     {
         Quiz::destroy($id);
-        // $flight = Flight::find(1);
-
-        // $flight->delete();
         return back();
     }
 }
