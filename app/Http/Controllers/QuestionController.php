@@ -40,10 +40,10 @@ class QuestionController extends Controller
         ]);
 
         $answers = $question->answers()->createMany([
-            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[0]['answer'], 'explanation' => $request->answers[0]['explanation'], 'is_checked' => array_key_exists('is_selected', $request->answers[0]) ? '1' : '0'],
-            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[1]['answer'], 'explanation' => $request->answers[1]['explanation'], 'is_checked' => array_key_exists('is_selected', $request->answers[1]) ? '1' : '0'],
-            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[2]['answer'], 'explanation' => $request->answers[2]['explanation'], 'is_checked' => array_key_exists('is_selected', $request->answers[2]) ? '1' : '0'],
-            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[3]['answer'], 'explanation' => $request->answers[3]['explanation'], 'is_checked' => array_key_exists('is_selected', $request->answers[3]) ? '1' : '0']
+            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[0]['answer'], 'explanation' => $request->answers[0]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'A' ? '1' : '0'],
+            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[1]['answer'], 'explanation' => $request->answers[1]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'B' ? '1' : '0'],
+            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[2]['answer'], 'explanation' => $request->answers[2]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'C' ? '1' : '0'],
+            ['user_id' => Auth::user()->id, 'question_id' => $question->id, 'answer' => $request->answers[3]['answer'], 'explanation' => $request->answers[3]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'D' ? '1' : '0']
         ]);
 
         return back();

@@ -33,22 +33,22 @@
             <br>
             {{-- CHOCIES --}}
             A
-            <input type="radio" id="answerA" name="question[0][is_selected]" value="A">
+            <input type="radio" id="answerA" name="question[is_selected]" value="A">
             <input id="answerA" name="answers[0][answer]" type="text" placeholder="answer for letter A">
             <input id="explanationA" name="answers[0][explanation]" type="text" placeholder="explanation for letter A"> <br/>
 
             B
-            <input type="radio" id="answerB" name="answers[1][is_selected]" value="B">
+            <input type="radio" id="answerB" name="question[is_selected]" value="B">
             <input id="answerB" name="answers[1][answer]" type="text" placeholder="answer for letter B">
             <input id="explanationB" name="answers[1][explanation]" type="text" placeholder="explanation for letter B"> <br/>
 
             C
-            <input type="radio" id="answerC" name="answers[2][is_selected]" value="C">
+            <input type="radio" id="answerC" name="question[is_selected]" value="C">
             <input id="answerC" name="answers[2][answer]" type="text" placeholder="answer for letter C">
             <input id="explanationC" name="answers[2][explanation]" type="text" placeholder="explanation for letter C"> <br/>
 
             D
-            <input type="radio" id="answerD" name="answers[3][is_selected]" value="D">
+            <input type="radio" id="answerD" name="question[is_selected]" value="D">
             <input id="answerD" name="answers[3][answer]" type="text" placeholder="answer for letter D">
             <input id="explanationD" name="answers[3][explanation]" type="text" placeholder="explanation for letter D"> <br/>
 
