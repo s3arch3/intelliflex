@@ -37,6 +37,7 @@ class QuizController extends Controller
         // $questions = Question::where('quiz_id', $id)->orderBy('id')->get(); // get all questions related to this quiz item
         $quizItem = Quiz::findOrFail($id); // get that quiz item
         $questions = $quizItem->questions()->paginate(100);
+        // $answers = $quizItem->answers()->get();
         return view('quizzes.show', ['quizItem' => $quizItem, 'questions' => $questions]);
     }
 

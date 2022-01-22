@@ -6,17 +6,17 @@
                     alt="">
             </div>
             <div class="flex-1 min-w-0">
-                <a href=""
-                    class="underline text-sm font-medium text-yellow truncate dark:text-yellow-500">
-                    {{ 'Question #'.$questionNumber.' '.$question}}
+                <a href="" class="underline text-sm font-medium text-yellow truncate dark:text-yellow-500">
+                    {{ 'Question #' . $index . ' ' . $question }}
                 </a>
                 <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                    {{ $explanationQuestion }}
+                    {{ $explanation }}
                 </p>
             </div>
             <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
                 Active?:
-                {{ $isActive }}
+                [{{ $isActive }}]
+
                 <x-jet-button class="ml-4">
                     <a href="">
                         {{ __('Edit') }}
@@ -31,8 +31,30 @@
                     </x-jet-button>
                 </form>
             </div>
-
-            {{-- dropdownofanswershere --}}
         </div>
     </li>
+</div>
+
+<div class=" bg-orange-300 my-4">
+@foreach ($answers as $answer)
+        {{-- {{ $answer }} --}}
+        <h1 @if ($answer->is_checked == "1") class="bg-green-500" @endif>
+            @switch($loop->index)
+                @case(0) A. @break
+                @case(1) B. @break
+                @case(2) C. @break
+                @case(3) D. @break
+                @default
+                    @break
+            @endswitch
+
+             "{{ $answer->answer }}" |||
+
+             <span @if ($answer->is_checked == "1") class="bg-green-500" @endif>
+                 Explanation: "{{ $answer->explanation }}"
+                 {{-- Correct?: @if ($answer->is_checked == "1") "YES" @else "NO" @endif --}}
+             </span>
+        </h1>
+
+    @endforeach
 </div>

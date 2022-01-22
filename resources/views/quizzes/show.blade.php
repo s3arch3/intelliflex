@@ -30,7 +30,13 @@
     </div>
     <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
         @foreach ($questions as $question)
-            {{ $question }}
+            {{-- {{ $question }} --}}
+            <x-question-list-item
+                :index="$loop->index+1"
+                :question="$question->question"
+                :explanation="$question->explanation"
+                :isActive="$question->is_active"
+                :answers="$question->answers()->get()"/>
             <br>
         @endforeach
     </ul>

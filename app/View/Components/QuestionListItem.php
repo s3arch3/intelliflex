@@ -7,76 +7,30 @@ use Illuminate\View\Component;
 class QuestionListItem extends Component
 {
     /**
-     * Create a new component instance.
-     *
-     * @return void
+     * WARNING
+     * ALL VARIABLES/PARAMETERS STRICTLY camelCase ONLY
+     * ERRORS WHEN SNAKE CASE ON THE BLADE CALL
      */
 
     //question details
-    public $questionNumber; //for the loop in the quizzes/show be passed here
-    public $userID;
-    public $quizID;
-    public $isActive;
+    public $index; //for the loop in the quizzes/show be passed here
     public $question;
-    public $explanationQuestion;
-
-    //answer details
-    public $answerA;
-    public $answerB;
-    public $answerC;
-    public $answerD;
-
-    public $explanationAnswerA;
-    public $explanationAnswerB;
-    public $explanationAnswerC;
-    public $explanationAnswerD;
-
-    public $isCheckedA;
-    public $isCheckedB;
-    public $isCheckedC;
-    public $isCheckedD;
+    public $explanation;
+    public $isActive;
+    public $answers;
 
     public function __construct(
-        $questionNumber = "",
-        $userID = "",
-        $quizID = "",
-        $isActive = "",
+        $index = "",
         $question = "",
-        $explanationQuestion = "",
-        $answerA = "",
-        $answerB = "",
-        $answerC = "",
-        $answerD = "",
-        $explanationAnswerA = "",
-        $explanationAnswerB = "",
-        $explanationAnswerC = "",
-        $explanationAnswerD = "",
-        $isCheckedA = "",
-        $isCheckedB = "",
-        $isCheckedC = "",
-        $isCheckedD = ""
+        $explanation = "",
+        $isActive = "",
+        $answers = ""
     ) {
-        $this->questionNumber = $questionNumber; //
-        $this->userID = $userID;
-        $this->quizID = $quizID;
-        $this->isActive = $isActive; //
-        $this->question = $question; //
-        $this->explanationQuestion = $explanationQuestion; //
-
-        $this->answerA = $answerA;
-        $this->answerB = $answerB;
-        $this->answerC = $answerC;
-        $this->answerD = $answerD;
-
-        $this->explanationAnswerA = $explanationAnswerA;
-        $this->explanationAnswerB = $explanationAnswerB;
-        $this->explanationAnswerC = $explanationAnswerC;
-        $this->explanationAnswerD = $explanationAnswerD;
-
-        $this->isCheckedA = $isCheckedA;
-        $this->isCheckedB = $isCheckedB;
-        $this->isCheckedC = $isCheckedC;
-        $this->isCheckedD = $isCheckedD;
+        $this->index = $index;
+        $this->question = $question;
+        $this->explanation = $explanation;
+        $this->isActive = $isActive;
+        $this->answers = $answers;
     }
 
     /**

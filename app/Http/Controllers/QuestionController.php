@@ -9,21 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         return view('questions.create', ['quizID' => $request->input('quizID')]);
@@ -49,12 +39,6 @@ class QuestionController extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
