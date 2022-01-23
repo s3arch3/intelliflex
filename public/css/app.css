@@ -964,10 +964,6 @@ select {
   margin-left: auto;
   margin-right: auto;
 }
-.my-10 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-}
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -1659,10 +1655,6 @@ select {
 .text-gray-300 {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
-}
-.text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;

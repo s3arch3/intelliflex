@@ -15,7 +15,7 @@ class CreateQuizzesTable extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             // $table->foreignId('subject_id'); LATER
             $table->enum('is_active', ['0', '1'])->default('1');
             $table->string('name', config('constants.quiz_name_max_length'));

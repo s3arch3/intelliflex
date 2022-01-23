@@ -23,7 +23,7 @@
                     </a>
                 </x-jet-button>
 
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('questions.destroy', $id) }}">
                     @csrf
                     @method('DELETE')
                     <x-jet-button class="ml-4">

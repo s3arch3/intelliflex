@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Answer;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,12 +43,6 @@ class QuestionController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $questionItem = Question::findOrFail($id);
@@ -61,36 +54,39 @@ class QuestionController extends Controller
     {
         // $question = Auth::user()->questions()->where('id', $id)->update([
 
-        $question = Question::where('id', $id)->update([
+        $questionItem = Question::findOrFail($id);
+        $question = $questionItem->update([
             'question' => $request->question['question'],
             'explanation' => $request->question['explanation'],
             'is_active' => array_key_exists('is_active', $request->question) ? '1' : '0', // array_key_exists because is_active key is passed if the checkbox is checked only
         ]);
 
-        $answers = $question->answers()->where('question_id', $question->id)->get();
-
-        $i = 0;
+        $answers = $questionItem->answers()->get(); // get json data/arrays
+        $i = 0; // counter
+        $letter = ""; // initiator
         foreach ($answers as $answer){
-            $answer->update(['answer' => $request->answers[$i]['answer'], 'explanation' => $request->answers[$i]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'A' ? '1' : '0']);
+            // change letter depending on current loop
+            switch($i){
+                case(0): $letter = "A"; break;
+                case(1): $letter = "B"; break;
+                case(2): $letter = "C"; break;
+                case(3): $letter = "D"; break;
+                default: $letter = ""; break;
+            }
+            // updating answers here
+            $answer->update([
+                'answer' => $request->answers[$i]['answer'],
+                'explanation' => $request->answers[$i]['explanation'],
+                'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === $letter ? '1' : '0'
+            ]);
             $i++;
         }
-        //     ['answer' => $request->answers[1]['answer'], 'explanation' => $request->answers[1]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'B' ? '1' : '0'],
-        //     ['answer' => $request->answers[2]['answer'], 'explanation' => $request->answers[2]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'C' ? '1' : '0'],
-        //     ['answer' => $request->answers[3]['answer'], 'explanation' => $request->answers[3]['explanation'], 'is_checked' => isset($request->question['is_selected']) && $request->question['is_selected'] === 'D' ? '1' : '0']
-        // ]);
-
-        return back();
-        // $answers = $question->answers()->where('question_id', $question->id)->update([
+        return back(); // refresh
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Question::destroy($id);
+        return back();
     }
 }
