@@ -28,6 +28,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
 
 // quizzes.index, quizzes.create, etc.
 Route::resource('quizzes', QuizController::class);
+// for take quiz feature which is a livewire component :D
+Route::get('quizzes/take/{id}', [QuizController::class, 'take']);
 // groups.index
 Route::resource('groups', GroupController::class);
 // goals.index

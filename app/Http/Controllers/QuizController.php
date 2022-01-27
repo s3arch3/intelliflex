@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 use Illuminate\Support\Facades\Auth;
+use PDO;
 
 class QuizController extends Controller
 {
+    public function take($id)
+    {
+        return view('quizzes.take', ['quizID' => $id]);
+    }
+
     public function index()
     {
         $quizzes = Quiz::withCount('questions')->paginate(100);
