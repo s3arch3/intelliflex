@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Quiz;
 
 class QuizSeeder extends Seeder
 {
@@ -14,26 +15,9 @@ class QuizSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('quizzes')->insert([
-            'user_id' => 1,
-            'is_active' => 1,
-            'name' => 'Quiz#1',
-            'description' => 'This is the description for Quiz#1.',
-            'times_completed' => 0,
-        ]);
-        DB::table('quizzes')->insert([
-            'user_id' => 1,
-            'is_active' => 1,
-            'name' => 'Quiz#2',
-            'description' => 'This is the description for Quiz#2.',
-            'times_completed' => 0,
-        ]);
-        DB::table('quizzes')->insert([
-            'user_id' => 1,
-            'is_active' => 1,
-            'name' => 'Quiz#3',
-            'description' => 'This is the description for Quiz#3.',
-            'times_completed' => 0,
-        ]);
+        $quizzes=[
+            ['user_id' => 1,'is_active' => '1','name' => 'Introduction to Computing','description' => 'This quiz teaches quizzes you about the basics of computing.','times_completed' => 0],
+        ];
+        Quiz::insert($quizzes);
     }
 }

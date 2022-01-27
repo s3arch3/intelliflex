@@ -19,7 +19,7 @@ class CreateAnswersTable extends Migration
             $table->foreignId('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->string('answer', config('constants.answer_max_length'));
             $table->string('explanation', config('constants.explanation_max_length'))->nullable(true);
-            $table->boolean('is_checked');
+            $table->enum('is_checked', ['0', '1'])->default('1');
             $table->timestamps();
         });
     }
