@@ -38,11 +38,18 @@
                     <br>
                     <br>
 
-                    <x-jet-button>
+                    {{-- <x-jet-button>
                         <a href="">
                             START QUIZ
                         </a>
-                    </x-jet-button>
+                    </x-jet-button> --}}
+
+                    <form wire:submit.prevent="startQuiz">
+                        @csrf
+                        <x-jet-button class="ml-4">
+                            <input type="submit" value="Start Quiz">
+                        </x-jet-button>
+                    </form>
 
                 </div>
             </div>
@@ -62,29 +69,33 @@
                         <b>Quiz Progress</b>
                     </div>
                     <div class="mx-auto">
-                        <b>Question Number</b>
+                        <b>Question Number</b> {{ $count }}
                     </div>
                     <div class="mx-auto">
-                        <b>Question</b>
+                        <b>Question</b> {{ $currentQuestion->question }}
                     </div>
 
-                    <input type="radio" id="answerA" name="question[is_selected]" value="A">
-                    answer A <br>
+                    {{-- list all the choices here --}}
+                    @foreach ($currentQuestion->answers as $answer)
+                        {{-- value property ex. 3,1 (answer_id, is_checked) 3 is the answer id and 1 is checked (0 is not) --}}
+                       <input type="radio" id="answer" name="selectedAnswer" wire:poll.500ms wire:model="userAnswered" value="{{ $answer->id . ',' . $answer->is_checked }}">
+                       {{ $answer->answer }}
+                       <br>
+                    @endforeach
 
-                    <input type="radio" id="answerB" name="question[is_selected]" value="B">
-                    answer B <br>
-
-                    <input type="radio" id="answerC" name="question[is_selected]" value="C">
-                    answer C <br>
-
-                    <input type="radio" id="answerD" name="question[is_selected]" value="D">
-                    answer D <br>
-
-                    <x-jet-button>
-                        <a wire:click="">
-                            Next Question
-                        </a>
-                    </x-jet-button>
+                    {{-- "Next Question" or "Show Results" --}}
+                    <form wire:submit.prevent="nextQuestion">
+                        @csrf
+                        @if ($count < $questionsCount)
+                            <x-jet-button class="ml-4">
+                                <input type="submit" value="Next Question">
+                            </x-jet-button>
+                        @else
+                            <x-jet-button class="ml-4">
+                                <input type="submit" value="Show Results">
+                            </x-jet-button>
+                        @endif
+                    </form>
 
                 </div>
             </div>
