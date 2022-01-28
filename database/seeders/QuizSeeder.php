@@ -17,6 +17,7 @@ class QuizSeeder extends Seeder
     {
         $quizzes=[
             ['user_id' => 1,'is_active' => '1','name' => 'Introduction to Computing','description' => 'This quiz teaches quizzes you about the basics of computing.','times_completed' => 0],
+            ['user_id' => 1,'is_active' => '1','name' => 'Introduction to Bombs','description' => 'This quiz teaches quizzes you about the basics of bombing.','times_completed' => 0],
         ];
         Quiz::insert($quizzes);
     }

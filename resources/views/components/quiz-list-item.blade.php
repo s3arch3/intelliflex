@@ -26,11 +26,12 @@
                     </a>
                 </x-jet-button>
 
-                <x-jet-button class="ml-4">
-                    <a href="{{ route('take', $id) }}">
-                        {{ __('Take') }}
-                    </a>
-                </x-jet-button>
+                <form method="POST" action="{{ route('take', $id) }}">
+                    @csrf
+                    <x-jet-button class="ml-4">
+                        <input type="submit" value="Take">
+                    </x-jet-button>
+                </form>
 
                 <form method="POST" action="{{ route('quizzes.destroy', $id) }}">
                     @csrf
