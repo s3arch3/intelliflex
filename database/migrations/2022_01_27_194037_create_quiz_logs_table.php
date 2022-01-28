@@ -18,6 +18,7 @@ class CreateQuizLogsTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
             $table->boolean('completed')->default(false);
+            $table->text('questions_taken')->nullable()->default(null);
             $table->double('score', 2)->default(0);
             $table->timestamps();
         });

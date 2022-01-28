@@ -10,6 +10,12 @@ class QuizLog extends Model
     use HasFactory;
     protected $table="quiz_logs"; // override table name
 
+    protected $fillable=[
+        'user_id',
+        'quiz_id',
+        'completed'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

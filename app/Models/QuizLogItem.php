@@ -9,6 +9,14 @@ class QuizLogItem extends Model
 {
     use HasFactory;
     protected $table="quiz_log_items"; // override table name
+    protected $fillable=[
+        'user_id',
+        'quiz_log_id',
+        'quiz_id',
+        'question_id',
+        'answer_id',
+        'is_correct'
+    ];
 
     public function questions()
     {
