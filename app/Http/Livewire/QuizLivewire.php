@@ -13,15 +13,18 @@ class QuizLivewire extends Component
     public $questionsCount; // counts the $quizItem based on model relationship access on mount
 
 
-    public $quizInStart = true;
+    public $quizInStart = false;
     public $quizInProgress = false;
-    public $quizInEnd = false;
+    public $quizInEnd = true;
 
+
+    // mount is to manually attach the parameters passed when the livewire component is called
+    // same as __construct to blade components
     public function mount($quizID){
         // mount is called to mount quizID to this quizID
         $this->quizID = $quizID; // just to make sure
-        $this->quizItem = Quiz::findOrFail($quizID);
-        $this->questionsCount =  $this->quizItem->questions()->count();
+        $this->quizItem = Quiz::findOrFail($quizID); // find the quiz using the id passed to this livewire component
+        $this->questionsCount =  $this->quizItem->questions()->count(); // get all questions under that quiz
     }
 
 
