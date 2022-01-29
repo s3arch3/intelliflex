@@ -153,9 +153,10 @@
                         </div>
                     </div>
 
+                    {{-- no submit.prevent to produce default action which is refreshing and going to details page --}}
                     <x-jet-button>
-                        <a wire:click="">
-                            See Full Details
+                        <a href="{{ route('log', $quizLog->id) }}">
+                            Full Details
                         </a>
                     </x-jet-button>
 

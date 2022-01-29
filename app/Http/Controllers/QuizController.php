@@ -14,6 +14,39 @@ class QuizController extends Controller
         return view('quizzes.take', ['quizID' => $id]);
     }
 
+    public function log($id)
+    {
+        // // Answers with alphabetical choice
+        // $choice = collect(['A', 'B', 'C', 'D']);
+
+        // //Get quiz summary record for the given quiz
+        // $userQuizDetails = QuizHeader::where('id', $id)
+        //     ->with('section')->first();
+
+        // //Extract question taken by the users stored as a serialized string while takeing the quiz
+        // $quizQuestionsList = collect(unserialize($userQuizDetails->questions_taken));
+
+        // //Get the actual quiz questiona and answers from Quiz table using quiz_header_id
+        // $userQuiz = Quiz::where('quiz_header_id', $userQuizDetails->id)
+        //     ->orderBy('question_id', 'ASC')->get();
+        // //dd($userQuiz);
+        // //Get the Questions and related answers taken by the user during the quiz
+        // $quizQuestions = Question::whereIn('id', $quizQuestionsList)->orderBy('id', 'ASC')->with('answers')->get();
+
+        // //pass the data using compact to the view to display
+        // return view(
+        //     'appusers.userQuizDetail',
+        //     compact(
+        //         'userQuizDetails',
+        //         'quizQuestionsList',
+        //         'userQuiz',
+        //         'quizQuestions',
+        //         'choice'
+        //     )
+        // );
+        return view('quizzes.log', ['quizLogID' => $id]);
+    }
+
     public function index()
     {
         $quizzes = Quiz::withCount('questions')->paginate(100);
