@@ -78,9 +78,9 @@
                     {{-- list all the choices here --}}
                     @foreach ($currentQuestion->answers as $answer)
                         {{-- value property ex. 3,1 (answer_id, is_checked) 3 is the answer id and 1 is checked (0 is not) --}}
-                       <input type="radio" id="answer" name="selectedAnswer" wire:model="userAnswered" value="{{ $answer->id . ',' . $answer->is_checked }}">
-                       {{ $answer->answer }}
-                       <br>
+                    <input type="radio" id="answer" name="selectedAnswer" wire:model="userAnswered" value="{{ $answer->id . ',' . $answer->is_checked }}">
+                    {{ $answer->answer }}
+                    <br>
                     @endforeach
 
                     {{-- "Next Question" or "Show Results" --}}

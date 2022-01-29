@@ -179,8 +179,6 @@ class QuizLivewire extends Component
         $this->quizInEnd = true;
     }
 
-
-
     public function render()
     {
         return view('livewire.quiz-livewire');
