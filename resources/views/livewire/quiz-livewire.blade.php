@@ -128,10 +128,11 @@
                     <div class="mx-auto">
                         <b>Questions</b> {{ $questionsCount }}
                     </div>
-
-
                     <div class="mx-auto">
-                        <b>Score</b>
+                        <b>Score</b> {{ $correctAnswers }}
+                    </div>
+                    <div class="mx-auto">
+                        <b>Percentage</b> {{ $quizPercentage }}
                     </div>
 
                     <x-jet-button>

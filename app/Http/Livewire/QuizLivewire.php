@@ -23,6 +23,10 @@ class QuizLivewire extends Component
     public $answeredQuestions = []; // this is an array containing all the ID of the answered questions.
     public $userAnswered; // value property ex. 3,1 (answer_id, is_checked) 3 is the answer id and 1 is checked (0 is not). array which is tied to the choices loop in quiz-livewire.blade.php, changes values depending on what's selected (answer_id, is_checked)
 
+    public $correctAnswers; //
+    public $quizPercentage; //
+
+
     public $quizInStart = true; // if true, start div will be visible in quiz-livewire.blade.php. Initially set to true to show the start page first
     public $quizInProgress = false;  // if true, question div will be visible in quiz-livewire.blade.php
     public $quizInEnd = false; // if true, end div will be visible in quiz-livewire.blade.php
@@ -77,7 +81,6 @@ class QuizLivewire extends Component
         // B. if the question item above is null, might as well end the quiz, right?
         if ($question === null) {
             // code here later to end the quiz and finalize stuff
-            $this->quizLog->save(); // save the quizLog to the database
             return $this->showResults(); // go to show results
         }
 
@@ -119,8 +122,9 @@ class QuizLivewire extends Component
             'is_correct' => $isChoiceCorrect
         ]);
 
-        // D. save the quizlogitem
+        // D. save the quizlogitem and quizLog?
         $this->quizLogItem->save();
+        $this->quizLog->save();
 
         // E. Increment the quiz counter so we terminate the quiz on the number of question user has selected during quiz creation.
         $this->count++;
@@ -131,8 +135,8 @@ class QuizLivewire extends Component
         $this->userAnswered = '';
 
         // G. Finish the quiz when user has successfully taken all question in the quiz.
-        if ($this->count == $this->questionsCount + 1) {
-
+        if ($this->count == $this->questionsCount + 1)
+        {
             $this->showResults();
         }
 
@@ -145,7 +149,31 @@ class QuizLivewire extends Component
     {
         // finalize stuff
 
-        // A. hide start and question div, show end div
+        // A. Count all correct answers bu getting quizLogItems for this quiz and checking whether they are is_correct == 1
+        $this->correctAnswers = QuizLogItem::where('quiz_log_id', $this->quizLog->id)
+        ->where('is_correct', '1')
+        ->count();
+
+        // B. Calculate accuracy level by (correct answers / questions count)
+        $this->quizPercentage = round(($this->correctAnswers / $this->questionsCount) * 100, 2);
+
+        // C. save questions taken to the quizLog
+        $this->quizLog->questions_taken = serialize($this->answeredQuestions);
+
+        // D. update the completed field of that quizlog to true
+        $this->quizLog->completed = true;
+
+        // E. insert score to quizlog
+        $this->quizLog->score = $this->correctAnswers;
+
+        // F. save all stuff in the quiz log
+        $this->quizLog->save();
+
+        // quizItem update the times_completed field
+        $this->quizItem->times_completed = $this->quizItem->times_completed + 1;
+        $this->quizItem->save();
+
+        // G. hide start and question div, show end div
         $this->quizInStart = false;
         $this->quizInProgress = false;
         $this->quizInEnd = true;
