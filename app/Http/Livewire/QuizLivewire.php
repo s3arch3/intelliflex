@@ -31,6 +31,12 @@ class QuizLivewire extends Component
     public $quizInProgress = false;  // if true, question div will be visible in quiz-livewire.blade.php
     public $quizInEnd = false; // if true, end div will be visible in quiz-livewire.blade.php
 
+    // $refresh magic word to refresh component
+    protected $listeners = [
+        'refresh' => '$refresh',
+    ];
+
+
 
     // mount is to manually attach the parameters passed when the livewire component is called
     // same as __construct to blade components
@@ -51,16 +57,28 @@ class QuizLivewire extends Component
         $this->quizInProgress = true;
         $this->quizInEnd = false;
 
+        // C. start the count from 1 and reset the required stuff
+        $this->count = 1;
+        $this->answeredQuestions = [];
+        $this->userAnswered = null;
+        $this->currentQuestion = null;
+        $this->correctAnswers = 0;
+        $this->quizPercentage = 0;
+        $this->quizLog = null;
+
+
         // B. create a quizLog item
         $this->quizLog = QuizLog::create([
             'user_id' => auth()->id(),
             'quiz_id' => $this->quizID,
         ]);
 
-        // C. start the count from 1
-        $this->count = 1;
+        $this->quizLog->save();
+
+
         // D. get the first question related to this quiz
         $this->currentQuestion = $this->getNextQuestion();
+        $this->emit('refresh'); // trigger refresh magic?
     }
 
     // the purpose of this function is to acquire the next question on the selected quiz
@@ -72,6 +90,7 @@ class QuizLivewire extends Component
         // with('answers') = answers is a function inside the Question model and basically returns all answer items tied to this question
         // inRandomOrder = gets all the qualified entries and randomizes that list
         // first = simply means get the first entry on that randomized list
+
         $question = Question::where('quiz_id', $this->quizID)
             ->whereNotIn('id', $this->answeredQuestions)
             ->with('answers')
@@ -87,12 +106,14 @@ class QuizLivewire extends Component
         // C. add this question's id to the answeredQuestions array so that it will be excluded later on
         array_push($this->answeredQuestions, $question->id);
         // D. return that question item
+
         return $question;
     }
 
     // when the user clicks "Next Question" on quiz-livewire.blade.php
     public function nextQuestion()
     {
+
         // A. Push all the question ids to quiz_header table to retreve them while displaying the quiz details
         $this->quizLog->questions_taken = serialize($this->answeredQuestions);
         /*a:9:{
@@ -142,6 +163,7 @@ class QuizLivewire extends Component
 
         // H. Get a random question again
         $this->currentQuestion = $this->getNextQuestion();
+        $this->emit('refresh'); // trigger refresh magic?
     }
 
     // called when all questions are done being answered
@@ -177,6 +199,9 @@ class QuizLivewire extends Component
         $this->quizInStart = false;
         $this->quizInProgress = false;
         $this->quizInEnd = true;
+
+        // H. emit refresh
+        $this->emit('refresh');
     }
 
     public function render()
