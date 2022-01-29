@@ -10,6 +10,20 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 Welcome to home section.
                 {{-- <x-jet-welcome /> --}}
+
+
+                {{-- code for quiz logs list --}}
+
+                @foreach ($quizLogs as $quizLog)
+                    <x-quiz-log-item
+                    :id="$quizLog->id"
+                    :name="$quizLog->quiz->name"
+                    :description="$quizLog->quiz->description"
+                    :questionsCount="$quizLog->quiz->questions->count()"
+                    :isCompleted="$quizLog->completed"
+                    :score="$quizLog->score"/>
+                @endforeach
+
             </div>
         </div>
     </div>
