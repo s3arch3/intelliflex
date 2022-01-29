@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Models\QuizLog;
-use Illuminate\Support\Facades\Auth;
-use App\Models\QuizLogItem;
 use App\Models\Question;
-use PDO;
+use App\Models\QuizLogItem;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {

@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
     public function create(Request $request)
     {
         return view('questions.create', ['quizID' => $request->input('quizID')]);
@@ -38,11 +33,6 @@ class QuestionController extends Controller
         return back();
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $questionItem = Question::findOrFail($id);
@@ -52,7 +42,6 @@ class QuestionController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $question = Auth::user()->questions()->where('id', $id)->update([
 
         $questionItem = Question::findOrFail($id);
         $question = $questionItem->update([

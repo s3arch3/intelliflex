@@ -1,10 +1,10 @@
 TODO
 ----
-- add quiz log to dashboard
 - clean the logic
 - add all validations
 - better documentation
 - nullable fields such as explanation
+- admin rights, permission, and middleware
 - convert to blade components
 - start tailwinding
 

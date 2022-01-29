@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $quizLogs = QuizLog::all(); // get all quizLogs with quiz data
+        $quizLogs = QuizLog::all(); // get all quizLogs
         return view('home', ['quizLogs' => $quizLogs]);
     }
 }
