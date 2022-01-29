@@ -81,7 +81,7 @@ class QuizLivewire extends Component
         // B. if the question item above is null, might as well end the quiz, right?
         if ($question === null) {
             // code here later to end the quiz and finalize stuff
-            return $this->showResults(); // go to show results
+            return; // skip below code
         }
 
         // C. add this question's id to the answeredQuestions array so that it will be excluded later on
