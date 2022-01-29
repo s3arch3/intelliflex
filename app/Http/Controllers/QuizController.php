@@ -27,6 +27,7 @@ class QuizController extends Controller
             ->with('quiz')->first();
 
         // get the order of questions taken under the quizLog and unserialize and put it in the collection
+        // for reference when getting the questions below
         $quizLogQuestionsTaken = collect(unserialize($quizLog->questions_taken));
 
         // get the selected answers by the user for that quiz (all the choices he made, even if it's right or wrong)

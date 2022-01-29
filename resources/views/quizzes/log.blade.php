@@ -23,9 +23,11 @@
 
     {{-- loop thru all questions on that quiz --}}
     @foreach ($quizQuestions as $quizQuestion)
-
+        @php
+            $questionIndex = $loop->index // to be able to loop from 0 to array length of total questions are there
+        @endphp
         {{-- numbering for each question --}}
-        {{ $loop->index + 1 }}
+        {{ $questionIndex + 1 }}
         {{-- the actual question --}}
         <b> {{ $quizQuestion->question }} </b>
 
@@ -40,10 +42,22 @@
                 @case(4) D.@break
                 @default
             @endswitch
-            {{-- the actual answer --}}
-            @if ()
-               {{ $answer->answer }}
-
+            {{-- when the user answered correctly based on log and the answer itself is correct --}}
+            @if ($quizLogItems[$questionIndex]->is_correct === '1' && $answer->is_checked === '1')
+                <u>{{ $answer->answer }}</u>
+                (user answered this and this is the correct answer)
+            {{-- when the user answered wrong based on log and the answer itself is incorrect --}}
+            @elseif ($quizLogItems[$questionIndex]->answer_id === $answer->id && $answer->is_checked === '0')
+                <u>{{ $answer->answer }}</u>
+                (user answered this but this is the wrong answer)
+            {{-- when the user did not answered this but this is the correct answer --}}
+            @elseif ($quizLogItems[$questionIndex]->is_correct === '0' && $answer->is_checked === '1')
+                <u>{{ $answer->answer }}</u>
+                (user didn't answered this but this is the correct answer)
+            {{-- else, just keep the answer unstyled/plain --}}
+            @else
+                <u>{{ $answer->answer }}</u>
+                (not involved)
             @endif
         @endforeach
         <br>
