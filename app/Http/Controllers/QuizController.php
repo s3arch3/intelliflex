@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use App\Models\QuizLog;
 use Illuminate\Support\Facades\Auth;
+use App\Models\QuizLogItem;
+use App\Models\Question;
 use PDO;
 
 class QuizController extends Controller
@@ -16,35 +19,32 @@ class QuizController extends Controller
 
     public function log($id)
     {
-        // // Answers with alphabetical choice
-        // $choice = collect(['A', 'B', 'C', 'D']);
+        // Choices to be passed on log page
+        $choice = collect(['A', 'B', 'C', 'D']);
 
-        // //Get quiz summary record for the given quiz
-        // $userQuizDetails = QuizHeader::where('id', $id)
-        //     ->with('section')->first();
+        // get the quiz log for that quiz ID
+        $quizLog = QuizLog::where('id', $id)
+            ->with('quiz')->first();
 
-        // //Extract question taken by the users stored as a serialized string while takeing the quiz
-        // $quizQuestionsList = collect(unserialize($userQuizDetails->questions_taken));
+        // get the order of questions taken under the quizLog and unserialize and put it in the collection
+        $quizLogQuestionsTaken = collect(unserialize($quizLog->questions_taken));
 
-        // //Get the actual quiz questiona and answers from Quiz table using quiz_header_id
-        // $userQuiz = Quiz::where('quiz_header_id', $userQuizDetails->id)
-        //     ->orderBy('question_id', 'ASC')->get();
-        // //dd($userQuiz);
-        // //Get the Questions and related answers taken by the user during the quiz
-        // $quizQuestions = Question::whereIn('id', $quizQuestionsList)->orderBy('id', 'ASC')->with('answers')->get();
+        // get the selected answers by the user for that quiz (all the choices he made, even if it's right or wrong)
+        $quizLogItems = QuizLogItem::where('quiz_log_id', $quizLog->id)
+            ->orderBy('question_id', 'ASC')->get();
 
-        // //pass the data using compact to the view to display
-        // return view(
-        //     'appusers.userQuizDetail',
-        //     compact(
-        //         'userQuizDetails',
-        //         'quizQuestionsList',
-        //         'userQuiz',
-        //         'quizQuestions',
-        //         'choice'
-        //     )
-        // );
-        return view('quizzes.log', ['quizLogID' => $id]);
+        // get the questions and related answers taken by the user during the quiz
+        $quizQuestions = Question::whereIn('id', $quizLogQuestionsTaken)->orderBy('id', 'ASC')->with('answers')->get();
+
+        return view('quizzes.log',[
+            'quizLogID' => $id,
+            'choice' => $choice,
+            'quizLog' => $quizLog,
+            'quizLogQuestionsTaken' => $quizLogQuestionsTaken,
+            'quizLogItems' => $quizLogItems,
+            'quizQuestions' => $quizQuestions,
+
+        ]);
     }
 
     public function index()
