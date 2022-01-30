@@ -1,0 +1,3 @@
+npm install tailwind -d tailwind@latest
+
+npx tailwindcss init
