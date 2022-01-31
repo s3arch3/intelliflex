@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Goal;
 use App\Models\Quiz;
 use App\Models\QuizLog;
 use App\Models\Question;
 use App\Models\QuizGoal;
 use App\Models\QuizLogItem;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +14,14 @@ class QuizController extends Controller
 {
     public function take($id)
     {
+        // if $quizGoalPresent is NULL, then call setGoal()
+        $quizGoalPresent = QuizGoal::where('quiz_id', $id)->exists();
+        // if there are no quizgoal for this particular quiz, then create some
+        if ($quizGoalPresent == false)
+        {
+            // there are no quiz goals records in this quiz, adding them now
+            app('App\Http\Controllers\GoalController')->setGoal($id);
+        }
         return view('quizzes.take', ['quizID' => $id]);
     }
 

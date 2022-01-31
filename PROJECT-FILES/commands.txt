@@ -1,3 +1,8 @@
+RULES
+- DON'T INTERRUPT THE QUIZ LIVEWIRE AS IT MAY BREAK OPERATION 
+- example: calling dd while in the middle of quiz breaks it
+
+
 ALGORITHM
 When a user creates a quiz
 - instantly add these 7 goals in the user goals (tied with user id and quiz id)
