@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Goal;
 
 class GoalController extends Controller
 {
@@ -13,9 +14,35 @@ class GoalController extends Controller
      */
     public function index()
     {
-        //
-        return view('goals.index');
+        // get all goals in a list for display muna
+        $goals = Goal::all();
+        return view('goals.index', ['goals' => $goals]);
     }
+
+    public function setGoal()
+    {
+        // add these preset goals (7)
+    }
+    public function checkGoal()
+    {
+        // check the progress of a quiz's goals
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

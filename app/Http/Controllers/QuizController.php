@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Goal;
 use App\Models\Quiz;
 use App\Models\QuizLog;
 use App\Models\Question;
+use App\Models\QuizGoal;
 use App\Models\QuizLogItem;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,12 +63,28 @@ class QuizController extends Controller
 
     public function store(Request $request)
     {
+        // insert quiz
         $quizItem = Auth::user()->quizzes()->create([
             'name' => $request->quiz['name'],
             'description' => $request->quiz['description'],
             'is_active' => array_key_exists('is_active', $request->quiz) ? '1' : '0', // array_key_exists because is_active key is passed if the checkbox is checked only
             'times_completed' => 0,
         ]);
+
+        // insert all goals on this quiz
+        $goals = Goal::all(); // get all available goals
+        // foreach goal that is existing, add that goal into the quiz for checking later after the user finishes the quiz for acheivement checking
+        foreach ($goals as $goal)
+        {
+            $quizGoal = QuizGoal::where('quiz_id', $quizItem->id)->create([
+                'user_id' => Auth::user()->id,
+                'quiz_id' => $quizItem->id,
+                'goal_id' => $goal->id,
+                'is_achieved' => '0',
+                'progress' => 0,
+                'date_achieved' => NULL
+            ]);
+        }
         return back();
     }
 

@@ -20,7 +20,7 @@ class CreateQuizGoalsTable extends Migration
             $table->foreignId('goal_id')->references('id')->on('goals');
             $table->enum('is_achieved', ['0', '1'])->default('1');
             $table->integer('progress');
-            $table->date('date_achieved');
+            $table->date('date_achieved')->nullable();
             $table->timestamps();
         });
     }

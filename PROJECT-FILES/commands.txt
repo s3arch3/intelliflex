@@ -1,3 +1,10 @@
+ALGORITHM
+When a user creates a quiz
+- instantly add these 7 goals in the user goals (tied with user id and quiz id)
+- every time a user completes a quiz, run goalCheck() on quiz_goals table which checks those 7 goals and
+  refresh them every time a condition is met
+- read the user goals at goals section and count each achievement on a quiz
+
 RELATIONSHIPS
 a single quiz has many quiz_goals
 a single quiz_goal belongs to a single quiz
@@ -6,11 +13,6 @@ a single quiz_goal belongs to a goal
 There are a total of 7 goals.
 For each quiz, the user can achieve those 7 goals
 
-When a user creates a quiz
-- instantly add these 7 goals in the user goals (tied with user id and quiz id)
-- every time a user completes a quiz, run goalCheck() on quiz_goals table which checks those 7 goals and
-  refresh them every time a condition is met
-- read the user goals at goals section and count each achievement on a quiz
 
 Goal stats are counted at the goals section.
 
