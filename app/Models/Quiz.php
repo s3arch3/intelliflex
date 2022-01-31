@@ -40,4 +40,9 @@ class Quiz extends Model
         return $this->hasManyThrough(Answer::class, Question::class);
     }
 
+    public function quizGoals()
+    {
+        return $this->hasMany(QuizGoal::class);
+    }
+
 }

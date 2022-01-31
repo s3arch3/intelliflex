@@ -73,4 +73,14 @@ class User extends Authenticatable
             'quiz_id'
         );
     }
+
+    public function quizGoals()
+    {
+        return $this->hasManyThrough(
+            QuizGoal::class,
+            Quiz::class,
+            'goal_id',
+            'quiz_id'
+        );
+    }
 }

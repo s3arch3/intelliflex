@@ -1,3 +1,56 @@
+RELATIONSHIPS
+a single quiz has many quiz_goals
+a single quiz_goal belongs to a single quiz
+a single quiz_goal belongs to a goal
+
+There are a total of 7 goals.
+For each quiz, the user can achieve those 7 goals
+
+When a user creates a quiz
+- instantly add these 7 goals in the user goals (tied with user id and quiz id)
+- every time a user completes a quiz, run goalCheck() on quiz_goals table which checks those 7 goals and
+  refresh them every time a condition is met
+- read the user goals at goals section and count each achievement on a quiz
+
+Goal stats are counted at the goals section.
+
+goalSet()
+- add these preset goals (7)
+goalCheck()
+- check the progress of a quiz's goals
+
+
+Deja Vu!
+- Repeat a quiz for the first time.
+> if quiz.times_completed = 2
+
+It's Over Nine Thousand!
+- Obtain a total amount of quiz points above 9000.
+> if user.all quiz_log.score = 9000
+
+Wanderer's Advice
+- Complete this quiz 10 times.
+> if user. all quizzes count = 10 with different id's
+> count quiz ids and store them in the stuff
+
+Adventurer's Experience
+- Complete this quiz 25 times.
+
+Hero's Wits
+- Complete this quiz 50 times.
+
+Ace!
+- Obtain perfect scores in a quiz five times in a row.
+> every perfect on that quiz add 1, when reached to 5 add that badge there
+
+Near Miss
+- Obtain one mistake in this quiz.
+> if user.score = (total-1/total)
+> or if user mistake = 1
+
+
+
+
 TODO
 ----
 - clean the logic
@@ -59,7 +112,7 @@ PROJECT NAME   | intelliflex (lowercase)
 MODEL          | Question, BlogPost (PascalCase, singular)
 CONTROLLER     | QuestionController (PascalCase, singular, +"Controller" at the end)
 VIEW           | question.show = show.blade.php, question.create = create.blade.php (lowercase, singular, actions)
-DATABASE TABLE | questions, user_goals (snake_case, plural)
+DATABASE TABLE | questions, quiz_goalss (snake_case, plural)
 TABLE COLUMN   | user_id, created_at (snake_case)
 MODEL PROPERTY | $this->created_at, $this->title (snake_case)
 PRIMARY KEY    | id

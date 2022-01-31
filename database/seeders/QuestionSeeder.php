@@ -14,9 +14,6 @@ class QuestionSeeder extends Seeder
      */
     public function run()
     {
-        // 'user_id',
-        // 'quiz_id',
-        // 'is_active'
         $questions=[
             ['question' => 'What is a computer?','explanation' => '','quiz_id' => 1,'user_id' => 1,'is_active' => '1'],
             ['question' => 'What makes a device a computer?','explanation' => '','quiz_id' => 1,'user_id' => 1,'is_active' => '1'],
@@ -27,7 +24,6 @@ class QuestionSeeder extends Seeder
             ['question' => 'What does CPU stand for?','explanation' => '','quiz_id' => 1,'user_id' => 1,'is_active' => '1'],
             ['question' => 'How many types of Monitors are there?','explanation' => '','quiz_id' => 1,'user_id' => 1,'is_active' => '1'],
             ['question' => 'What does GUI stand for?','explanation' => '','quiz_id' => 1,'user_id' => 1,'is_active' => '1'],
-
         ];
         Question::insert($questions);
     }

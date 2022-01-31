@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class, // For user credentials for my groupmates.
             QuizSeeder::class, // For quiz seeds
             QuestionSeeder::class, // for question seeding
-            AnswerSeeder::class // for answer choices to each question existing
+            AnswerSeeder::class, // for answer choices to each question existing
+            GoalSeeder::class // for running the goals
         ]);
     }
 }
