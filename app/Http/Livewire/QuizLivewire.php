@@ -10,7 +10,6 @@ use App\Models\QuizLogItem;
 
 class QuizLivewire extends Component
 {
-
     public $quizID; // the id of the selected quiz ex. 1, 2, 3, so on...
     public $quizItem; // contains the name, and description ^_^
     public $questionsCount; // (quizSize) counts the $quizItem based on model relationship access on mount
@@ -159,6 +158,7 @@ class QuizLivewire extends Component
         if ($this->count == $this->questionsCount + 1)
         {
             $this->showResults();
+            return;
         }
 
         // H. Get a random question again
@@ -200,8 +200,13 @@ class QuizLivewire extends Component
         $this->quizInProgress = false;
         $this->quizInEnd = true;
 
+        // run the goals checker here
+        app('App\Http\Controllers\GoalController')->checkGoal([
+            'quizID' => $this->quizID
+        ]);
+
         // H. emit refresh
-        $this->emit('refresh');
+        $this->emitTo('quiz-livewire', 'refresh');
     }
 
     public function render()

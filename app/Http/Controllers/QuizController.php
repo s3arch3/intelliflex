@@ -70,21 +70,7 @@ class QuizController extends Controller
             'is_active' => array_key_exists('is_active', $request->quiz) ? '1' : '0', // array_key_exists because is_active key is passed if the checkbox is checked only
             'times_completed' => 0,
         ]);
-
-        // insert all goals on this quiz
-        $goals = Goal::all(); // get all available goals
-        // foreach goal that is existing, add that goal into the quiz for checking later after the user finishes the quiz for acheivement checking
-        foreach ($goals as $goal)
-        {
-            $quizGoal = QuizGoal::where('quiz_id', $quizItem->id)->create([
-                'user_id' => Auth::user()->id,
-                'quiz_id' => $quizItem->id,
-                'goal_id' => $goal->id,
-                'is_achieved' => '0',
-                'progress' => 0,
-                'date_achieved' => NULL
-            ]);
-        }
+        app('App\Http\Controllers\GoalController')->setGoal($quizItem->id);
         return back();
     }
 
