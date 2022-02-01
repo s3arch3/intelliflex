@@ -5,9 +5,7 @@ DASHBOARD
 - Total score
 
 - chart about points earned in this week (Mon-Sun)
-GOALS
-- List all quiz
-- For each quiz, display all achievement PROGRESS
+
 
 
 goals are separated into X categories

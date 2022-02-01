@@ -58,7 +58,7 @@ class QuizController extends Controller
 
     public function index()
     {
-        $quizzes = Quiz::withCount('questions')->paginate(100);
+        $quizzes = Auth::user()->quizzes()->withCount('questions')->paginate(100);
         return view('quizzes.index', compact('quizzes'));
     }
 

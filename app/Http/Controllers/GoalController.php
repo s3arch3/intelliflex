@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Goal;
 use App\Models\QuizGoal;
 use App\Models\Quiz;
@@ -13,9 +12,20 @@ class GoalController extends Controller
 {
     public function index()
     {
-        // get all goals in a list for display muna
+        // get all achievable goals for display
         $goals = Goal::all();
-        return view('goals.index', ['goals' => $goals]);
+
+        // get all quizzes
+        $quizzes = Auth::user()->quizzes()->get();
+
+        // get all quizGoals
+        $quizGoals = QuizGoal::all();
+
+        return view('goals.index', [
+            'goals' => $goals,
+            'quizzes' => $quizzes,
+            'quizGoals' => $quizGoals
+        ]);
     }
 
     // adds quiz goal entries for each quiz created
