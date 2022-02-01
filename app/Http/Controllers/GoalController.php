@@ -51,7 +51,59 @@ class GoalController extends Controller
         $this->checkGoalTimesCompleted(['quizID' => $quizID]);
         $this->checkGoalTotalScore(['quizID' => $quizID]);
         $this->checkGoalAccuracy(['quizID' => $quizID]);
+        $this->checkGoalPerfectStreak(['quizID' => $quizID]);
         // other 4 functions here
+    }
+    public function checkGoalPerfectStreak(array $quizData)
+    {
+        $quizID = $quizData['quizID']; // quiz ID as passed from checkGoal
+        $quizItem = Quiz::findOrFail($quizID); // the quiz item
+        $goals = Goal::where('category', 'perfectStreak')->get(); // get all goals
+        // get the latest quizLog on this quiz
+        $latestQuizLogOnThisQuiz = QuizLog
+            ::where('user_id', Auth::user()->id)
+            ->where('quiz_id', $quizID)
+            ->orderBy('id', 'desc')
+            ->first();
+        $score = $latestQuizLogOnThisQuiz->score;
+        $questionCount = $quizItem->questions()->count();
+        $quizPercentage = round(($score / $questionCount) * 100, 0);
+
+        // get the current streak first
+        $currentStreak = QuizGoal
+            ::where('user_id', Auth::user()->id)
+            ->where('goal_id', $goals[0]->id)
+            ->where('quiz_id', $quizID)->first();
+
+        // checking adding/removing streaks
+        foreach ($goals as $goal) {
+            if ($quizPercentage == 100)
+            {
+                // add 1 to the progress
+                $quizGoalUpdate = QuizGoal
+                    ::where('user_id', Auth::user()->id)
+                    ->where('goal_id', $goal->id)
+                    ->where('quiz_id', $quizID)
+                    ->update(['progress' => $currentStreak->progress + 1]);
+                // if current streak matches goal requirement
+                if ($currentStreak->progress + 1 == $goal->requirement)
+                {
+                    $quizGoalUpdate = QuizGoal
+                        ::where('user_id', Auth::user()->id)
+                        ->where('goal_id', $goal->id)
+                        ->where('quiz_id', $quizID)
+                        ->update(['is_achieved' => '1']);
+                }
+            } else
+            {
+                // reset back to 0
+                $quizGoalUpdate = QuizGoal
+                    ::where('user_id', Auth::user()->id)
+                    ->where('goal_id', $goal->id)
+                    ->where('quiz_id', $quizID)
+                    ->update(['progress' => 0]);
+            }
+        }
     }
 
     public function checkGoalAccuracy(array $quizData)
