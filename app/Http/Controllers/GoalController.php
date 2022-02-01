@@ -42,199 +42,98 @@ class GoalController extends Controller
         // check the progress of a quiz's goals
         $quizID = $quizData['quizID']; // quiz ID as passed from livewire
 
-        // call all goalcheckers here
-        $this->checkGoalDejavu([
-            'goalID' => 1,
-            'quizID' => $quizID
-        ]);
-        $this->checkGoal9000([
-            'goalID' => 2,
-            'quizID' => $quizID
-        ]);
-        $this->checkGoalWanderer([
-            'goalID' => 3,
-            'quizID' => $quizID
-        ]);
-    }
-
-    public function checkGoalTimesCompleted(){
-
         // GOAL CATEGORY ENUM
         // 'timesCompleted'
         // 'totalScore'
         // 'accuracy'
         // 'perfectStreak'
         // 'correctItems'
-
-        // loop thru all goal entries which has the category of
-        // "timesCompleted" and check for requirement values and run thru all of them
-
+        $this->checkGoalTimesCompleted(['quizID' => $quizID]);
+        $this->checkGoalTotalScore(['quizID' => $quizID]);
+        $this->checkGoalAccuracy(['quizID' => $quizID]);
+        // other 4 functions here
     }
 
-
-    public function checkGoalDejavu(array $quizData)
+    public function checkGoalAccuracy(array $quizData)
     {
-        $quizID = $quizData['quizID']; // quiz ID as passed from checkgoal
-        $goalID = $quizData['goalID']; // quiz ID as passed from checkgoal
+        $quizID = $quizData['quizID']; // quiz ID as passed from checkGoal
+        $quizItem = Quiz::findOrFail($quizID); // the quiz item
+        $goals = Goal::where('category', 'accuracy')->get(); // get all goals
+        // get the latest quizLog on this quiz
+        $latestQuizLogOnThisQuiz = QuizLog
+            ::where('user_id', Auth::user()->id)
+            ->where('quiz_id', $quizID)
+            ->orderBy('id', 'desc')
+            ->first();
+        $score = $latestQuizLogOnThisQuiz->score;
+        $questionCount = $quizItem->questions()->count();
+        $quizPercentage = round(($score / $questionCount) * 100, 0);
 
-        $goalRequirement = Goal::findOrFail($goalID)->requirement; // 2
-        $quizItem = Quiz::findOrFail($quizID); // this quiz
-        if ($quizItem->times_completed == $goalRequirement) {
-            // basically update the is_achieved of dejavu which is goal_id of 1 and on that quiz_id only and for that user only
-            $quizGoalUpdate = QuizGoal
-                ::where('user_id', Auth::user()->id)
-                ->where('goal_id', $goalID)
-                ->where('quiz_id', $quizID)
-                ->update(['is_achieved' => '1']);
+        // checking if total score >= goal requirement
+        foreach ($goals as $goal) {
+            if ($quizPercentage == $goal->requirement)
+                $quizGoalUpdate = QuizGoal
+                    ::where('user_id', Auth::user()->id)
+                    ->where('goal_id', $goal->id)
+                    ->where('quiz_id', $quizID)
+                    ->update(['is_achieved' => '1', 'progress' => $quizPercentage]);
         }
     }
 
-    public function checkGoal9000(array $quizData)
+    public function checkGoalTotalScore(array $quizData)
     {
-        // // It's Over Nine Thousand!
-        // - Obtain a total amount of quiz points above 9000.
-        // > if user.all quiz_log.score = 9000
+        $quizID = $quizData['quizID']; // quiz ID as passed from checkGoal
+        $quizItem = Quiz::findOrFail($quizID); // the quiz item
+        $goals = Goal::where('category', 'totalScore')->get(); // get all goals
+        $totalScoreOfThisQuiz = QuizLog
+            ::where('user_id', Auth::user()->id)
+            ->where('quiz_id', $quizID)
+            ->sum('score');
 
-        $quizID = $quizData['quizID']; // quiz ID as passed from checkgoal
-        $goalID = $quizData['goalID']; // quiz ID as passed from checkgoal
-
-        $goalRequirement = Goal::findOrFail($goalID)->requirement; // 9000
-
-        $userTotalScoreForThisQuiz = QuizLog
-        ::where('user_id', Auth::user()->id)
-        ->where('quiz_id', $quizID)
-        ->sum('score');
-
-        if($userTotalScoreForThisQuiz >= $goalRequirement)
-        {
-            $quizGoalUpdate = QuizGoal
+        // updating the progress for each quizGoalItem
+        foreach ($goals as $goal) {
+            $quizGoalsUpdate = QuizGoal
                 ::where('user_id', Auth::user()->id)
-                ->where('goal_id', $goalID)
+                ->where('goal_id', $goal->id)
                 ->where('quiz_id', $quizID)
-                ->update(['is_achieved' => '1']);
+                ->update(['progress' => $totalScoreOfThisQuiz]);
+        }
+
+        // checking if total score >= goal requirement
+        foreach ($goals as $goal) {
+            if ($totalScoreOfThisQuiz >= $goal->requirement)
+                $quizGoalUpdate = QuizGoal
+                    ::where('user_id', Auth::user()->id)
+                    ->where('goal_id', $goal->id)
+                    ->where('quiz_id', $quizID)
+                    ->update(['is_achieved' => '1']);
         }
     }
 
-    public function checkGoalWanderer(array $quizData)
+    public function checkGoalTimesCompleted(array $quizData)
     {
-        // // Wanderer's Advice
-        // - Complete this quiz 10 times.
-        // > if user. all quizzes count = 10 with different id's
-        // > count quiz ids and store them in the stuff
+        $quizID = $quizData['quizID']; // quiz ID as passed from checkGoal
+        $quizItem = Quiz::findOrFail($quizID); // the quiz item
+        $goals = Goal::where('category', 'timesCompleted')->get(); // get all goals
+        $timesCompleted = $quizItem->times_completed;
 
-        $quizID = $quizData['quizID']; // quiz ID as passed from checkgoal
-        $goalID = $quizData['goalID']; // quiz ID as passed from checkgoal
-
-        $goalRequirement = Goal::findOrFail($goalID)->requirement; // 10
-        $quizItem = Quiz::findOrFail($quizID); // this quiz
-        if ($quizItem->times_completed == $goalRequirement) {
-
-            $quizGoalUpdate = QuizGoal
+        // updating the progress for each quizGoalItem
+        foreach ($goals as $goal) {
+            $quizGoalsUpdate = QuizGoal
                 ::where('user_id', Auth::user()->id)
-                ->where('goal_id', $goalID)
+                ->where('goal_id', $goal->id)
                 ->where('quiz_id', $quizID)
-                ->update(['is_achieved' => '1']);
+                ->update(['progress' => $quizItem->times_completed]);
         }
-    }
 
-
-
-    // // Adventurer's Experience
-    // - Complete this quiz 25 times.
-
-    // // Hero's Wits
-    // - Complete this quiz 50 times.
-
-    // // Ace!
-    // - Obtain perfect scores in a quiz five times in a row.
-    // > every perfect on that quiz add 1, when reached to 5 add that badge there
-
-    // Near Miss
-    // - Obtain one mistake in this quiz.
-    // > if user.score = (total-1/total)
-    // > or if user mistake = 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // checking if times_completed == goal requirement
+        foreach ($goals as $goal) {
+            if ($timesCompleted == $goal->requirement)
+                $quizGoalUpdate = QuizGoal
+                    ::where('user_id', Auth::user()->id)
+                    ->where('goal_id', $goal->id)
+                    ->where('quiz_id', $quizID)
+                    ->update(['is_achieved' => '1']);
+        }
     }
 }
