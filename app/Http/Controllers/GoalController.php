@@ -52,8 +52,34 @@ class GoalController extends Controller
         $this->checkGoalTotalScore(['quizID' => $quizID]);
         $this->checkGoalAccuracy(['quizID' => $quizID]);
         $this->checkGoalPerfectStreak(['quizID' => $quizID]);
-        // other 4 functions here
+        $this->checkGoalCorrectItems(['quizID' => $quizID]);
     }
+    public function checkGoalCorrectItems(array $quizData)
+    {
+        $quizID = $quizData['quizID']; // quiz ID as passed from checkGoal
+        $quizItem = Quiz::findOrFail($quizID); // the quiz item
+        $goals = Goal::where('category', 'correctItems')->get(); // get all goals
+        // get the latest quizLog on this quiz
+        $latestQuizLogOnThisQuiz = QuizLog
+            ::where('user_id', Auth::user()->id)
+            ->where('quiz_id', $quizID)
+            ->orderBy('id', 'desc')
+            ->first();
+        $score = $latestQuizLogOnThisQuiz->score;
+        $questionCount = $quizItem->questions()->count();
+
+        foreach($goals as $goal)
+        {
+            // if score = questionCount - 1 then grant achievement
+            if ($score == $questionCount - 1)
+                $quizGoalUpdate = QuizGoal
+                    ::where('user_id', Auth::user()->id)
+                    ->where('goal_id', $goal->id)
+                    ->where('quiz_id', $quizID)
+                    ->update(['is_achieved' => '1', 'progress' => $questionCount - 1]);
+        }
+    }
+
     public function checkGoalPerfectStreak(array $quizData)
     {
         $quizID = $quizData['quizID']; // quiz ID as passed from checkGoal
