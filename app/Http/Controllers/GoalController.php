@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class GoalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         // get all goals in a list for display muna
@@ -52,23 +47,40 @@ class GoalController extends Controller
             'goalID' => 1,
             'quizID' => $quizID
         ]);
-
         $this->checkGoal9000([
             'goalID' => 2,
             'quizID' => $quizID
         ]);
+        $this->checkGoalWanderer([
+            'goalID' => 3,
+            'quizID' => $quizID
+        ]);
     }
+
+    public function checkGoalTimesCompleted(){
+
+        // GOAL CATEGORY ENUM
+        // 'timesCompleted'
+        // 'totalScore'
+        // 'accuracy'
+        // 'perfectStreak'
+        // 'correctItems'
+
+        // loop thru all goal entries which has the category of
+        // "timesCompleted" and check for requirement values and run thru all of them
+
+    }
+
 
     public function checkGoalDejavu(array $quizData)
     {
         $quizID = $quizData['quizID']; // quiz ID as passed from checkgoal
         $goalID = $quizData['goalID']; // quiz ID as passed from checkgoal
 
-        $goalRequirement = Goal::findOrFail($goalID)->requirement;
-        $quizItem = Quiz::findOrFail($quizID);
-        // if times_completed == 2
+        $goalRequirement = Goal::findOrFail($goalID)->requirement; // 2
+        $quizItem = Quiz::findOrFail($quizID); // this quiz
         if ($quizItem->times_completed == $goalRequirement) {
-            // basically update the is_achieved of dejavu which is goal_id of 1 and on that quiz_id only
+            // basically update the is_achieved of dejavu which is goal_id of 1 and on that quiz_id only and for that user only
             $quizGoalUpdate = QuizGoal
                 ::where('user_id', Auth::user()->id)
                 ->where('goal_id', $goalID)
@@ -86,15 +98,14 @@ class GoalController extends Controller
         $quizID = $quizData['quizID']; // quiz ID as passed from checkgoal
         $goalID = $quizData['goalID']; // quiz ID as passed from checkgoal
 
-        $goalRequirement = Goal::findOrFail($goalID)->requirement;
-        $quizItem = Quiz::findOrFail($quizID);
+        $goalRequirement = Goal::findOrFail($goalID)->requirement; // 9000
 
-        $userTotalScore = QuizLog
+        $userTotalScoreForThisQuiz = QuizLog
         ::where('user_id', Auth::user()->id)
         ->where('quiz_id', $quizID)
         ->sum('score');
 
-        if($userTotalScore >= $goalRequirement)
+        if($userTotalScoreForThisQuiz >= $goalRequirement)
         {
             $quizGoalUpdate = QuizGoal
                 ::where('user_id', Auth::user()->id)
@@ -104,11 +115,29 @@ class GoalController extends Controller
         }
     }
 
+    public function checkGoalWanderer(array $quizData)
+    {
+        // // Wanderer's Advice
+        // - Complete this quiz 10 times.
+        // > if user. all quizzes count = 10 with different id's
+        // > count quiz ids and store them in the stuff
 
-    // // Wanderer's Advice
-    // - Complete this quiz 10 times.
-    // > if user. all quizzes count = 10 with different id's
-    // > count quiz ids and store them in the stuff
+        $quizID = $quizData['quizID']; // quiz ID as passed from checkgoal
+        $goalID = $quizData['goalID']; // quiz ID as passed from checkgoal
+
+        $goalRequirement = Goal::findOrFail($goalID)->requirement; // 10
+        $quizItem = Quiz::findOrFail($quizID); // this quiz
+        if ($quizItem->times_completed == $goalRequirement) {
+
+            $quizGoalUpdate = QuizGoal
+                ::where('user_id', Auth::user()->id)
+                ->where('goal_id', $goalID)
+                ->where('quiz_id', $quizID)
+                ->update(['is_achieved' => '1']);
+        }
+    }
+
+
 
     // // Adventurer's Experience
     // - Complete this quiz 25 times.
@@ -124,6 +153,11 @@ class GoalController extends Controller
     // - Obtain one mistake in this quiz.
     // > if user.score = (total-1/total)
     // > or if user mistake = 1
+
+
+
+
+
 
 
 

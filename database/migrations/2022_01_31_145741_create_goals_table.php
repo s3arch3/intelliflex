@@ -18,6 +18,13 @@ class CreateGoalsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('requirement');
+            $table->enum('category', [
+                'timesCompleted',
+                'totalScore',
+                'accuracy',
+                'perfectStreak',
+                'correctItems'
+            ]);
         });
     }
 

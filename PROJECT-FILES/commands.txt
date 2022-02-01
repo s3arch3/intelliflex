@@ -1,3 +1,32 @@
+DASHBOARD
+- Total count of quizzes made
+- Total accuracy for all quizzes
+- Login streak
+- Total score
+
+- chart about points earned in this week (Mon-Sun)
+GOALS
+- List all quiz
+- For each quiz, display all achievement PROGRESS
+
+
+goals are separated into X categories
+
+A. QUIZ-BASED GOALS
+- timesCompleted
+- totalScore
+- accuracy
+- perfectStreak
+- correctItems
+
+B. USER GOALS
+- Total number of created quizzes
+- Total number of questions
+- Overall accuracy
+- Login streak
+- Average points per day
+
+
 RULES
 - DON'T INTERRUPT THE QUIZ LIVEWIRE AS IT MAY BREAK OPERATION 
 - example: calling dd while in the middle of quiz breaks it
@@ -55,7 +84,10 @@ Near Miss
 > if user.score = (total-1/total)
 > or if user mistake = 1
 
-
+FEATURES
+--------
+- flex groups
+- administrator, professor, and student accounts
 
 
 TODO
