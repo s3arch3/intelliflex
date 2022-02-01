@@ -20,6 +20,7 @@ class CreateQuizLogsTable extends Migration
             $table->boolean('completed')->default(false);
             $table->text('questions_taken')->nullable()->default(null);
             $table->double('score', 2)->default(0);
+            $table->integer('number_of_questions')->default(0);
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@
     <br>
     Completed {{ $quizLog->completed }}
     <br>
-    Total Questions {{ $quizQuestions->count() }}
+    Total Questions {{ $quizLog->number_of_questions }}
     <br>
     Score {{ $quizLog->score }}
     <br>

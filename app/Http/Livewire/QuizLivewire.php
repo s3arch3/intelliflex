@@ -187,6 +187,7 @@ class QuizLivewire extends Component
 
         // E. insert score to quizlog
         $this->quizLog->score = $this->correctAnswers;
+        $this->quizLog->number_of_questions = $this->questionsCount;
 
         // F. save all stuff in the quiz log
         $this->quizLog->save();

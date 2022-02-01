@@ -8,8 +8,32 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
+                USER STATISTICS
+                <br>
+                <br>
 
+                <b>Quiz Count:</b>
+                {{ $quizCount }} <br>
+
+                <b>Overall Accuracy:</b>
+                {{ $overallAccuracy }} <br>
+
+                <b>Total Questions Answered:</b>
+                {{ $totalQuestionsAnswered }} <br>
+
+                <b>Total Points:</b>
+                {{ $totalPoints }} <br>
+
+                <b>Login Streak:</b>
+                {{ "N/A" }} <br>
+
+
+                <br>
+                <b>Chart about points earned in this week (Mon-Sun)</b>
+                <br>
+                <i>Chart Here</i>
+
+                <x-jet-welcome />
 
                 Quiz History
                 {{-- code for quiz logs list --}}
