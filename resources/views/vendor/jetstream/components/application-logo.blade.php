@@ -1,13 +1,13 @@
 <svg id="official_logo" data-name="official logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"
-    class="w-20">
+    class="w-16">
     <defs>
         <style>
             .cls-1 {
-                fill: #f9d500;
+                fill: #ffff;
             }
 
             .cls-2 {
-                fill: #0853bf;
+                fill: #ffff;
             }
 
         </style>
