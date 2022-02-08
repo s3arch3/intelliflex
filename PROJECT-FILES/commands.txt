@@ -1,8 +1,34 @@
-quiz details display detailed goal data
+TAILWIND
+- choose a font
+- declare intelliflex colors
+- colored underlines <3
+- dark mode support
+
+
+
+TECHNICAL UPDATES
+-----------------
+- add streak on quizzes table
+- add role on users table = enum = 'administrator', 'professor', 'student'
+- goal progress when someone clicks on quiz details
+- question explanation reflect on livewire
+- update nullable and default fields for each migration ex. explanation on answers table
+- trycatching
+- more database seeds like quiz, questions, and goal names 
+- update database documentation?
 
 FEATURES
 --------
-- flex groups
+- HOME social = flex groups only
+- social package = text post, react and comment to post
+- FLEX group
+- create group = generate code (make sure it's unique)
+- students be able to join thru
+- different interface for professor vs. student
+- professor create quiz just like normal quiz
+- professor can issue that quiz to a quiz group he/she owns 
+
+- onboarding?
 - administrator, professor, and student accounts
 
 
