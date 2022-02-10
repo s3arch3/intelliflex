@@ -1,3 +1,33 @@
+NOTES ABOUT THE PRESENTATION
+
+required mobile version?
+
+mobile app for student only
+professor app for desktop 
+
+custom quiz by student to share
+student/professor account
+min of 3 diff quizzes with 10 questions
+networkability and function first before visuals
+drag and drop feature?
+1st week of march deadline
+
+data mining on questions by phrase admin account create quizzes custom
+5 students 2 professors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 TAILWIND
 - choose a font
 - declare intelliflex colors
