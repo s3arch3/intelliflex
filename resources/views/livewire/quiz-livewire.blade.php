@@ -164,7 +164,7 @@
 
                     <form wire:submit.prevent="startQuiz">
                         @csrf
-                        <x-jet-button class="">
+                        <x-jet-button class="font-semibold">
                             <input type="submit" value="TAKE QUIZ AGAIN">
                         </x-jet-button>
                     </form>
