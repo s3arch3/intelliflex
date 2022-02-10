@@ -4,50 +4,49 @@
             {{ __('Home') }}
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                USER STATISTICS
+            <div class=" block p-10 bg-white rounded-md shadow-sm overflow-hidden">
+                <div class="font-bold text-xl"> User Statistics
+                </div>
                 <br>
+                <div class="mb-2">
+                    <b>Quiz Count:</b>
+                    {{ $quizCount }} <br>
+                </div>
+                <div class="mb-2">
+                    <b>Overall Accuracy:</b>
+                    {{ $overallAccuracy }} <br>
+                </div>
+                <div class="mb-2">
+                    <b>Total Questions Answered:</b>
+                    {{ $totalQuestionsAnswered }} <br>
+                </div>
+                <div class="mb-2">
+                    <b class="mb-2">Total Points:</b>
+                    {{ $totalPoints }} <br>
+                </div>
+                <div class="mb-2">
+                    <b>Login Streak:</b>
+                    {{ 'N/A' }} <br>
+                </div>
+
                 <br>
-
-                <b>Quiz Count:</b>
-                {{ $quizCount }} <br>
-
-                <b>Overall Accuracy:</b>
-                {{ $overallAccuracy }} <br>
-
-                <b>Total Questions Answered:</b>
-                {{ $totalQuestionsAnswered }} <br>
-
-                <b>Total Points:</b>
-                {{ $totalPoints }} <br>
-
-                <b>Login Streak:</b>
-                {{ "N/A" }} <br>
-
-
-                <br>
-                <b>Chart about points earned in this week (Mon-Sun)</b>
-                <br>
-                <i>Chart Here</i>
-
-                <x-jet-welcome />
-
-                Quiz History
+                <div class="font-bold text-lg mb-10">
+                    <p>Chart about points earned in this week (Mon-Sun)</p>
+                    <br>
+                    <i>Chart Here</i>
+                </div>
+                <div class="font-semibold text-lg mb-4"> Quiz History</div>
                 {{-- code for quiz logs list --}}
                 @foreach ($quizLogs as $quizLog)
-                    <x-quiz-log-item
-                    :id="$quizLog->id"
-                    :name="$quizLog->quiz->name"
-                    :description="$quizLog->quiz->description"
-                    :questionsCount="$quizLog->quiz->questions->count()"
-                    :isCompleted="$quizLog->completed"
-                    :score="$quizLog->score"/>
+                    <x-quiz-log-item :id="
+                    $quizLog->id" :name="$quizLog->quiz->name" :description="$quizLog->quiz->description"
+                        :questionsCount="$quizLog->quiz->questions->count()" :isCompleted="$quizLog->completed"
+                        :score="$quizLog->score" />
                 @endforeach
-
             </div>
         </div>
+    </div>
     </div>
 </x-app-layout>
