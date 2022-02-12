@@ -5,7 +5,7 @@
     @if ($quizInStart)
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class=" block p-10 bg-white rounded-md shadow-sm overflow-hidden">
                     {{-- back button --}}
                     <x-jet-button>
                         <a href="{{ route('quizzes.index') }}">
@@ -14,30 +14,24 @@
                     </x-jet-button>
 
                     <br>
-
-                    <div class="mx-auto">
-                        <b>Quiz Livewire Start</b>
-                        ID: {{ $quizID }}
+                    <div class="mx-auto text-lg text-gray-800">
+                        <div class="mb-2">
+                            <b>Quiz Livewire Start</b>
+                            ID: {{ $quizID }}
+                        </div>
+                        <div class="mb-2">
+                            <b>Quiz Title</b> {{ $quizItem->name }}
+                        </div>
+                        <div class="mb-2">
+                            <b>Description</b> {{ $quizItem->description }}
+                        </div>
+                        <div class="mb-2">
+                            <b>Times Completed</b> {{ $quizItem->times_completed }}
+                        </div>
+                        <div class="mb-2">
+                            <b>Questions</b> {{ $questionsCount }}
+                        </div>
                     </div>
-                    <div class="mx-auto">
-                        <b>Quiz Title</b> {{ $quizItem->name }}
-                    </div>
-                    <div class="mx-auto">
-                        <b>Description</b> {{ $quizItem->description }}
-                    </div>
-                    <div class="mx-auto">
-                        <b>Times Completed</b> {{ $quizItem->times_completed }}
-                    </div>
-                    <div class="mx-auto">
-                        <b>Questions</b> {{ $questionsCount }}
-                    </div>
-
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-
                     {{-- <x-jet-button>
                         <a href="">
                             START QUIZ
@@ -46,8 +40,8 @@
 
                     <form wire:submit.prevent="startQuiz">
                         @csrf
-                        <x-jet-button class="ml-4">
-                            <input type="submit" value="Start Quiz">
+                        <x-jet-button class="font-semibold">
+                            <input type="submit" value="START QUIZ">
                         </x-jet-button>
                     </form>
 
@@ -61,18 +55,20 @@
     @if ($quizInProgress)
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <div class="mx-auto">
-                        IN PROGRESS
-                    </div>
-                    <div class="mx-auto">
-                        <b>Quiz Progress</b>
-                    </div>
-                    <div class="mx-auto">
-                        <b>Question Number</b> {{ $count }}
-                    </div>
-                    <div class="mx-auto">
-                        <b>Question</b> {{ $currentQuestion->question }}
+                <div class="block p-10 bg-white rounded-md shadow-sm overflow-hidden">
+                    <div>
+                        <div class="mb-2">
+                            IN PROGRESS
+                        </div>
+                        <div class="mb-2">
+                            <b>Quiz Progress</b>
+                        </div>
+                        <div class="mb-2">
+                            <b>Question Number</b> {{ $count }}
+                        </div>
+                        <div class="mb-2">
+                            <b>Question</b> {{ $currentQuestion->question }}
+                        </div>
                     </div>
 
                     {{-- IMPORTANT --}}
@@ -98,12 +94,12 @@
                     <form wire:submit.prevent="nextQuestion">
                         @csrf
                         @if ($count < $questionsCount)
-                            <x-jet-button class="ml-4">
-                                <input type="submit" value="Next Question">
+                            <x-jet-button class="font-bold">
+                                <input type="submit" value="NEXT QUESTION">
                             </x-jet-button>
                         @else
-                            <x-jet-button class="ml-4">
-                                <input type="submit" value="Show Results">
+                            <x-jet-button class="font-bold">
+                                <input type="submit" value="SHOW RESULTS">
                             </x-jet-button>
                         @endif
                     </form>
@@ -119,36 +115,35 @@
         {{-- wire:poll.500ms --}}
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <div class="mx-auto">
+                <div class="block p-10 bg-white rounded-md shadow-sm overflow-hidden">
+                    <div class="grid place-items-center font-bold text-lg">
                         IN END
                     </div>
-
                     {{-- IMPORTANT --}}
                     {{-- IMPORTANT --}}
                     {{-- IMPORTANT --}}
                     {{-- enclose livewire stuff in a div --}}
                     <div>
-                        <div class="mx-auto">
+                        <div class="mb-2">
                             <b>You Completed the Quiz!</b>
                             ID: {{ $quizID }}
                         </div>
-                        <div class="mx-auto">
+                        <div class="mb-2">
                             <b>Quiz Title</b> {{ $quizItem->name }}
                         </div>
-                        <div class="mx-auto">
+                        <div class="mb-2">
                             <b>Description</b> {{ $quizItem->description }}
                         </div>
-                        <div class="mx-auto">
+                        <div class="mb-2">
                             <b>Times Completed</b> {{ $quizItem->times_completed }}
                         </div>
-                        <div class="mx-auto">
+                        <div class="mb-2">
                             <b>Questions</b> {{ $questionsCount }}
                         </div>
-                        <div class="mx-auto">
+                        <div class="mb-2">
                             <b>Score</b> {{ $correctAnswers }}
                         </div>
-                        <div class="mx-auto">
+                        <div class="mb-2">
                             <b>Percentage</b> {{ $quizPercentage }}
                         </div>
                     </div>
@@ -161,7 +156,7 @@
                     </x-jet-button>
 
                     {{-- BACK TO HOME --}}
-                    <x-jet-button>
+                    <x-jet-button class="ml-2">
                         <a href="{{ route('home') }}">
                             Return to Home
                         </a>
@@ -169,8 +164,8 @@
 
                     <form wire:submit.prevent="startQuiz">
                         @csrf
-                        <x-jet-button class="ml-4">
-                            <input type="submit" value="Take Quiz Again">
+                        <x-jet-button class="font-semibold">
+                            <input type="submit" value="TAKE QUIZ AGAIN">
                         </x-jet-button>
                     </form>
                 </div>
