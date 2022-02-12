@@ -1,9 +1,11 @@
+php artisan serve --host 192.168.254.101
+
 NOTES ABOUT THE PRESENTATION
 
 required mobile version?
 
 mobile app for student only
-professor app for desktop 
+professor app for desktop
 
 custom quiz by student to share
 student/professor account
@@ -44,7 +46,7 @@ TECHNICAL UPDATES
 - question explanation reflect on livewire
 - update nullable and default fields for each migration ex. explanation on answers table
 - trycatching
-- more database seeds like quiz, questions, and goal names 
+- more database seeds like quiz, questions, and goal names
 - update database documentation?
 
 FEATURES
@@ -56,7 +58,7 @@ FEATURES
 - students be able to join thru
 - different interface for professor vs. student
 - professor create quiz just like normal quiz
-- professor can issue that quiz to a quiz group he/she owns 
+- professor can issue that quiz to a quiz group he/she owns
 
 - onboarding?
 - administrator, professor, and student accounts
@@ -358,7 +360,7 @@ PROJECT TECHNICAL REQUIREMENTS:
 - cmd: php artisan serve
 - browser: http://127.0.0.1:8000
 ∎ phpMyAdmin:
-- start from XAMPP 
+- start from XAMPP
 - DB_DATABASE=db_intelliflex (your database name as imported)
 - DB_USERNAME=root (your username in local PC)
 - DB_PASSWORD=pass (your password in local PC)
