@@ -12,6 +12,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+                display:['Raleway']
             },
         },
     },

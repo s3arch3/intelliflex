@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-display font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Goals') }}
         </h2>
     </x-slot>
@@ -39,13 +39,10 @@
                             </div>
                             <br>
                             @foreach ($quizGoals as $quizGoal)
-                                @if (
-                                $quizGoal->is_achieved == '1' &&
-                                $quizGoal->quiz_id == $quiz->id &&
-                                $quizGoal-> user_id  == Auth::user()->id
-                                )
+                                @if ($quizGoal->is_achieved == '1' && $quizGoal->quiz_id == $quiz->id && $quizGoal->user_id == Auth::user()->id)
 
-                                    <div class="w-fit flex flex-wrap justify-start mx-2 px-1 outline outline-offset-2 outline-1 outline-blue-500 rounded-3xl">
+                                    <div
+                                        class="w-fit flex flex-wrap justify-start mx-2 px-1 outline outline-offset-2 outline-1 outline-blue-500 rounded-3xl">
                                         {{ $goals->where('id', $quizGoal->goal_id)->first()->name }}
                                     </div>
                                 @endif
