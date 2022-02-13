@@ -3,18 +3,40 @@
     {{-- QUIZ START FRAME --}}
     {{-- QUIZ START FRAME --}}
     @if ($quizInStart)
-        <div class="py-12">
+        <div class="py-6">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class=" block p-10 bg-white rounded-md shadow-sm overflow-hidden">
+                <x-jet-button>
                     {{-- back button --}}
-                    <x-jet-button>
-                        <a href="{{ route('quizzes.index') }}">
-                            GO BACK
-                        </a>
-                    </x-jet-button>
-
-                    <br>
-                    <div class="mx-auto text-lg text-gray-800">
+                    <a href="{{ route('quizzes.index') }}">
+                        GO BACK
+                    </a>
+                </x-jet-button>
+            </div>
+            <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+                <br>
+                <div class="block p-10 bg-white rounded-md shadow-sm overflow-hidden">
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 rounded-full p-4
+                        shadow-md bg-gray-200">
+                            </div>
+                            <p class="font-display ml-4 text-3xl font-bold text-blue-900">{{ $quizItem->name }}</p>
+                        </div>
+                        <p class="mb-2">Quiz Livewire Start ID: {{ $quizID }}</p>
+                        <p class="ml-4 text-sm font-regular text-gray-700 mb-2">{{ $quizItem->description }}
+                        </p>
+                        <p class="font-display ml-4 text-md font-bold text-gray-900 mb-2">Times
+                            completed: {{ $quizItem->times_completed }}</p>
+                        <p class="font-display ml-4 text-md font-bold text-gray-900 mb-2">Questions:
+                            {{ $questionsCount }}</p>
+                        <form wire:submit.prevent="startQuiz">
+                            @csrf
+                            <x-jet-button class="font-semibold">
+                                <input type="submit" value="START QUIZ">
+                            </x-jet-button>
+                        </form>
+                    </div>
+                    {{-- <div class="mx-auto text-lg text-gray-800">
                         <div class="mb-2">
                             <b>Quiz Livewire Start</b>
                             ID: {{ $quizID }}
@@ -31,20 +53,12 @@
                         <div class="mb-2">
                             <b>Questions</b> {{ $questionsCount }}
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- <x-jet-button>
                         <a href="">
                             START QUIZ
                         </a>
                     </x-jet-button> --}}
-
-                    <form wire:submit.prevent="startQuiz">
-                        @csrf
-                        <x-jet-button class="font-semibold">
-                            <input type="submit" value="START QUIZ">
-                        </x-jet-button>
-                    </form>
-
                 </div>
             </div>
         </div>
