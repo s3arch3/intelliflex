@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
         ]);
         // Student 3
         DB::table('users')->insert([
-            'name' => 'Cyrus', 'email' => 'cyrus@gmail.com',
+            'name' => 'Jeurell', 'email' => 'jeurell@gmail.com',
             'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
         ]);
         // Student 4
