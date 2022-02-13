@@ -29,6 +29,12 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
+            {{-- STUDENT/PROFESSOR CHECKBOX HERE --}}
+            <div class="mt-4 flex">
+                <x-jet-input id="user_type" class="mr-4" type="checkbox" name="user_type" />
+                <x-jet-label for="user_type" value="{{ __('Are you a Professor?') }}" />
+            </div>
+
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">
