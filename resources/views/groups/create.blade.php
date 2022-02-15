@@ -26,12 +26,13 @@
                             name="quiz[name]"
                             type="text"
                             class="mb-4 mt-4 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                            value="KTCO9000"
-                            disabled>
+                            value= {{ $groupCode }}
+                            >
                         </input>
-                        <x-jet-button>
+                        <button
+                            onclick="copyToClipboard()">
                             COPY CODE
-                        </x-jet-button>
+                        </button>
                     </div>
                     <div>
                         <label for="name"
