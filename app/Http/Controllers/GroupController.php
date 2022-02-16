@@ -62,17 +62,24 @@ class GroupController extends Controller
 
     public function show($id)
     {
-        //
+        $groupItem = Group::findOrFail($id); // get that group item
+        return view('groups.show', ['groupItem' => $groupItem]);
     }
 
     public function edit($id)
     {
-        //
+        $groupItem = Group::findOrFail($id);
+        return view('groups.edit', ['groupItem' => $groupItem]);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $user = Group::where('id', $id)->update([
+            'name' => $request->group['name'],
+            'description' => $request->group['description'],
+            'is_active' => array_key_exists('is_active', $request->group) ? '1' : '0' // array_key_exists because is_active key is passed if the checkbox is checked only
+        ]);
+        return back();
     }
 
     public function destroy($id)

@@ -6,12 +6,6 @@ use Illuminate\View\Component;
 
 class GroupListItem extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-
     public $name;
     public $description;
     public $code;
@@ -27,11 +21,6 @@ class GroupListItem extends Component
         $this->id = $id;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
     public function render()
     {
         return view('components.group-list-item');
