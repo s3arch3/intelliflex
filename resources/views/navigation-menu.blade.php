@@ -168,7 +168,16 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
-                {{ __('home') }}
+                {{ __('Home') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('quizzes.index') }}" :active="request()->routeIs('quizzes.index')">
+                {{ __('Quizzes') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('groups.index') }}" :active="request()->routeIs('groups.index')">
+                {{ __('Groups') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('goals.index') }}" :active="request()->routeIs('goals.index')">
+                {{ __('Goals') }}
             </x-jet-responsive-nav-link>
         </div>
 
