@@ -8,11 +8,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             {{-- GROUPS LIST --}}
             <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
-                {{-- @foreach ($quizzes as $quiz)
-                    <x-quiz-list-item :name="$quiz->name" :description="$quiz->description"
-                        :timesCompleted="$quiz->times_completed" :isActive="$quiz->is_active" :id="$quiz->id"
-                        :questionsCount="$quiz->questions_count" />
-                @endforeach --}}
+                @foreach ($groups as $group)
+                    <x-group-list-item :name="$group->name" :description="$group->description"
+                        :isActive="$group->is_active" :id="$group->id"
+                        :code="$group->code" />
+                @endforeach
             </ul>
             {{-- CREATE QUIZ BUTTON --}}
             <x-jet-button>

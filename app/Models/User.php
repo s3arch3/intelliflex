@@ -84,4 +84,8 @@ class User extends Authenticatable
             'quiz_id'
         );
     }
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
+    }
 }
