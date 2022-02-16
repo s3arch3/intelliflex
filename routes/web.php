@@ -31,6 +31,8 @@ Route::post('quizzes/take/{id}', [QuizController::class, 'take'])->name('take');
 Route::get('quizzes/log/{id}', [QuizController::class, 'log'])->name('log');
 // groups.index
 Route::resource('groups', GroupController::class);
+Route::get('groups/join', [GroupController::class, 'join'])->name('join');
+
 // goals.index
 Route::resource('goals', GoalController::class);
 //quetions

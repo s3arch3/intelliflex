@@ -9,10 +9,19 @@ use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
+    // this function is for students joining a class
+    public function join()
+    {
+        return view('groups.create');
+    }
     public function index()
     {
         $groups = Auth::user()->groups()->get();
-        return view('groups.index', compact('groups'));
+        $user_type = Auth::user()->user_type;
+        return view('groups.index', [
+            'groups' => $groups,
+            'user_type' => $user_type
+        ]);
     }
 
     public function create()
