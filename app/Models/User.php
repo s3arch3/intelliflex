@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_type',
     ];
 
     /**
@@ -82,5 +83,9 @@ class User extends Authenticatable
             'goal_id',
             'quiz_id'
         );
+    }
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
     }
 }

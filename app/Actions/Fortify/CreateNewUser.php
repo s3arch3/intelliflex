@@ -31,6 +31,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'user_type' => array_key_exists('user_type', $input) ? 'professor' : 'student', // array_key_exists because is_active key is passed if the checkbox is checked only
         ]);
     }
 }

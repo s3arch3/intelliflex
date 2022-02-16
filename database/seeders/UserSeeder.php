@@ -15,29 +15,59 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // User 1
+        // PROFESSOR LIST //
+        // PROFESSOR LIST //
+        // PROFESSOR LIST //
+
+        // Professor 1
         DB::table('users')->insert([
-            'name' => 'Serge Ivon E. Vibiesca',
-            'email' => '21vibiesca@gmail.com',
-            'password' => Hash::make('@intelliflex123!')
+            'name' => 'Michael', 'email' => 'michael@gmail.com',
+            'user_type' => 'professor', 'password' => Hash::make('@intelliflex123!')
         ]);
-        // User 2
+        // Professor 2
         DB::table('users')->insert([
-            'name' => 'Marie Joy B. Barruela',
-            'email' => 'barruela.mjoy@gmail.com',
-            'password' => Hash::make('@intelliflex123!')
+            'name' => 'Vince', 'email' => 'vince@gmail.com',
+            'user_type' => 'professor', 'password' => Hash::make('@intelliflex123!')
         ]);
-        // User 3
+
+        // STUDENT LIST //
+        // STUDENT LIST //
+        // STUDENT LIST //
+
+        // Student 1
         DB::table('users')->insert([
-            'name' => 'Cyrus Jeurell Y. Villanueva',
-            'email' => 'sairasujeurell@gmail.com',
-            'password' => Hash::make('@intelliflex123!')
+            'name' => 'Serge', 'email' => 'serge@gmail.com',
+            'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
         ]);
-        // User 4
+        // Student 2
         DB::table('users')->insert([
-            'name' => 'Julius John S. Aluran',
-            'email' => 'aluran12@gmail.com',
-            'password' => Hash::make('@intelliflex123!')
+            'name' => 'Joy', 'email' => 'joy@gmail.com',
+            'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
+        ]);
+        // Student 3
+        DB::table('users')->insert([
+            'name' => 'Jeurell', 'email' => 'jeurell@gmail.com',
+            'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
+        ]);
+        // Student 4
+        DB::table('users')->insert([
+            'name' => 'Julius', 'email' => 'julius@gmail.com',
+            'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
+        ]);
+        // Student 5
+        DB::table('users')->insert([
+            'name' => 'Gabriel', 'email' => 'gabriel@gmail.com',
+            'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
+        ]);
+
+        // ADMIN LIST //
+        // ADMIN LIST //
+        // ADMIN LIST //
+
+        // Admin 1
+        DB::table('users')->insert([
+            'name' => 'Notch', 'email' => 'notch@gmail.com',
+            'user_type' => 'admin', 'password' => Hash::make('@intelliflex123!')
         ]);
     }
 }
