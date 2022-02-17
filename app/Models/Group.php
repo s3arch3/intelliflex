@@ -16,4 +16,9 @@ class Group extends Model
         'description',
         'is_active'
     ];
+
+    public function groupMembers()
+    {
+        return $this->hasMany(GroupMember::class);
+    }
 }

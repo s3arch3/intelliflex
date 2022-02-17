@@ -7,24 +7,49 @@
 
     @if ($user_type == 'student')
         STUDENT MODE
+        <br>
+        <br>
         {{-- JOIN CLASS FEATURE FOR STUDENT ONLY --}}
-        <label for="groupCode"
-            class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Join Class</label>
-        <div class="flex">
-            <input id="groupCode" name="" type="text"
-                class="mb-4 mt-4 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Input the 7-character group code here.">
-            </input>
-            {{-- ACTIVATE CODE WHEN CLICKED COPY --}}
-        <x-jet-button href="{{ route('join') }}">
-                JOIN GROUP
-            </x-jet-button>
-        </div>
+        <div class="block p-10 bg-white rounded-md shadow-sm">
+            <form method="POST" action="{{ route('join') }}">
+                @csrf {{-- Little csrf guy protecting us from cross site attacks <3 --}}
+                <label for="groupCode"
+                    class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Join
+                    Class</label>
+                <div class="flex">
+                    <input id="groupCode" name="groupCode" type="text"
+                        class="mb-4 mt-4 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Input the 7-character group code here.">
+                    </input>
+                </div>
+                <x-jet-button>
+                    <input type="submit" class="font-semibold" value="JOIN GROUP">
+                </x-jet-button>
 
+                <x-jet-button>
+                    <a href="{{ route('groups.index') }}">
+                        CANCEL
+                    </a>
+                </x-jet-button>
+            </form>
+        </div>
     @elseif ($user_type == 'professor')
-        PROFESSOR
+        PROFESSOR MODE
+        <br>
+        <br>
+
+        {{-- CREATE QUIZ BUTTON --}}
+        <x-jet-button>
+            {{-- IF USER IS A PROFESSOR --}}
+            <a href="{{ route('groups.create') }}">
+                {{ __('CREATE GROUP') }}
+            </a>
+        </x-jet-button>
     @elseif ($user_type == 'admin')
-        ADMIN
+        ADMIN MODE
+        <br>
+        <br>
+
     @endif
 
     <div class="py-12">
@@ -36,13 +61,7 @@
                         :isActive="$group->is_active" :id="$group->id" :code="$group->code" />
                 @endforeach
             </ul>
-            {{-- CREATE QUIZ BUTTON --}}
-            <x-jet-button>
-                {{-- IF USER IS A PROFESSOR --}}
-                <a href="{{ route('groups.create') }}">
-                    {{ __('CREATE GROUP') }}
-                </a>
-            </x-jet-button>
+
         </div>
     </div>
 </x-app-layout>

@@ -24,16 +24,27 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/home', [HomeController::class, 'home'])->name('home');
 
-// quizzes.index, quizzes.create, etc.
+// QUIZZES ROUTES
+// QUIZZES ROUTES
+// QUIZZES ROUTES
 Route::resource('quizzes', QuizController::class);
-// for take quiz feature which is a livewire component :D
-Route::post('quizzes/take/{id}', [QuizController::class, 'take'])->name('take');
 Route::get('quizzes/log/{id}', [QuizController::class, 'log'])->name('log');
-// groups.index
-Route::resource('groups', GroupController::class);
-Route::get('groups/join', [GroupController::class, 'join'])->name('join');
+Route::post('quizzes/take/{id}', [QuizController::class, 'take'])->name('take');
 
-// goals.index
-Route::resource('goals', GoalController::class);
-//quetions
+// QUESTIONS ROUTES
+// QUESTIONS ROUTES
+// QUESTIONS ROUTES
 Route::resource('questions', QuestionController::class);
+
+// GROUPS ROUTES
+// GROUPS ROUTES
+// GROUPS ROUTES
+Route::resource('groups', GroupController::class);
+Route::post('groups/join', [GroupController::class, 'join'])->name('join');
+Route::post('groups/confirmJoin', [GroupController::class, 'confirmJoin'])->name('confirmJoin');
+
+
+// GOALS ROUTES
+// GOALS ROUTES
+// GOALS ROUTES
+Route::resource('goals', GoalController::class);
