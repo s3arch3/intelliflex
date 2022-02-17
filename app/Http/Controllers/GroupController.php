@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 
 class GroupController extends Controller
 {
@@ -36,10 +37,7 @@ class GroupController extends Controller
             {
                 if ((Auth::user()->id === $groupMember->user_id) && ($group->id === $groupMember->group_id))
                 {
-                    return view('groups.index', [
-                        'groups' => $groups,
-                        'userType' => $userType
-                    ]);
+                    return App::call('App\Http\Controllers\GroupController@index');
                 }
             }
 
@@ -52,20 +50,17 @@ class GroupController extends Controller
                 break;
             }
         }
-
-        return view('groups.index', [
-            'groups' => $groups,
-            'userType' => $userType
-        ]);
-
+        return App::call('App\Http\Controllers\GroupController@index');
     }
 
     public function index()
     {
         $groups = Auth::user()->groups()->get();
+        $groupMembers = Auth::user()->groupMembers()->get();
         $userType = Auth::user()->user_type;
         return view('groups.index', [
             'groups' => $groups,
+            'groupMembers' => $groupMembers,
             'userType' => $userType
         ]);
     }
@@ -128,8 +123,15 @@ class GroupController extends Controller
 
     public function edit($id)
     {
-        $groupItem = Group::findOrFail($id);
-        return view('groups.edit', ['groupItem' => $groupItem]);
+        $groupItem = Group::findOrFail($id); // get that group item
+        $groupMembers = GroupMember::where('group_id', $id)->with('user')->get();
+        $users = User::all();
+
+        return view('groups.edit', [
+            'groupItem' => $groupItem,
+            'groupMembers' => $groupMembers,
+            'users' => $users
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -146,5 +148,20 @@ class GroupController extends Controller
     {
         Group::destroy($id);
         return back();
+    }
+
+    public function removeMember($id)
+    {
+        GroupMember::destroy($id);
+        return back();
+    }
+
+    public function leaveGroup(Request $request)
+    {
+        $group = Group::find($request->id);
+        $groupMembers = $group->groupMembers()->where('user_id', Auth::user()->id)->first();
+        $groupMemberDelete = GroupMember::find($groupMembers);
+        $groupMemberDelete->delete();
+        return App::call('App\Http\Controllers\GroupController@index');
     }
 }

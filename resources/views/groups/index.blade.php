@@ -33,12 +33,40 @@
                 </x-jet-button>
             </form>
         </div>
+
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                {{-- GROUPS LIST --}}
+                <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
+                    @foreach ($groupMembers as $groupMember)
+                        <x-group-list-item userType="student" :name="$groupMember->group->name"
+                            :description="$groupMember->group->description" :isActive="$groupMember->group->is_active"
+                            :id="$groupMember->group->id" :code="$groupMember->group->code" />
+                    @endforeach
+                </ul>
+
+            </div>
+        </div>
     @elseif ($userType == 'professor')
         PROFESSOR MODE
         <br>
         <br>
 
-        {{-- CREATE QUIZ BUTTON --}}
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                {{-- GROUPS LIST --}}
+                <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
+                    @foreach ($groups as $group)
+                        <x-group-list-item userType="professor" :name="$group->name"
+                            :description="$group->description" :isActive="$group->is_active" :id="$group->id"
+                            :code="$group->code" />
+                    @endforeach
+                </ul>
+
+            </div>
+        </div>
+        {{-- CREATE GROUP BUTTON --}}
         <x-jet-button>
             {{-- IF USER IS A PROFESSOR --}}
             <a href="{{ route('groups.create') }}">
@@ -51,17 +79,4 @@
         <br>
 
     @endif
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{-- GROUPS LIST --}}
-            <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
-                @foreach ($groups as $group)
-                    <x-group-list-item :name="$group->name" :description="$group->description"
-                        :isActive="$group->is_active" :id="$group->id" :code="$group->code" />
-                @endforeach
-            </ul>
-
-        </div>
-    </div>
 </x-app-layout>

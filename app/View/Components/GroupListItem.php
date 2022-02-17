@@ -6,14 +6,16 @@ use Illuminate\View\Component;
 
 class GroupListItem extends Component
 {
+    public $userType;
     public $name;
     public $description;
     public $code;
     public $isActive;
     public $id;
 
-    public function __construct($name="", $description="", $code="", $isActive="", $id="")
+    public function __construct($userType="", $name="", $description="", $code="", $isActive="", $id="")
     {
+        $this->userType = $userType;
         $this->name = $name;
         $this->description = $description;
         $this->code = $code;

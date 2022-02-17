@@ -9,6 +9,7 @@ return [
     'group_code_length' => 7,
     'group_name_max_length' => 32,
     'group_description_max_length' => 255,
+
 ];
 // remember to run php artisan config:cache after adding a config file
 ?>

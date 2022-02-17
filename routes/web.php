@@ -40,6 +40,8 @@ Route::resource('questions', QuestionController::class);
 // GROUPS ROUTES
 // GROUPS ROUTES
 Route::resource('groups', GroupController::class);
+Route::post('groups/removeMember', [GroupController::class, 'removeMember'])->name('removeMember');
+Route::post('groups/leaveGroup', [GroupController::class, 'leaveGroup'])->name('leaveGroup');
 Route::post('groups/join', [GroupController::class, 'join'])->name('join');
 Route::post('groups/confirmJoin', [GroupController::class, 'confirmJoin'])->name('confirmJoin');
 

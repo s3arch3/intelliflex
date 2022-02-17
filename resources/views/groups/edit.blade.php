@@ -88,5 +88,25 @@
                 </form>
             </div>
 
+            <div class="block p-10 bg-white rounded-md shadow-sm">
+                <label for="studentList"
+                    class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Student List</label>
+                @foreach ($groupMembers as $groupMember)
+                    <div class="text-md leading-relaxed font-semibold text-gray-00 border-gray-500">
+                        <label>STUDENT ID: {{ $groupMember->user_id }}</label> <br>
+                        <label>STUDENT NAME: {{ $groupMember->user->name }}</label> <br>
 
+
+                        <form method="POST" action="{{ route('removeMember', $groupMember->user_id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
+                                <input class="font-semibold" type="submit" value="REMOVE STUDENT">
+                            </x-jet-button>
+                        </form>
+
+                    </div>
+                    <br>
+                @endforeach
+            </div>
 </x-app-layout>
