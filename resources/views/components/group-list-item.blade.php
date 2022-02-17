@@ -22,7 +22,7 @@
                 {{-- [{{ $userType }}] --}}
 
                 @if ($userType == 'student')
-                    <form method="POST" action="{{ route('leaveGroup', $id) }}">
+                    <form method="POST" action="{{ route('leaveGroup', ['id' => $id]) }}">
                         @csrf
                         @method('DELETE')
                         <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">

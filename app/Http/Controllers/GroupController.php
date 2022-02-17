@@ -158,10 +158,10 @@ class GroupController extends Controller
 
     public function leaveGroup(Request $request)
     {
-        $group = Group::find($request->id);
-        $groupMembers = $group->groupMembers()->where('user_id', Auth::user()->id)->first();
-        $groupMemberDelete = GroupMember::find($groupMembers);
-        $groupMemberDelete->delete();
-        return App::call('App\Http\Controllers\GroupController@index');
+        // $group = Group::find($request->id);
+        // $groupMembers = $group->groupMembers()->where('user_id', Auth::user()->id)->first();
+        // $groupMemberDelete = GroupMember::findOrFail($groupMembers);
+        // $groupMemberDelete->delete();
+        // return App::call('App\Http\Controllers\GroupController@index');
     }
 }
