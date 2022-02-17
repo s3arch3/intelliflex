@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    @if ($user_type == 'student')
+    @if ($userType == 'student')
         STUDENT MODE
         <br>
         <br>
@@ -33,7 +33,7 @@
                 </x-jet-button>
             </form>
         </div>
-    @elseif ($user_type == 'professor')
+    @elseif ($userType == 'professor')
         PROFESSOR MODE
         <br>
         <br>
@@ -45,7 +45,7 @@
                 {{ __('CREATE GROUP') }}
             </a>
         </x-jet-button>
-    @elseif ($user_type == 'admin')
+    @elseif ($userType == 'admin')
         ADMIN MODE
         <br>
         <br>

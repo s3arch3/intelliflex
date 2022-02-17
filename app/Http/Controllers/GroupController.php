@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use App\Models\GroupMember;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -23,16 +24,26 @@ class GroupController extends Controller
         $groups = Group::all();
         // get all groupMembers (to be checked for duplication late below)
         $groupMembers = GroupMember::all();
+
+        // normal index function
+        $userType = Auth::user()->user_type;
+
         foreach ($groups as $group) {
             // if there is one code match, then check first if there are existing entiries for
             // duplicates (user_id and group_id)
+            // find duplicates
+            foreach ($groupMembers as $groupMember)
+            {
+                if ((Auth::user()->id === $groupMember->user_id) && ($group->id === $groupMember->group_id))
+                {
+                    return view('groups.index', [
+                        'groups' => $groups,
+                        'userType' => $userType
+                    ]);
+                }
+            }
 
             if ($group->code == $request->groupCode) {
-                // find duplicates
-                if (GroupMember::where('user_id', Auth::user()->id) && GroupMember::where('group_id', $group->id)) {
-                    // exit if there are duplicates
-                    break;
-                }
                 // add entry to group_list database
                 $groupMemberItem = Auth::user()->groupMembers()->create([
                     'user_id' => Auth::user()->id,
@@ -42,22 +53,20 @@ class GroupController extends Controller
             }
         }
 
-
-        // normal index function
-        $user_type = Auth::user()->user_type;
         return view('groups.index', [
             'groups' => $groups,
-            'user_type' => $user_type
+            'userType' => $userType
         ]);
+
     }
 
     public function index()
     {
         $groups = Auth::user()->groups()->get();
-        $user_type = Auth::user()->user_type;
+        $userType = Auth::user()->user_type;
         return view('groups.index', [
             'groups' => $groups,
-            'user_type' => $user_type
+            'userType' => $userType
         ]);
     }
 
@@ -105,7 +114,16 @@ class GroupController extends Controller
     public function show($id)
     {
         $groupItem = Group::findOrFail($id); // get that group item
-        return view('groups.show', ['groupItem' => $groupItem]);
+        $userType = Auth::user()->user_type; // get current user_type
+        $groupMembers = GroupMember::where('group_id', $id)->with('user')->get();
+        $users = User::all();
+
+        return view('groups.show', [
+            'groupItem' => $groupItem,
+            'userType' => $userType,
+            'groupMembers' => $groupMembers,
+            'users' => $users
+        ]);
     }
 
     public function edit($id)
