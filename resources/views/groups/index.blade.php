@@ -4,12 +4,15 @@
             {{ __('All Groups') }}
         </h2>
     </x-slot>
-
     @if ($userType == 'student')
-        STUDENT MODE
+        {{-- STUDENT INTERFACE --}}
+        {{-- STUDENT INTERFACE --}}
+        {{-- STUDENT INTERFACE --}}
+        STUDENT INTERFACE
         <br>
         <br>
         {{-- JOIN CLASS FEATURE FOR STUDENT ONLY --}}
+
         <div class="block p-10 bg-white rounded-md shadow-sm">
             <form method="POST" action="{{ route('join') }}">
                 @csrf {{-- Little csrf guy protecting us from cross site attacks <3 --}}
@@ -34,47 +37,52 @@
             </form>
         </div>
 
+        {{-- LIST OF ALL GROUPS THAT THE USER JOINED --}}
+        {{-- LIST OF ALL GROUPS THAT THE USER JOINED --}}
+        {{-- LIST OF ALL GROUPS THAT THE USER JOINED --}}
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                {{-- GROUPS LIST --}}
                 <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
-                    @foreach ($groupMembers as $groupMember)
-                        <x-group-list-item userType="student" :name="$groupMember->group->name"
-                            :description="$groupMember->group->description" :isActive="$groupMember->group->is_active"
-                            :id="$groupMember->group->id" :code="$groupMember->group->code" />
+                    @foreach ($groupStudents as $groupStudent)
+                        <x-group-list-item userType="student" :name="$groupStudent->groupProfessor->name"
+                            :description="$groupStudent->groupProfessor->description"
+                            :isActive="$groupStudent->groupProfessor->is_active" :groupProfessorID="$groupStudent->groupProfessor->id"
+                            :groupStudentID="$groupStudent->id" :code="$groupStudent->groupProfessor->code" />
                     @endforeach
                 </ul>
-
             </div>
         </div>
     @elseif ($userType == 'professor')
-        PROFESSOR MODE
+        {{-- PROFESSOR INTERFACE --}}
+        {{-- PROFESSOR INTERFACE --}}
+        {{-- PROFESSOR INTERFACE --}}
+        PROFESSOR INTERFACE
         <br>
         <br>
-
+        {{-- LIST ALL GROUPS THAT PROFESSOR CURRENTLY OWN --}}
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                {{-- GROUPS LIST --}}
                 <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
-                    @foreach ($groups as $group)
-                        <x-group-list-item userType="professor" :name="$group->name"
-                            :description="$group->description" :isActive="$group->is_active" :id="$group->id"
-                            :code="$group->code" />
+                    @foreach ($groupProfessors as $groupProfessor)
+                        <x-group-list-item userType="professor" :groupProfessorID="$groupProfessor->id" :name="$groupProfessor->name"
+                            :description="$groupProfessor->description" :isActive="$groupProfessor->is_active"
+                            :code="$groupProfessor->code" :groupStudentID="0"/>
                     @endforeach
                 </ul>
-
             </div>
         </div>
-        {{-- CREATE GROUP BUTTON --}}
+        {{-- CREATE A GROUP --}}
         <x-jet-button>
-            {{-- IF USER IS A PROFESSOR --}}
             <a href="{{ route('groups.create') }}">
                 {{ __('CREATE GROUP') }}
             </a>
         </x-jet-button>
     @elseif ($userType == 'admin')
-        ADMIN MODE
+        {{-- ADMIN INTERFACE --}}
+        {{-- ADMIN INTERFACE --}}
+        {{-- ADMIN INTERFACE --}}
+        ADMIN INTERFACE
         <br>
         <br>
 

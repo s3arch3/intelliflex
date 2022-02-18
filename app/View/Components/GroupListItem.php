@@ -11,16 +11,19 @@ class GroupListItem extends Component
     public $description;
     public $code;
     public $isActive;
-    public $id;
+    public $groupProfessorID;
+    public $groupStudentID;
 
-    public function __construct($userType="", $name="", $description="", $code="", $isActive="", $id="")
+
+    public function __construct($userType="", $name="", $description="", $code="", $isActive="", $groupProfessorID="", $groupStudentID="")
     {
         $this->userType = $userType;
         $this->name = $name;
         $this->description = $description;
         $this->code = $code;
         $this->isActive = $isActive;
-        $this->id = $id;
+        $this->groupProfessorID = $groupProfessorID;
+        $this->groupStudentID = $groupStudentID;
     }
 
     public function render()

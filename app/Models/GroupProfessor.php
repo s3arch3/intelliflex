@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Group extends Model
+class GroupProfessor extends Model
 {
     use HasFactory;
-    protected $table="groups"; // override table name
+    protected $table="group_professors"; // override table name
 
     protected $fillable=[
         'code',
@@ -17,13 +17,13 @@ class Group extends Model
         'is_active'
     ];
 
-    public function groupMembers()
+    public function groupStudents()
     {
-        return $this->hasMany(GroupMember::class);
+        return $this->hasMany(GroupStudent::class);
     }
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }

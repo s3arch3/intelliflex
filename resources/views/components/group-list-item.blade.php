@@ -6,9 +6,9 @@
                     alt="">
             </div>
             <div class="flex-1 min-w-0">
-                <a href={{ route('groups.show', $id) }}
+                <a href={{ route('groups.show', $groupProfessorID) }}
                     class="hover:underline text-sm font-bold text-blue-800 truncate">
-                    {{ $name . ' (ID ' . $id . ')' }}
+                    {{ $name . ' (ID ' . $groupProfessorID . ')' }}
                 </a>
                 <p class="text-sm text-gray-600 truncate">
                     {{ $description }}
@@ -22,28 +22,33 @@
                 {{-- [{{ $userType }}] --}}
 
                 @if ($userType == 'student')
-                    <form method="POST" action="{{ route('leaveGroup', ['id' => $id]) }}">
+                    {{-- CHANGE DISPLAY BUTTONS FOR STUDENT --}}
+                    {{-- CHANGE DISPLAY BUTTONS FOR STUDENT --}}
+                    {{-- CHANGE DISPLAY BUTTONS FOR STUDENT --}}
+                    <form method="POST" action="{{ route('removeStudent', ['groupStudentID' => $groupStudentID]) }}">
                         @csrf
-                        @method('DELETE')
+                        {{-- @method('DELETE') --}}
                         <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
                             <input class="font-semibold" type="submit" value="LEAVE GROUP">
                         </x-jet-button>
                     </form>
-
                 @elseif ($userType == 'professor')
+                    {{-- CHANGE DISPLAY BUTTONS FOR PROFESSOR --}}
+                    {{-- CHANGE DISPLAY BUTTONS FOR PROFESSOR --}}
+                    {{-- CHANGE DISPLAY BUTTONS FOR PROFESSOR --}}
                     <x-jet-button class="ml-4">
-                            <a href="{{ route('groups.edit', $id) }}">
+                        <a href="{{ route('groups.edit', $groupProfessorID) }}">
                             {{ __('Edit') }}
                         </a>
                     </x-jet-button>
 
-                    <form method="POST" action="{{ route('groups.destroy', $id) }}">
+                    <form method="POST" action="{{ route('groups.destroy', $groupProfessorID) }}">
                         @csrf
                         @method('DELETE')
                         <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
                             <input class="font-semibold" type="submit" value="DELETE">
                         </x-jet-button>
-                </form>
+                    </form>
                 @endif
 
             </div>

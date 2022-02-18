@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    {{-- BACK TO QUIZZES LIST --}}
+    {{-- BACK TO GROUPS LIST --}}
     <div class="py-16">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <x-jet-button>
@@ -17,14 +17,14 @@
             <br>
 
             <label for="groupCode"
-                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Group
-                Code</label>
+                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">
+                Group Code</label>
             <div class="flex">
                 {{-- HIDDEN INPUT; NO NEED TO STYLE --}}
                 {{-- THIS INPUT IS PASSED ON JAVASCRIPT CODE BELOW --}}
                 <input id="groupCodeHidden" name="" type="text" class="hidden" value={{ $groupCode }}>
                 </input>
-                {{-- THIS INPUT IS STYLEABLE; DECOY DISPLAY --}}
+                {{-- THIS INPUT IS STYLEABLE; DECOY DISPLAY GROUP CODE --}}
                 <input id="groupCodeShown" name="" type="text"
                     class="mb-4 mt-4 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                     value={{ $groupCode }} disabled>
@@ -44,18 +44,19 @@
                         tempInput.select();
                         document.execCommand("copy");
                         document.body.removeChild(tempInput);
-                        alert("Copied group code "+ value);
+                        alert("Copied group code " + value);
                     }
                 </script>
             </div>
 
             {{-- FORM FOR GROUP CREATION --}}
-            {{-- group[name], group[description], group[is_active] --}}
+            {{-- FORM FOR GROUP CREATION --}}
+            {{-- FORM FOR GROUP CREATION --}}
             <div class="block p-10 bg-white rounded-md shadow-sm">
                 <form method="POST" action="{{ route('groups.store') }}">
                     @csrf {{-- Little csrf guy protecting us from cross site attacks <3 --}}
                     {{-- HIDDEN INPUT; NO NEED TO STYLE --}}
-                    {{-- THIS INPUT IS PASSED ON JAVASCRIPT CODE BELOW --}}
+                    {{-- THIS INPUT IS PASSED ON STORE FUNCTION BELOW --}}
                     <input id="groupCode" name="group[code]" type="text" class="hidden"
                         value={{ $groupCode }}>
                     </input>
@@ -91,5 +92,4 @@
                     </x-jet-button>
                 </form>
             </div>
-
 </x-app-layout>

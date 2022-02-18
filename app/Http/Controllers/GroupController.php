@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Group;
-use App\Models\GroupMember;
+use App\Models\GroupProfessor;
+use App\Models\GroupStudent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -12,80 +12,77 @@ use Illuminate\Support\Facades\App;
 
 class GroupController extends Controller
 {
-    // this function is for students joining a class
-    public function join(Request $request)
-    {
-        return view('groups.join', ['groupCode' => $request->groupCode]);
-    }
+    // This controller is divided to three sections:
+    // 1. STUDENT AND PROFESSOR CONTROLLER
+    // 2. PROFESSOR CONTROLLER
+    // 3. STUDENT CONTROLLER
 
-    public function confirmJoin(Request $request)
-    {
-
-        // get all groups
-        $groups = Group::all();
-        // get all groupMembers (to be checked for duplication late below)
-        $groupMembers = GroupMember::all();
-
-        // normal index function
-        $userType = Auth::user()->user_type;
-
-        foreach ($groups as $group) {
-            // if there is one code match, then check first if there are existing entiries for
-            // duplicates (user_id and group_id)
-            // find duplicates
-            foreach ($groupMembers as $groupMember)
-            {
-                if ((Auth::user()->id === $groupMember->user_id) && ($group->id === $groupMember->group_id))
-                {
-                    return App::call('App\Http\Controllers\GroupController@index');
-                }
-            }
-
-            if ($group->code == $request->groupCode) {
-                // add entry to group_list database
-                $groupMemberItem = Auth::user()->groupMembers()->create([
-                    'user_id' => Auth::user()->id,
-                    'group_id' => $group->id
-                ]);
-                break;
-            }
-        }
-        return App::call('App\Http\Controllers\GroupController@index');
-    }
-
+    // STUDENT AND PROFESSOR CONTROLLER
+    // STUDENT AND PROFESSOR CONTROLLER
+    // STUDENT AND PROFESSOR CONTROLLER
     public function index()
     {
-        $groups = Auth::user()->groups()->get();
-        $groupMembers = Auth::user()->groupMembers()->get();
-        $userType = Auth::user()->user_type;
+        // get the user instance
+        $user = User::findOrFail(Auth::user()->id);
+        // for professor interface data at index
+        $groupProfessors = $user->groupProfessors()->get();
+        // for student interface data at index
+        $groupStudents = $user->groupStudents()->get();
+        // get the user_type whether 'student' or 'professor' or 'admin'
+        $userType = $user->user_type;
+
         return view('groups.index', [
-            'groups' => $groups,
-            'groupMembers' => $groupMembers,
+            'groupProfessors' => $groupProfessors,
+            'groupStudents' => $groupStudents,
             'userType' => $userType
         ]);
     }
 
+    public function show($id)
+    {
+        // get the user instance
+        $user = User::findOrFail(Auth::user()->id);
+        // get the user_type whether 'student' or 'professor' or 'admin'
+        $userType = $user->user_type;
+        $groupProfessorItem = GroupProfessor::findOrFail($id); // get that group item
+        $groupStudents = GroupStudent::where('group_professor_id', $id)->with('user')->get();
+
+        return view('groups.show', [
+            'groupProfessorItem' => $groupProfessorItem,
+            'groupStudents' => $groupStudents,
+            'userType' => $userType
+        ]);
+    }
+
+    // PROFESSOR CONTROLLER
+    // PROFESSOR CONTROLLER
+    // PROFESSOR CONTROLLER
+
     public function create()
     {
-        $groups = Group::all(); // get groups entries
-        $groupCode = null; // generates random code
-        $collision = true; // initiate initial state
+        $groupProfessors = GroupProfessor::all(); // get all groups
+        $groupCode = null; // null first
+        $collision = true; // initiate initial state of collision
+
         while ($collision == true) {
             $groupCode = Str::random(config('constants.group_code_length')); // generate first code, if on the second loop, then regerenate
-            // if there are no group entries
+
             // erorrs when groupCode = null initial value + compared with group code no entry = null = true
-            if ($groups->count() == 0) {
+            // if there are no groups to compare with then break loop
+            if ($groupProfessors->count() == 0) {
                 break;
             }
             // loop thru all entires in groups table and do a comparison
-            foreach ($groups as $group) {
-                if ($group->code == $groupCode) {
+            foreach ($groupProfessors as $groupProfessor) {
+                if ($groupProfessor->code == $groupCode) {
                     // collision found
                     $collision = true;
                     // break out of the loop to find collisions again
                     break;
                 } else {
                     $collision = false;
+                    // if collision held false for the entire loop
+                    // then exit on while loop
                     // generated code is != current code in loop
                 }
             }
@@ -94,74 +91,110 @@ class GroupController extends Controller
         return view('groups.create', ['groupCode' => $groupCode]);
     }
 
+    // for professors only
     public function store(Request $request)
     {
-        // insert quiz
-        $groupItem = Auth::user()->groups()->create([
+        // get the user instance
+        $user = User::findOrFail(Auth::user()->id);
+        // create the group
+        $groupProfessorItem = $user->groupProfessors()->create([
             'code' => $request->group['code'],
             'name' => $request->group['name'],
             'description' => $request->group['description'],
             'is_active' => array_key_exists('is_active', $request->group) ? '1' : '0', // array_key_exists because is_active key is passed if the checkbox is checked only
         ]);
-        return back();
-    }
-
-    public function show($id)
-    {
-        $groupItem = Group::findOrFail($id); // get that group item
-        $userType = Auth::user()->user_type; // get current user_type
-        $groupMembers = GroupMember::where('group_id', $id)->with('user')->get();
-        $users = User::all();
-
-        return view('groups.show', [
-            'groupItem' => $groupItem,
-            'userType' => $userType,
-            'groupMembers' => $groupMembers,
-            'users' => $users
-        ]);
+        return App::call('App\Http\Controllers\GroupController@index');
     }
 
     public function edit($id)
     {
-        $groupItem = Group::findOrFail($id); // get that group item
-        $groupMembers = GroupMember::where('group_id', $id)->with('user')->get();
-        $users = User::all();
-
+        $groupProfessorItem = GroupProfessor::findOrFail($id); // get that group item
+        $groupStudents = GroupStudent::where('group_professor_id', $id)->with('user')->get();
         return view('groups.edit', [
-            'groupItem' => $groupItem,
-            'groupMembers' => $groupMembers,
-            'users' => $users
+            'groupProfessorItem' => $groupProfessorItem,
+            'groupStudents' => $groupStudents
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $user = Group::where('id', $id)->update([
+        $groupProfessorItem = GroupProfessor::where('id', $id)->update([
             'name' => $request->group['name'],
             'description' => $request->group['description'],
             'is_active' => array_key_exists('is_active', $request->group) ? '1' : '0' // array_key_exists because is_active key is passed if the checkbox is checked only
         ]);
-        return back();
+        return App::call('App\Http\Controllers\GroupController@index');
     }
 
     public function destroy($id)
     {
-        Group::destroy($id);
-        return back();
+        GroupProfessor::destroy($id);
+        return App::call('App\Http\Controllers\GroupController@index');
     }
 
-    public function removeMember($id)
+
+
+
+    // STUDENT CONTROLLER
+    // STUDENT CONTROLLER
+    // STUDENT CONTROLLER
+
+    // this function is for students joining a class
+    public function join(Request $request)
     {
-        GroupMember::destroy($id);
-        return back();
+        $groupCode = $request->groupCode;
+        $groupProfessors = GroupProfessor::all(); // get all created groups
+        $groupStudents = GroupStudent::all(); // get all students and their joined class
+
+
+        if ($groupProfessors->count() != 0) {
+            // run a scan if such group code exists within the group_professors table
+            foreach ($groupProfessors as $key => $groupProfessor) {
+                // checking if entered code == database entry code
+                if ($groupProfessor->code === $groupCode) {
+                    if ($groupStudents->count() != 0) {
+                        // check for duplicates too in group_student (check if user had already joined)
+                        foreach ($groupStudents as $groupStudent) {
+                            if ((Auth::user()->id === $groupStudent->user_id && $groupProfessor->id === $groupStudent->group_professor_id)) {
+                                return App::call('App\Http\Controllers\GroupController@index');
+                            }
+                        }
+                    }
+                    // just break the loop because a possible group code matches
+                    return view('groups.join', [
+                        'groupProfessorItem' => GroupProfessor::findOrFail($key + 1),
+                        'studentCount' =>  GroupStudent::where('group_professor_id', $key + 1)->count()
+                    ]);
+                }
+            }
+        }
+        // code will go here if above condition is not met
+        // just go home
+        return App::call('App\Http\Controllers\GroupController@index');
     }
 
-    public function leaveGroup(Request $request)
+    public function confirmJoin(Request $request)
     {
-        // $group = Group::find($request->id);
-        // $groupMembers = $group->groupMembers()->where('user_id', Auth::user()->id)->first();
-        // $groupMemberDelete = GroupMember::findOrFail($groupMembers);
-        // $groupMemberDelete->delete();
-        // return App::call('App\Http\Controllers\GroupController@index');
+
+        // get the user instance
+        $user = User::findOrFail(Auth::user()->id);
+
+        // code will go here if above foreach duplicate check is good
+        // add entry to group_list database
+        $groupMemberItem = GroupStudent::create([
+            'user_id' => $user->id,
+            'group_professor_id' => $request->groupProfessorID
+        ]);
+        return App::call('App\Http\Controllers\GroupController@index');
     }
+
+    public function removeStudent(Request $request)
+    {
+        // ALWAYS INSTANTIATE VARIABLE ON DESTROY METHOD???
+        // ALWAYS INSTANTIATE VARIABLE ON DESTROY METHOD???
+        // ALWAYS INSTANTIATE VARIABLE ON DESTROY METHOD???
+        $delete = GroupStudent::destroy($request->groupStudentID);
+        return App::call('App\Http\Controllers\GroupController@index');
+    }
+
 }

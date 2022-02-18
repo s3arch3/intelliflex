@@ -6,39 +6,48 @@
     </x-slot>
     <div class="block px-24 py-4 bg-yellow-400 rounded-md shadow-sm mx-auto">
         <form class="text-md leading-relaxed font-semibold text-gray-00">
-            <label>GROUP ID: {{ $groupItem->id }}</label> <br>
-            <label>GROUP NAME: {{ $groupItem->name }}</label> <br>
-            <label>GROUP DESC: {{ $groupItem->description }}</label> <br>
-            <label>GROUP CODE: {{ $groupItem->code }}</label> <br>
-            <label>ACTIVE: @if ($groupItem->is_active === "1") YES @else NO @endif</label> <br>
+            <label>GROUP ID: {{ $groupProfessorItem->id }}</label> <br>
+            <label>GROUP NAME: {{ $groupProfessorItem->name }}</label> <br>
+            <label>GROUP DESC: {{ $groupProfessorItem->description }}</label> <br>
+            <label>GROUP CODE: {{ $groupProfessorItem->code }}</label> <br>
+            <label>ACTIVE: @if ($groupProfessorItem->is_active === '1')
+                YES @else NO
+                @endif</label> <br>
         </form>
     </div>
 
     @if ($userType == 'student')
-    STUDENT MODE
-    <br>
-    <br>
+        STUDENT INTERFACE
+        <br>
+        <br>
 
 
     @elseif ($userType == 'professor')
-    PROFESSOR MODE
-    <br>
-    <br>
-    <div class="block p-10 bg-white rounded-md shadow-sm">
-        <label for="studentList"
-            class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Student List</label>
-        @foreach ($groupMembers as $groupMember)
-            <div class="text-md leading-relaxed font-semibold text-gray-00 border-gray-500">
-                <label>STUDENT ID: {{ $groupMember->user_id }}</label> <br>
-                <label>STUDENT NAME: {{ $groupMember->user->name }}</label> <br>
-            </div>
-            <br>
-        @endforeach
-    </div>
+        PROFESSOR INTERFACE
+        <br>
+        <br>
+        <div class="block p-10 bg-white rounded-md shadow-sm">
+            <label for="studentList"
+                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Student
+                List</label>
+            @foreach ($groupStudents as $groupStudent)
+                <div class="text-md leading-relaxed font-semibold text-gray-00 border-gray-500">
+                    <label>STUDENT ID: {{ $groupStudent->user_id }}</label> <br>
+                    <label>STUDENT NAME: {{ $groupStudent->user->name }}</label> <br>
+                </div>
+                <form method="POST" action="{{ route('removeStudent', ['groupStudentID' => $groupStudent->id]) }}">
+                    @csrf
+                    <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
+                        <input class="font-semibold" type="submit" value="REMOVE STUDENT">
+                    </x-jet-button>
+                </form>
+                <br>
+            @endforeach
+        </div>
     @elseif ($userType == 'admin')
-    ADMIN MODE
-    <br>
-    <br>
+        ADMIN INTERFACE
+        <br>
+        <br>
 
     @endif
 

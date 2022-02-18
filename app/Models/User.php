@@ -84,12 +84,12 @@ class User extends Authenticatable
             'quiz_id'
         );
     }
-    public function groups()
+    public function groupProfessors()
     {
-        return $this->hasMany(Group::class);
+        return $this->hasMany(groupProfessor::class);
     }
-    public function groupMembers()
+    public function groupStudents()
     {
-        return $this->hasMany(GroupMember::class);
+        return $this->hasMany(GroupStudent::class);
     }
 }
