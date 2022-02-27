@@ -196,5 +196,7 @@ class GroupController extends Controller
         $delete = GroupStudent::destroy($request->groupStudentID);
         return App::call('App\Http\Controllers\GroupController@index');
     }
-
+    public function addQuiz($id){
+        return view('groups.add',['id' => $id]);
+    }
 }

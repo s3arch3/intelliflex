@@ -31,32 +31,13 @@
         {{-- QUIZZES LIST --}}
         {{-- QUIZZES LIST --}}
         {{-- QUIZZES LIST --}}
-        <div class="block p-10 bg-white rounded-md shadow-sm">
 
-            <x-jet-button>
-                <a href="{{ route('quizzes.index') }}">
-                    {{ __('ADD QUIZ') }}
-                </a>
-            </x-jet-button>
-            <br>
-            <br>
+        <x-jet-button>
+            <a href="{{ route('addQuiz', ['id' => $groupProfessorItem->id]) }}">
+                {{ __('ADD QUIZ') }}
+            </a>
+        </x-jet-button>
 
-            {{-- <label for="studentList"
-                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Quizzes List</label>
-            @foreach ($groupStudents as $groupStudent)
-                <div class="text-md leading-relaxed font-semibold text-gray-00 border-gray-500">
-                    <label>STUDENT ID: {{ $groupStudent->user_id }}</label> <br>
-                    <label>STUDENT NAME: {{ $groupStudent->user->name }}</label> <br>
-                </div>
-                <form method="POST" action="{{ route('removeStudent', ['groupStudentID' => $groupStudent->id]) }}">
-                    @csrf
-                    <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
-                        <input class="font-semibold" type="submit" value="REMOVE STUDENT">
-                    </x-jet-button>
-                </form>
-                <br>
-            @endforeach --}}
-        </div>
 
         <br>
         <br>

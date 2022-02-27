@@ -43,6 +43,8 @@ Route::resource('groups', GroupController::class);
 Route::post('groups/join', [GroupController::class, 'join'])->name('join');
 Route::post('groups/confirmJoin', [GroupController::class, 'confirmJoin'])->name('confirmJoin');
 Route::post('groups/removeStudent', [GroupController::class, 'removeStudent'])->name('removeStudent');
+Route::get('groups/addQuiz/{id}', [GroupController::class, 'addQuiz'])->name('addQuiz');
+
 
 
 // GOALS ROUTES
