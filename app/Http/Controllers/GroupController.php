@@ -196,7 +196,30 @@ class GroupController extends Controller
         $delete = GroupStudent::destroy($request->groupStudentID);
         return App::call('App\Http\Controllers\GroupController@index');
     }
+
     public function addQuiz($id){
-        return view('groups.add',['id' => $id]);
+        // get user instance
+        $user = User::findOrFail(Auth::user()->id);
+
+        $quizzes =$user->quizzes()->withCount('questions')->paginate(100);
+
+        return view('groups.add',['group_id' => $id, 'quizzes' => $quizzes]);
+    }
+
+    public function addQuizToGroup(Request $request){
+        // get the group ID and cast it into int
+        $groupID = (int)$request->group_id;
+
+
+
+
+        // create entry for group_quizzes
+
+
+
+
+
+        // call @show and pass the groupID parameter
+        return App::call('App\Http\Controllers\GroupController@show', ['id' => $groupID]);
     }
 }
