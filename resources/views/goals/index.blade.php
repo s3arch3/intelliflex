@@ -5,53 +5,49 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                Welcome to goals section.
-                <hr>
-                </hr>
-                <br>
-                <br>
-                These are the available goals
+            <h1 class="font-display font-bold text-3xl mb-4"> Welcome to goals section!
+            </h1>
+            <h3 class="font-display font-semibold mb-4">These are the available goals:</h3>
+            <div class="">
                 {{-- list all goals here --}}
-                <div class="flex justify-items-center overflow-x-scroll">
+                <div class="flex flex-wrap gap-4 justify-center">
                     @foreach ($goals as $goal)
-                        <div
-                            class="w-80  text-center my-2 bg-slate-200 outline outline-offset-2 outline-1 outline-yellow-500 rounded-3xl">
-                            NAME: <b> {{ $goal->name }} </b>
-                            <br>
-                            DESC: <b> {{ $goal->description }} </b>
-                            <br>
-                            REQ: <b> {{ $goal->requirement }} </b>
+                        <div class="w-80 text-center bg-white rounded-md p-4 bg-white border border-bg-gray-300">
+                            <img src="{{ asset('assets/illustrations/goals-icon/move-up.png') }}"
+                                class="mx-auto w-16 h-16 mb-4" alt="">
+                            <b class="m-2 text-blue-600">{{ $goal->name }} </b>
+                            <p class="m-2 text-sm text-gray-600">{{ $goal->description }} </p>
+                            <b class="m-2 text-sm ">Requirement: {{ $goal->requirement }} </b>
                             <br>
                         </div>
                     @endforeach
                 </div>
-                These are list of quizzes and their achieved goals:
-                {{-- list all quizzes here and goal progress --}}
-                <div>
-                    @foreach ($quizzes as $quiz)
-                        <div
-                            class="flex flex-wrap justify-center w-auto  text-center my-2 bg-slate-200 outline outline-offset-2 outline-1 outline-yellow-500 rounded-3xl">
-                            <div class="justify-self-start block w-full text-left">
-                                QUIZ NAME: <b> {{ $quiz->name }} </b>
+            </div>
+            <h1 class="font-display font-semibold mb-4 mt-4">Achievements</h1>
+            <p class="font-normal mb-4 mt-4 text-md">These are the list of your quizzes and achieved goals. </p>
+            {{-- list all quizzes here and goal progress --}}
+            @foreach ($quizzes as $quiz)
+                <div
+                    class="flex flex-wrap justify-center w-auto  text-center bg-white border border-bg-gray-200 rounded-md p-4">
+                    <div class="justify-self-start block w-full text-left">
+                        QUIZ NAME: <b> {{ $quiz->name }}</b>
+                    </div>
+                    <br>
+                    @foreach ($quizGoals as $quizGoal)
+                        @if ($quizGoal->is_achieved == '1' && $quizGoal->quiz_id == $quiz->id && $quizGoal->user_id == Auth::user()->id)
+                            <div
+                                class="w-fit flex flex-wrap justify-start mx-2 px-1 border border-bg-gray-200 rounded-sm">
+                                {{ $goals->where('id', $quizGoal->goal_id)->first()->name }}
                             </div>
-                            <br>
-                            @foreach ($quizGoals as $quizGoal)
-                                @if ($quizGoal->is_achieved == '1' && $quizGoal->quiz_id == $quiz->id && $quizGoal->user_id == Auth::user()->id)
-
-                                    <div
-                                        class="w-fit flex flex-wrap justify-start mx-2 px-1 outline outline-offset-2 outline-1 outline-blue-500 rounded-3xl">
-                                        {{ $goals->where('id', $quizGoal->goal_id)->first()->name }}
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                        <br>
+                        @endif
                     @endforeach
                 </div>
-                {{-- GOALS
+                <br>
+            @endforeach
+        </div>
+        {{-- GOALS
                 - List all quiz
                 - For each quiz, display all achievement PROGRESS
                 - where is_achieved == 1 only
@@ -61,7 +57,7 @@
                 - Goal 2
                 - all goals in chip manner with flex div justify
                 justify-items-center --}}
-            </div>
-        </div>
+    </div>
+    </div>
     </div>
 </x-app-layout>

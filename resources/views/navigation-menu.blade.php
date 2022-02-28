@@ -114,7 +114,7 @@
                         <x-slot name="content">
                             <!-- User Type Display -->
                             <div class="block px-4 py-2 text-xs text-blue-500">
-                                {{ __(ucfirst(Auth::user()->user_type)." Account") }}
+                                {{ __(ucfirst(Auth::user()->user_type) . ' Account') }}
                             </div>
 
                             <!-- Account Management -->
