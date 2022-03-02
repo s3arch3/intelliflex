@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    GROUP ID: {{ $group_id }}
+    GROUP ID: {{ $groupID }}
 
     <br>
     List quiz here
@@ -19,9 +19,11 @@
                 <br>
                 {{ $quiz->questions_count }} questions
                 <br>
+                {{-- action="{{ route('addQuizToGroup', $quiz->id , $group_id) }}"> --}}
                 <form method="POST"
-                    action="{{ route('addQuizToGroup', ['group_id' => $group_id, 'quiz_id' => $quiz->id]) }}">
+                    action="{{ route('addQuizToGroup', ['quizID' => $quiz->id , 'groupID' => $groupID]) }}">
                     @csrf
+                    @method("PUT")
                     <x-jet-button class="ml-4">
                         <input class="font-semibold" type="submit" value="ADD QUIZ">
                     </x-jet-button>

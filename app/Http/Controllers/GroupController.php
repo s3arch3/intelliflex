@@ -215,10 +215,10 @@ class GroupController extends Controller
 
         //? if a quiz is already selected, then don't show it anymore (modify query above)
 
-        return view('groups.add', ['group_id' => $id, 'quizzes' => $quizzes]);
+        return view('groups.add', ['groupID' => $id, 'quizzes' => $quizzes]);
     }
 
-    public function addQuizToGroup(Request $request)
+    public function addQuizToGroup($quizID, $groupID)
     {
 
         // get the user instance
@@ -227,11 +227,11 @@ class GroupController extends Controller
         // boolean initiator
         $quizInGroupAlreadyExists = false;
         // 1. get all quizzes instance
-        $quizzes = Quiz::all();
+        $groupQuizzes = GroupQuiz::all();
         // 2. loop thru all the quizzes under the current group
-        foreach ($quizzes as $quiz) {
+        foreach ($groupQuizzes as $groupQuiz) {
             // 3. if there matches a quiz_id from groupquiz to the current quiz_id
-            if ($quiz->id == $request->quiz_id) {
+            if ($groupQuiz->quiz_id == $quizID && $groupQuiz->group_professor_id == $groupID) {
                 # code...
                 $quizInGroupAlreadyExists = true;
                 break;
@@ -244,12 +244,22 @@ class GroupController extends Controller
             // 5. if not, then create an instance of groupQuizItem
             // create entry for group_quizzes
             $groupQuizItem = $user->groupQuiz()->create([
-                'group_professor_id' => $request->group_id,
-                'quiz_id' => $request->quiz_id,
+                'group_professor_id' => $groupID,
+                'quiz_id' => $quizID,
             ]);
         }
 
         // call @show and pass the groupID parameter
-        return App::call('App\Http\Controllers\GroupController@show', ['id' => $request->group_id]);
+        return App::call('App\Http\Controllers\GroupController@show', ['id' => $groupID]);
+    }
+
+    public function removeQuizToGroup($groupQuizID, Request $request){
+        // ALWAYS INSTANTIATE VARIABLE ON DESTROY METHOD???
+        // ALWAYS INSTANTIATE VARIABLE ON DESTROY METHOD???
+        // ALWAYS INSTANTIATE VARIABLE ON DESTROY METHOD???
+        $delete = GroupQuiz::destroy($groupQuizID);
+        // return back();
+        return App::call('App\Http\Controllers\GroupController@show', ['id' => $request->groupProfessorID]);
+
     }
 }

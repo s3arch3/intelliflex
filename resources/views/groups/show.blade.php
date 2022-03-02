@@ -48,7 +48,9 @@
                     @foreach ($groupQuizzes as $groupQuiz)
                         <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
                             :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active" :id="$groupQuiz->quiz->id"
-                            :questionsCount="$groupQuiz->quiz->questions_count" />
+                            :questionsCount="$groupQuiz->quiz->questions_count"
+                            :groupQuizID="$groupQuiz->id"
+                            :groupProfessorID="$groupQuiz->group_professor_id"/>
                     @endforeach
                 </ul>
         </div>

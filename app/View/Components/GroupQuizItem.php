@@ -17,8 +17,10 @@ class GroupQuizItem extends Component
     public $isActive;
     public $id;
     public $questionsCount;
+    public $groupQuizID;
+    public $groupProfessorID;
 
-    public function __construct($name="", $description="", $timesCompleted="", $isActive="", $id="", $questionsCount="")
+    public function __construct($name="", $description="", $timesCompleted="", $isActive="", $id="", $questionsCount="", $groupQuizID="", $groupProfessorID="")
     {
         $this->id = $id;
         $this->name = $name;
@@ -26,6 +28,8 @@ class GroupQuizItem extends Component
         $this->isActive = $isActive;
         $this->timesCompleted = $timesCompleted;
         $this->questionsCount = $questionsCount;
+        $this->groupQuizID = $groupQuizID;
+        $this->groupProfessorID = $groupProfessorID;
     }
 
     /**

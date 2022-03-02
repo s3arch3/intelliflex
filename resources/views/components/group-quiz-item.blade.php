@@ -20,6 +20,8 @@
                     [{{ $timesCompleted }}]
                     Active?:
                     [{{ $isActive }}]
+                    Belongs to Group ID:
+                    [{{ $groupQuizID }}]
                 </div>
                 <div class="relative inline-flex text-base font-semibold text-gray-900 ">
                     <x-jet-button class="ml-4">
@@ -27,15 +29,15 @@
                             {{ __('Edit') }}
                         </a>
                     </x-jet-button>
-
+{{--
                     <form method="POST" action="{{ route('take', $id) }}">
                         @csrf
                         <x-jet-button class="ml-4">
                             <input class="font-semibold" type="submit" value="TAKE">
                         </x-jet-button>
-                    </form>
+                    </form> --}}
 
-                    <form method="POST" action="{{ route('quizzes.destroy', $id) }}">
+                    <form method="POST" action="{{ route('removeQuizToGroup', ['groupQuizID' => $groupQuizID, 'groupProfessorID' => $groupProfessorID]) }}">
                         @csrf
                         @method('DELETE')
                         <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
