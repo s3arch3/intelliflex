@@ -4,12 +4,15 @@
             {{ __('Home') }}
         </h2>
     </x-slot>
-    <div class="py-6">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class=" block p-10 bg-white rounded-md shadow-sm overflow-hidden">
-                <div class="font-bold text-xl"> User Statistics
-                </div>
+            <div class="mb-6">
+                <p class=" font-display font-bold text-3xl mb-2"> Welcome back User! </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class=" block p-10 pt-4 bg-white rounded-md shadow-sm overflow-hidden">
                 <br>
+                <p class="font-bold text-xl mb-2">Overview </p>
                 <div class="flex flex-wrap justify-center text-center">
                     <div class="mb-2 rounded-md border border-gray-200 p-6 shadow-md m-2">
                         <img src="{{ asset('assets/illustrations/home/quiz-count.png') }}" class="mb-2 mx-auto w-10"
