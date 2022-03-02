@@ -92,4 +92,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(GroupStudent::class);
     }
+    public function groupQuiz()
+    {
+        return $this->hasMany(GroupQuiz::class);
+    }
 }

@@ -11,9 +11,15 @@ class GroupQuiz extends Model
     protected $table="group_quizzes"; // override table name
 
     protected $fillable=[
-        'group_id',
+        'user_id',
+        'group_professor_id',
         'quiz_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function groupProfessor()
     {

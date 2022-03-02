@@ -15,6 +15,7 @@ class CreateGroupQuizzesTable extends Migration
     {
         Schema::create('group_quizzes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('group_professor_id')->references('id')->on('group_professors')->onDelete('cascade');
             $table->foreignId('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
             $table->timestamps();

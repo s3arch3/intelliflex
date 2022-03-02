@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\GroupProfessor;
 use App\Models\GroupStudent;
+use App\Models\GroupQuiz;
+use App\Models\Quiz;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -47,10 +49,17 @@ class GroupController extends Controller
         $groupProfessorItem = GroupProfessor::findOrFail($id); // get that group item
         $groupStudents = GroupStudent::where('group_professor_id', $id)->with('user')->get();
 
+        // get all quizzes related to this group
+        $groupQuizzes = GroupQuiz
+            ::where('group_professor_id', $id)
+            ->where('user_id', $user->id)
+            ->get();
+
         return view('groups.show', [
             'groupProfessorItem' => $groupProfessorItem,
             'groupStudents' => $groupStudents,
-            'userType' => $userType
+            'userType' => $userType,
+            'groupQuizzes' => $groupQuizzes,
         ]);
     }
 
@@ -197,29 +206,50 @@ class GroupController extends Controller
         return App::call('App\Http\Controllers\GroupController@index');
     }
 
-    public function addQuiz($id){
+    public function addQuiz($id)
+    {
         // get user instance
         $user = User::findOrFail(Auth::user()->id);
 
         $quizzes =$user->quizzes()->withCount('questions')->paginate(100);
 
-        return view('groups.add',['group_id' => $id, 'quizzes' => $quizzes]);
+        //? if a quiz is already selected, then don't show it anymore (modify query above)
+
+        return view('groups.add', ['group_id' => $id, 'quizzes' => $quizzes]);
     }
 
-    public function addQuizToGroup(Request $request){
-        // get the group ID and cast it into int
-        $groupID = (int)$request->group_id;
+    public function addQuizToGroup(Request $request)
+    {
 
+        // get the user instance
+        $user = User::findOrFail(Auth::user()->id);
 
+        // boolean initiator
+        $quizInGroupAlreadyExists = false;
+        // 1. get all quizzes instance
+        $quizzes = Quiz::all();
+        // 2. loop thru all the quizzes under the current group
+        foreach ($quizzes as $quiz) {
+            // 3. if there matches a quiz_id from groupquiz to the current quiz_id
+            if ($quiz->id == $request->quiz_id) {
+                # code...
+                $quizInGroupAlreadyExists = true;
+                break;
+            }
+        }
 
-
-        // create entry for group_quizzes
-
-
-
-
+        if ($quizInGroupAlreadyExists == true) {
+            // 4. then there's a duplicate quiz, just do nothing
+        } else {
+            // 5. if not, then create an instance of groupQuizItem
+            // create entry for group_quizzes
+            $groupQuizItem = $user->groupQuiz()->create([
+                'group_professor_id' => $request->group_id,
+                'quiz_id' => $request->quiz_id,
+            ]);
+        }
 
         // call @show and pass the groupID parameter
-        return App::call('App\Http\Controllers\GroupController@show', ['id' => $groupID]);
+        return App::call('App\Http\Controllers\GroupController@show', ['id' => $request->group_id]);
     }
 }
