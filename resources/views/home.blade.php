@@ -10,27 +10,29 @@
                 <div class="font-bold text-xl"> User Statistics
                 </div>
                 <br>
-                <div class="mb-2">
-                    <b>Quiz Count:</b>
-                    {{ $quizCount }} <br>
+                <div class="flex text-center">
+                    <div class="mb-2 rounded-md border border-gray-200 p-6">
+                        <img src="{{ asset('assets/illustrations/home') }}" class="mx-auto w-10" alt="">
+                        <p class="text-blue-800 text-md">Quiz Count</p>
+                        <p class="text-4xl font-bold text-blue-800">{{ $quizCount }}</p>
+                    </div>
+                    <div class="mb-2">
+                        <b>Overall Accuracy:</b>
+                        {{ $overallAccuracy }} <br>
+                    </div>
+                    <div class="mb-2">
+                        <b>Total Questions Answered:</b>
+                        {{ $totalQuestionsAnswered }} <br>
+                    </div>
+                    <div class="mb-2">
+                        <b class="mb-2">Total Points:</b>
+                        {{ $totalPoints }} <br>
+                    </div>
+                    <div class="mb-2">
+                        <b>Login Streak:</b>
+                        {{ 'N/A' }} <br>
+                    </div>
                 </div>
-                <div class="mb-2">
-                    <b>Overall Accuracy:</b>
-                    {{ $overallAccuracy }} <br>
-                </div>
-                <div class="mb-2">
-                    <b>Total Questions Answered:</b>
-                    {{ $totalQuestionsAnswered }} <br>
-                </div>
-                <div class="mb-2">
-                    <b class="mb-2">Total Points:</b>
-                    {{ $totalPoints }} <br>
-                </div>
-                <div class="mb-2">
-                    <b>Login Streak:</b>
-                    {{ 'N/A' }} <br>
-                </div>
-
                 <br>
                 <div class="font-bold text-lg mb-10">
                     <p>Chart about points earned in this week (Mon-Sun)</p>
