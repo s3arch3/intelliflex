@@ -2,7 +2,7 @@
     <li class="py-3 sm:py-4 px-4">
         <div class="flex justify-between items-center space-x-4">
             <div class="flex-shrink-0">
-                <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+                <img class="w-8 h-8 rounded-full" src="{{ asset('assets/illustrations/quiz-logo.png') }}"
                     alt="">
             </div>
             <div class="flex-1 min-w-0">
