@@ -16,12 +16,14 @@ class HomeController extends Controller
         $totalQuestionsAnswered = QuizLog::where('user_id', Auth::user()->id)->sum('number_of_questions');
         $totalPoints = QuizLog::where('user_id', Auth::user()->id)->sum('score');
         $loginStreak = '';
+        $userName = Auth::user()->name;
         return view('home', [
             'quizLogs' => $quizLogs,
             'quizCount' => $quizCount,
             'overallAccuracy' => $overallAccuracy,
             'totalQuestionsAnswered' => $totalQuestionsAnswered,
-            'totalPoints' => $totalPoints
+            'totalPoints' => $totalPoints,
+            'userName' => $userName,
         ]);
     }
 
