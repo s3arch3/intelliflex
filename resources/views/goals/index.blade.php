@@ -31,14 +31,18 @@
                     @endforeach
                 </div>
             </div>
-            <h1 class="font-display font-semibold mb-4 mt-4">Achievements</h1>
-            <p class="font-normal mb-4 mt-4 text-md">These are the list of your quizzes and achieved goals. </p>
+            <div class="py-12">
+                <p class=" font-display font-bold text-3xl mb-2"> Single quiz
+                    <span class="text-blue-600"> goal </span>achievements.
+                </p>
+                <p>These are the list of your quizzes and achieved goals.</p>
+            </div>
             {{-- list all quizzes here and goal progress --}}
             @foreach ($quizzes as $quiz)
                 <div
                     class="flex flex-wrap justify-center w-auto  text-center bg-white border border-bg-gray-200 rounded-md p-4">
                     <div class="justify-self-start block w-full text-left">
-                        QUIZ NAME: <b> {{ $quiz->name }}</b>
+                        <b class="text-blue-600"> {{ $quiz->name }}</b>
                     </div>
                     <br>
                     @foreach ($quizGoals as $quizGoal)
@@ -53,15 +57,5 @@
                 <br>
             @endforeach
         </div>
-        {{-- GOALS
-                - List all quiz
-                - For each quiz, display all achievement PROGRESS
-                - where is_achieved == 1 only
-
-                Quiz Name
-                - Goal 1
-                - Goal 2
-                - all goals in chip manner with flex div justify
-                justify-items-center --}}
     </div>
 </x-app-layout>
