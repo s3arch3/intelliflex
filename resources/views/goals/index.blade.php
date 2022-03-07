@@ -5,11 +5,15 @@
         </h2>
     </x-slot>
 
-    <div class="py-8">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h1 class="font-display font-bold text-3xl mb-4"> Welcome to goals section!
-            </h1>
-            <h3 class="font-display font-semibold mb-4">These are the available goals:</h3>
+            <div class="mb-6">
+                <p class=" font-display font-bold text-3xl mb-2"> Welcome to the
+                    <span class="text-blue-600"> Goals </span>section!
+                </p>
+                <p>These are the available goals for you to achieve:</p>
+            </div>
+
             <div class="">
                 {{-- list all goals here --}}
                 <div class="flex flex-wrap gap-4 justify-center">
@@ -57,7 +61,5 @@
                 - Goal 2
                 - all goals in chip manner with flex div justify
                 justify-items-center --}}
-    </div>
-    </div>
     </div>
 </x-app-layout>

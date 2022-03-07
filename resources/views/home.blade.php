@@ -8,8 +8,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-6">
                 <p class=" font-display font-bold text-3xl mb-2"> Welcome back,
-                    <span class="text-blue-600"> {{ $userName }} </span>
-                    !
+                    <span class="text-blue-600"> {{ $userName }}</span>!
                 </p>
                 <p>Here are your total performance metrics on this application.</p>
             </div>
