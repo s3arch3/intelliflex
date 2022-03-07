@@ -15,10 +15,9 @@
                 </p>
             </div>
             <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                Code:
-                [{{ $code }}]
-                Active?:
-                [{{ $isActive }}]
+                Invite students using the code: <span class="text-blue-600 font-bold"> {{ $code}} </span>.
+                {{-- Active?:
+                [{{ $isActive }}] --}}
                 {{-- [{{ $userType }}] --}}
 
                 @if ($userType == 'student')
