@@ -595,6 +595,876 @@ class AnswerSeeder extends Seeder
                 'question_id' => 20
             ],
             //////////////////////
+            [
+                'answer' => 'Impalation testing',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 21
+            ],
+            [
+                'answer' => 'Penetration testing',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 21
+            ],
+            [
+                'answer' => 'Principle hacking',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 21
+            ],
+            [
+                'answer' => 'Spiking testing',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 21
+            ],
+            //////////////////////
+            [
+                'answer' => 'Hacker',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 22
+            ],
+            [
+                'answer' => 'Debugger',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 22
+            ],
+            [
+                'answer' => 'Coder',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 22
+            ],
+            [
+                'answer' => 'Beta tester',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 22
+            ],
+            //////////////////////
+            [
+                'answer' => 'Gray hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 23
+            ],
+            [
+                'answer' => 'Black hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 23
+            ],
+            [
+                'answer' => 'White hat hacker',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 23
+            ],
+            [
+                'answer' => 'Script Kiddies',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 23
+            ],
+            //////////////////////
+            [
+                'answer' => 'State sponsored hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 24
+            ],
+            [
+                'answer' => 'Black hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 24
+            ],
+            [
+                'answer' => 'White hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 24
+            ],
+            [
+                'answer' => 'Script Kiddies',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 24
+            ],
+            //////////////////////
+            [
+                'answer' => 'Gray hat hacker',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 25
+            ],
+            [
+                'answer' => 'Black hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 25
+            ],
+            [
+                'answer' => 'White hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 25
+            ],
+            [
+                'answer' => 'State sponsored hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 25
+            ],
+            //////////////////////
+            [
+                'answer' => 'Gray hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 26
+            ],
+            [
+                'answer' => 'Black hat hacker',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 26
+            ],
+            [
+                'answer' => 'White hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 26
+            ],
+            [
+                'answer' => 'Hacktivist',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 26
+            ],
+            //////////////////////
+            [
+                'answer' => 'Red hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 27
+            ],
+            [
+                'answer' => 'Hacktivist',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 27
+            ],
+            [
+                'answer' => 'Script Kiddies',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 27
+            ],
+            [
+                'answer' => 'State sponsored hacker',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 27
+            ],
+            //////////////////////
+            [
+                'answer' => 'Black hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 28
+            ],
+            [
+                'answer' => 'Hacktivist',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 28
+            ],
+            [
+                'answer' => 'Script Kiddies',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 28
+            ],
+            [
+                'answer' => 'State sponsored hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 28
+            ],
+            //////////////////////
+            [
+                'answer' => 'Red hat hacker',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 29
+            ],
+            [
+                'answer' => 'Hacktivist',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 29
+            ],
+            [
+                'answer' => 'Script Kiddies',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 29
+            ],
+            [
+                'answer' => 'Blue hat hacker',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 29
+            ],
+            //////////////////////
+            [
+                'answer' => 'Information computer manager',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 30
+            ],
+            [
+                'answer' => 'Information technology manager',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 30
+            ],
+            [
+                'answer' => 'Information security manager',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 30
+            ],
+            [
+                'answer' => 'Information system manager',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 30
+            ],
+            //////////////////////
+            [
+                'answer' => 'Initialization',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 31
+            ],
+            [
+                'answer' => 'Variable',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 31
+            ],
+            [
+                'answer' => 'Programming language',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 31
+            ],
+            [
+                'answer' => 'None of the above',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 31
+            ],
+            //////////////////////
+            [
+                'answer' => 'C#',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 32
+            ],
+            [
+                'answer' => 'Ruby',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 32
+            ],
+            [
+                'answer' => 'Python',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 32
+            ],
+            [
+                'answer' => 'HTML',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 32
+            ],
+            //////////////////////
+            [
+                'answer' => 'Relational Operators',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 33
+            ],
+            [
+                'answer' => 'Variable',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 33
+            ],
+            [
+                'answer' => 'Programming language ',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 33
+            ],
+            [
+                'answer' => 'None of the above',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 33
+            ],
+            //////////////////////
+            [
+                'answer' => 'Variable declaration',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 34
+            ],
+            [
+                'answer' => 'Naming conventions',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 34
+            ],
+            [
+                'answer' => 'Data type',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 34
+            ],
+            [
+                'answer' => 'Programming language',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 34
+            ],
+            //////////////////////
+            [
+                'answer' => 'Variable',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 35
+            ],
+            [
+                'answer' => 'Data types',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 35
+            ],
+            [
+                'answer' => 'Naming convention',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 35
+            ],
+            [
+                'answer' => 'Initialization',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 35
+            ],
+            //////////////////////
+            [
+                'answer' => 'Relational Operators',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 36
+            ],
+            [
+                'answer' => 'Variable',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 36
+            ],
+            [
+                'answer' => 'Programming language',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 36
+            ],
+            [
+                'answer' => 'Data types',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 36
+            ],
+            //////////////////////
+            [
+                'answer' => 'Variable',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 37
+            ],
+            [
+                'answer' => 'Data types',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 37
+            ],
+            [
+                'answer' => 'Naming convention',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 37
+            ],
+            [
+                'answer' => 'Initialization',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 37
+            ],
+            //////////////////////
+            [
+                'answer' => 'Variable',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 38
+            ],
+            [
+                'answer' => 'Data types',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 38
+            ],
+            [
+                'answer' => 'Naming convention',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 38
+            ],
+            [
+                'answer' => 'Initialization',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 38
+            ],
+            //////////////////////
+            [
+                'answer' => 'float',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 39
+            ],
+            [
+                'answer' => 'int',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 39
+            ],
+            [
+                'answer' => 'char',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 39
+            ],
+            [
+                'answer' => 'Null',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 39
+            ],
+            //////////////////////
+            [
+                'answer' => 'float',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 40
+            ],
+            [
+                'answer' => 'int',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 40
+            ],
+            [
+                'answer' => 'char',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 40
+            ],
+            [
+                'answer' => 'Null',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 40
+            ],
+            //////////////////////
+            [
+                'answer' => 'Web Analytics',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 41
+            ],
+            [
+                'answer' => 'Web Browser',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 41
+            ],
+            [
+                'answer' => 'Website',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 41
+            ],
+            [
+                'answer' => 'Internet',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 41
+            ],
+            //////////////////////
+            [
+                'answer' => 'HyperText Markup Language',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 42
+            ],
+            [
+                'answer' => 'HyperTonic Markup Logistics',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 42
+            ],
+            [
+                'answer' => 'HyperText Markup Leeway',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 42
+            ],
+            [
+                'answer' => 'HyperTax Markup Language',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 42
+            ],
+            //////////////////////
+            [
+                'answer' => 'Javascript',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 43
+            ],
+            [
+                'answer' => 'HTML',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 43
+            ],
+            [
+                'answer' => 'Laravel',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 43
+            ],
+            [
+                'answer' => 'CSS',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 43
+            ],
+            //////////////////////
+            [
+                'answer' => 'Jim Turner-Lee',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 44
+            ],
+            [
+                'answer' => 'Tim Burns-Lee',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 44
+            ],
+            [
+                'answer' => 'Tim Bruce-Lee',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 44
+            ],
+            [
+                'answer' => 'Tim Berners-Lee',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 44
+            ],
+            //////////////////////
+            [
+                'answer' => 'Markup language and programming language',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 45
+            ],
+            [
+                'answer' => 'Programmer and web developer',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 45
+            ],
+            [
+                'answer' => 'Morse language and braile language',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 45
+            ],
+            [
+                'answer' => 'Programming and web development',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 45
+            ],
+            //////////////////////
+            [
+                'answer' => 'Markup language and programming language',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 46
+            ],
+            [
+                'answer' => 'Programmer and web developer',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 46
+            ],
+            [
+                'answer' => 'Morse language and braile language',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 46
+            ],
+            [
+                'answer' => 'Programming and web development',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 46
+            ],
+            //////////////////////
+            [
+                'answer' => 'Group-website',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 47
+            ],
+            [
+                'answer' => 'Static website',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 47
+            ],
+            [
+                'answer' => 'Multi-website',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 47
+            ],
+            [
+                'answer' => 'Dynamic website',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 47
+            ],
+            //////////////////////
+            [
+                'answer' => 'Flex-website',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 48
+            ],
+            [
+                'answer' => 'Static website',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 48
+            ],
+            [
+                'answer' => 'Multi-website',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 48
+            ],
+            [
+                'answer' => 'Dynamic website',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 48
+            ],
+            //////////////////////
+            [
+                'answer' => 'Near-end',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 49
+            ],
+            [
+                'answer' => 'Back-end',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 49
+            ],
+            [
+                'answer' => 'Front-end',
+                'explanation' => '',
+                'is_checked' => '1',
+                'user_id' => 1,
+                'question_id' => 49
+            ],
+            [
+                'answer' => 'Side-end',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 49
+            ],
+            //////////////////////
+            [
+                'answer' => 'Near-end',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 50
+            ],
+            [
+                'answer' => 'Back-end',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 50
+            ],
+            [
+                'answer' => 'Front-end',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 50
+            ],
+            [
+                'answer' => 'Side-end',
+                'explanation' => '',
+                'is_checked' => '0',
+                'user_id' => 1,
+                'question_id' => 50
+            ],
+            //////////////////////
         ];
         Answer::insert($answers);
     }
