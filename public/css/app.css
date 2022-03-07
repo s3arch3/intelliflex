@@ -1529,7 +1529,7 @@ select {
 }
 .bg-slate-200 {
   --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 .bg-orange-400 {
   --tw-bg-opacity: 1;
@@ -1542,10 +1542,6 @@ select {
 .bg-green-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(187 247 208 / var(--tw-bg-opacity));
-}
-.bg-blue-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -1779,9 +1775,6 @@ select {
 }
 .tracking-wider {
   letter-spacing: 0.05em;
-}
-.tracking-tight {
-  letter-spacing: -0.025em;
 }
 .text-gray-500 {
   --tw-text-opacity: 1;
