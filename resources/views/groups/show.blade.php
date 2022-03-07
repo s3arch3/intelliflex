@@ -21,7 +21,23 @@
         STUDENT INTERFACE
         <br>
         <br>
-
+        {{-- QUIZZES ON THIS GROUP --}}
+        {{-- QUIZZES ON THIS GROUP --}}
+        {{-- QUIZZES ON THIS GROUP --}}
+        <div class="block p-10 bg-white rounded-md shadow-sm">
+            <label for="quizList"
+                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Quizzes List</label>
+                <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
+                    @foreach ($groupQuizzes as $groupQuiz)
+                        <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
+                            :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active" :id="$groupQuiz->quiz->id"
+                            :questionsCount="$groupQuiz->quiz->questions_count"
+                            :groupQuizID="$groupQuiz->id"
+                            :groupProfessorID="$groupQuiz->group_professor_id"
+                            :userType="$userType"/>
+                    @endforeach
+                </ul>
+        </div>
 
     @elseif ($userType == 'professor')
         PROFESSOR INTERFACE
@@ -50,7 +66,8 @@
                             :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active" :id="$groupQuiz->quiz->id"
                             :questionsCount="$groupQuiz->quiz->questions_count"
                             :groupQuizID="$groupQuiz->id"
-                            :groupProfessorID="$groupQuiz->group_professor_id"/>
+                            :groupProfessorID="$groupQuiz->group_professor_id"
+                            :userType="$userType"/>
                     @endforeach
                 </ul>
         </div>

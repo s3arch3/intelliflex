@@ -19,8 +19,9 @@ class GroupQuizItem extends Component
     public $questionsCount;
     public $groupQuizID;
     public $groupProfessorID;
+    public $userType; // 'professor', 'student', or 'admin'
 
-    public function __construct($name="", $description="", $timesCompleted="", $isActive="", $id="", $questionsCount="", $groupQuizID="", $groupProfessorID="")
+    public function __construct($userType="",$name="", $description="", $timesCompleted="", $isActive="", $id="", $questionsCount="", $groupQuizID="", $groupProfessorID="")
     {
         $this->id = $id;
         $this->name = $name;
@@ -30,6 +31,7 @@ class GroupQuizItem extends Component
         $this->questionsCount = $questionsCount;
         $this->groupQuizID = $groupQuizID;
         $this->groupProfessorID = $groupProfessorID;
+        $this->userType = $userType;
     }
 
     /**

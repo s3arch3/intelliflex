@@ -23,28 +23,34 @@
                     Belongs to Group ID:
                     [{{ $groupQuizID }}]
                 </div>
-                <div class="relative inline-flex text-base font-semibold text-gray-900 ">
-                    <x-jet-button class="ml-4">
-                        <a href="{{ route('quizzes.edit', $id) }}">
-                            {{ __('Edit') }}
-                        </a>
-                    </x-jet-button>
-{{--
+
+                {{-- BUTTONS CONDITIONAL START --}}
+                @if ($userType == 'student')
                     <form method="POST" action="{{ route('take', $id) }}">
                         @csrf
                         <x-jet-button class="ml-4">
                             <input class="font-semibold" type="submit" value="TAKE">
                         </x-jet-button>
-                    </form> --}}
-
-                    <form method="POST" action="{{ route('removeQuizToGroup', ['groupQuizID' => $groupQuizID, 'groupProfessorID' => $groupProfessorID]) }}">
-                        @csrf
-                        @method('DELETE')
-                        <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
-                            <input class="font-semibold" type="submit" value="DELETE">
-                        </x-jet-button>
                     </form>
-                </div>
+                @elseif ($userType == 'professor')
+                    <div class="relative inline-flex text-base font-semibold text-gray-900 ">
+                        <x-jet-button class="ml-4">
+                            <a href="{{ route('quizzes.edit', $id) }}">
+                                {{ __('Edit') }}
+                            </a>
+                        </x-jet-button>
+
+                        <form method="POST" action="{{ route('removeQuizToGroup', ['groupQuizID' => $groupQuizID, 'groupProfessorID' => $groupProfessorID]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
+                                <input class="font-semibold" type="submit" value="DELETE">
+                            </x-jet-button>
+                        </form>
+                    </div>
+                @endif
+                {{-- BUTTONS CONDITIONAL END --}}
+
             </div>
         </div>
     </div>

@@ -49,11 +49,16 @@ class GroupController extends Controller
         $groupProfessorItem = GroupProfessor::findOrFail($id); // get that group item
         $groupStudents = GroupStudent::where('group_professor_id', $id)->with('user')->get();
 
-        // get all quizzes related to this group
+        // get all quizzes that the professor created for this group
         $groupQuizzes = GroupQuiz
             ::where('group_professor_id', $id)
-            ->where('user_id', $user->id)
             ->get();
+
+        // // get all quizzes that the professor created for this group
+        // $groupQuizzes = GroupQuiz
+        //     ::where('group_professor_id', $id)
+        //     ->where('user_id', $user->id)
+        //     ->get();
 
         return view('groups.show', [
             'groupProfessorItem' => $groupProfessorItem,
