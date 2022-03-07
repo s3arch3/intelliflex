@@ -48,8 +48,6 @@ Route::put('groups/addQuizToGroup/{quizID}/{groupID}', [GroupController::class, 
 Route::delete('groups/removeQuizToGroup/{groupQuizID}', [GroupController::class, 'removeQuizToGroup'])->name('removeQuizToGroup');
 
 
-
-
 // GOALS ROUTES
 // GOALS ROUTES
 // GOALS ROUTES
