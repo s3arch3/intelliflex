@@ -15,6 +15,7 @@ class GroupProfessorSeeder extends Seeder
     public function run()
     {
         $groupProfessors=[
+            // SIR MICHAEL
             [
                 'user_id' => 1,
                 'code' => 'KGGGDKP',
@@ -27,6 +28,22 @@ class GroupProfessorSeeder extends Seeder
                 'code' => 'A3ZAKM1',
                 'name' => 'BSIS 4-B',
                 'description' => 'This is the group for BSIS 4-B',
+                'is_active' => '1'
+            ],
+
+            // SIR VINCE
+            [
+                'user_id' => 2,
+                'code' => 'C4P5T0N',
+                'name' => 'BSIT 3-A',
+                'description' => 'This is the group for BSIT 3-A',
+                'is_active' => '1'
+            ],
+            [
+                'user_id' => 2,
+                'code' => '1MN13EK',
+                'name' => 'BSIT 3-B',
+                'description' => 'This is the group for BSIT 3-B',
                 'is_active' => '1'
             ],
         ];

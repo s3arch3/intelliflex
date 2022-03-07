@@ -1,15 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-display font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Add Quiz') }}
         </h2>
     </x-slot>
 
     GROUP ID: {{ $groupID }}
 
-    <br>
-    List quiz here
-    - radiobutton
     <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
         @foreach ($quizzes as $quiz)
             <div class="bg-white rounded-md border shadow-sm px-4 py-4 mb-2">

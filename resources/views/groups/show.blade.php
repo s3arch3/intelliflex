@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-display font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Group Details') }}
         </h2>
     </x-slot>
@@ -31,7 +31,7 @@
                     @foreach ($groupQuizzes as $groupQuiz)
                         <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
                             :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active" :id="$groupQuiz->quiz->id"
-                            :questionsCount="$groupQuiz->quiz->questions_count"
+                            :questionsCount="$groupQuiz->quiz->questions->count()"
                             :groupQuizID="$groupQuiz->id"
                             :groupProfessorID="$groupQuiz->group_professor_id"
                             :userType="$userType"/>
@@ -43,6 +43,7 @@
         PROFESSOR INTERFACE
         <br>
         <br>
+
 
         {{-- QUIZZES LIST --}}
         {{-- QUIZZES LIST --}}
@@ -64,7 +65,7 @@
                     @foreach ($groupQuizzes as $groupQuiz)
                         <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
                             :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active" :id="$groupQuiz->quiz->id"
-                            :questionsCount="$groupQuiz->quiz->questions_count"
+                            :questionsCount="$groupQuiz->quiz->questions->count()"
                             :groupQuizID="$groupQuiz->id"
                             :groupProfessorID="$groupQuiz->group_professor_id"
                             :userType="$userType"/>

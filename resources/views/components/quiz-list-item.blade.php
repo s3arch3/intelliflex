@@ -9,7 +9,7 @@
                 <div class="flex-1 min-w-0">
                     <a href={{ route('quizzes.show', $id) }}
                         class="font-display hover:underline text-md font-bold text-blue-800 truncate ">
-                        {{ $name . ' (ID ' . $id . ')' }}
+                        {{ $name }}
                     </a>
                     <p class="mb-2 text-sm text-gray-600 truncate">
                         {{ $description }}

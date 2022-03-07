@@ -59,6 +59,31 @@ class UserSeeder extends Seeder
             'name' => 'Gabriel', 'email' => 'gabriel@gmail.com',
             'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
         ]);
+        // Student 6
+        DB::table('users')->insert([
+            'name' => 'Rain', 'email' => 'rain@gmail.com',
+            'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
+        ]);
+        // Student 7
+        DB::table('users')->insert([
+            'name' => 'Eloisa', 'email' => 'eloisa@gmail.com',
+            'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
+        ]);
+        // Student 8
+        DB::table('users')->insert([
+            'name' => 'Judy', 'email' => 'judy@gmail.com',
+            'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
+        ]);
+        // Student 9
+        DB::table('users')->insert([
+            'name' => 'Elena', 'email' => 'elena@gmail.com',
+            'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
+        ]);
+        // Student 10
+        DB::table('users')->insert([
+            'name' => 'Aj', 'email' => 'aj@gmail.com',
+            'user_type' => 'student', 'password' => Hash::make('@intelliflex123!')
+        ]);
 
         // ADMIN LIST //
         // ADMIN LIST //

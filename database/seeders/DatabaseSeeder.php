@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class, // For user credentials for my groupmates.
             GroupProfessorSeeder::class, // For all the groups professors created.
+            GroupStudentSeeder::class, // For all the groups that the student joined.
             QuizSeeder::class, // For quiz seeds
+            GroupQuizSeeder::class, // For the added quizzes by the professor.
             QuestionSeeder::class, // for question seeding
             AnswerSeeder::class, // for answer choices to each question existing
             GoalSeeder::class // for running the goals
