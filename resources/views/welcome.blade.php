@@ -59,12 +59,12 @@
             </button>
         </div>
     </div>
-    <div class="container mx-auto text-center">
+    {{-- <div class="container mx-auto text-center">
         <div class="font-bold font-display text-3xl my-8 text-gray-800">Features</div>
         <div class="flex flex-col">
             <div class="bg-slate-100 w-16"></div>
         </div>
-    </div>
+    </div> --}}
 </body>
 
 </html>
