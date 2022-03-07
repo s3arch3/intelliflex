@@ -18,14 +18,16 @@
                 {{-- list all goals here --}}
                 <div class="flex flex-wrap gap-4 justify-center">
                     @foreach ($goals as $goal)
-                        <div class="w-80 text-center bg-white rounded-md p-4 border border-bg-gray-300">
+                        {{-- <div class="w-80 text-center bg-white rounded-md p-4 border border-bg-gray-300">
                             <img src="{{ asset('assets/illustrations/goals-icon/move-up.png') }}"
                                 class="mx-auto w-16 h-16 mb-4" alt="">
                             <b class="m-2 text-blue-600">{{ $goal->name }} </b>
                             <p class="m-2 text-sm text-gray-600">{{ $goal->description }} </p>
                             <b class="m-2 text-sm ">Requirement: {{ $goal->requirement }} </b>
                             <br>
-                        </div>
+                        </div> --}}
+                        <x-goal-item :goalID="$goal->id" :goalName="$goal->name" :goalDescription="$goal->description"
+                            :goalRequirement="$goal->requirement" />
                     @endforeach
                 </div>
             </div>
