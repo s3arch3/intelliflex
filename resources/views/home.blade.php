@@ -6,31 +6,42 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class=" block p-10 bg-white rounded-md shadow-sm overflow-hidden">
-                <div class="font-bold text-xl"> User Statistics
-                </div>
+            <div class="mb-6">
+                <p class=" font-display font-bold text-3xl mb-2"> Welcome back User! </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class=" block p-10 pt-4 bg-white rounded-md shadow-sm overflow-hidden">
                 <br>
-                <div class="mb-2">
-                    <b>Quiz Count:</b>
-                    {{ $quizCount }} <br>
+                <p class="font-bold text-xl mb-2">Overview </p>
+                <div class="flex flex-wrap justify-center text-center">
+                    <div class="mb-2 rounded-md border border-gray-200 p-6 shadow-md m-2">
+                        <img src="{{ asset('assets/illustrations/home/quiz-count.png') }}" class="mb-2 mx-auto w-10"
+                            alt="">
+                        <b class="text-gray-800 text-sm mb-2">Quiz Count</b>
+                        <p class="text-4xl font-bold text-blue-600">{{ $quizCount }}</p>
+                    </div>
+                    <div class="mb-2 rounded-md border border-gray-200 p-6 shadow-md m-2">
+                        <img src="{{ asset('assets/illustrations/home/accuracy.png') }}" class="mb-2 mx-auto w-10">
+                        <b class="text-gray-800 text-sm mb-2">Overall Accuracy:</b>
+                        <p class="text-4xl font-bold text-blue-600">{{ $overallAccuracy }}</p>
+                    </div>
+                    <div class="mb-2 rounded-md border border-gray-200 p-6 shadow-md m-2">
+                        <img src="{{ asset('assets/illustrations/home/questions.png') }}" class="mb-2 mx-auto w-10">
+                        <b class="text-gray-800 text-sm mb-2">Total Questions Answered:</b>
+                        <p class="text-4xl font-bold text-blue-600">
+                            {{ $totalQuestionsAnswered }}</p>
+                    </div>
+                    <div class="mb-2 rounded-md border border-gray-200 p-6 shadow-md m-2">
+                        <img src="{{ asset('assets/illustrations/home/points.png') }}" class="mb-2 mx-auto w-10">
+                        <b class="text-gray-800 text-sm mb-2">Total Points:</b>
+                        <p class="text-4xl font-bold text-blue-600"> {{ $totalPoints }}</p>
+                    </div>
+                    <div class="mb-2 rounded-md border border-gray-200 p-6 shadow-md m-2">
+                        <img src="{{ asset('assets/illustrations/home/login.png') }}" class="mb-2 mx-auto w-10">
+                        <b class="text-gray-800 text-sm mb-2">Login Streak:</b>
+                        <p class="text-3xl font-bold text-blue-600">{{ 'N/A' }}</p>
+                    </div>
                 </div>
-                <div class="mb-2">
-                    <b>Overall Accuracy:</b>
-                    {{ $overallAccuracy }} <br>
-                </div>
-                <div class="mb-2">
-                    <b>Total Questions Answered:</b>
-                    {{ $totalQuestionsAnswered }} <br>
-                </div>
-                <div class="mb-2">
-                    <b class="mb-2">Total Points:</b>
-                    {{ $totalPoints }} <br>
-                </div>
-                <div class="mb-2">
-                    <b>Login Streak:</b>
-                    {{ 'N/A' }} <br>
-                </div>
-
                 <br>
                 <div class="font-bold text-lg mb-10">
                     <p>Chart about points earned in this week (Mon-Sun)</p>
