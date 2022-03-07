@@ -5,27 +5,27 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h1 class="font-semibold text-xl mb-10"> Welcome to goals section!
+            <h1 class="font-display font-bold text-3xl mb-4"> Welcome to goals section!
             </h1>
-            <h3 class="font-semibold mb-4">These are the available goals:</h3>
-            <div class="p-4 bg-white overflow-hidden block rounded-md shadow-sm border-bg-gray-200">
+            <h3 class="font-display font-semibold mb-4">These are the available goals:</h3>
+            <div class="">
                 {{-- list all goals here --}}
-                <div class="flex justify-items-center overflow-x-scroll m-2">
+                <div class="flex flex-wrap gap-4 justify-center">
                     @foreach ($goals as $goal)
-                        <div class="w-80 text-center bg-white rounded-sm m-2">
-                            NAME: <b> {{ $goal->name }} </b>
-                            <br>
-                            DESC: <b> {{ $goal->description }} </b>
-                            <br>
-                            REQ: <b> {{ $goal->requirement }} </b>
+                        <div class="w-80 text-center bg-white rounded-md p-4 border border-bg-gray-300">
+                            <img src="{{ asset('assets/illustrations/goals-icon/move-up.png') }}"
+                                class="mx-auto w-16 h-16 mb-4" alt="">
+                            <b class="m-2 text-blue-600">{{ $goal->name }} </b>
+                            <p class="m-2 text-sm text-gray-600">{{ $goal->description }} </p>
+                            <b class="m-2 text-sm ">Requirement: {{ $goal->requirement }} </b>
                             <br>
                         </div>
                     @endforeach
                 </div>
             </div>
-            <h1 class="font-semibold mb-4 mt-4">Achievements</h1>
+            <h1 class="font-display font-semibold mb-4 mt-4">Achievements</h1>
             <p class="font-normal mb-4 mt-4 text-md">These are the list of your quizzes and achieved goals. </p>
             {{-- list all quizzes here and goal progress --}}
             @foreach ($quizzes as $quiz)
