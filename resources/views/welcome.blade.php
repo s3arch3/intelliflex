@@ -48,15 +48,17 @@
                 Features</span>
             <div class="flex-grow border-4 border-slate-200 rounded-full"></div>
         </div> --}}
-        <div class="mx-auto w-56 border-4 border-slate-300 rounded-lg"></div>
-        <div class=" font-bold font-display text-3xl text-gray-900 my-4 text-center">
+        <div class=" font-bold font-display text-3xl text-gray-900 mb-2 mt-4 text-center">
             Features</div>
+        <div class="mx-auto w-56 border-4 border-blue-600 rounded-lg"></div>
         {{-- 1st feature --}}
-        <div class="flex flex-row gap-4 justify-between mt-10">
+        <div class="flex flex-wrap gap-8 justify-center mt-10">
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
                 <img src="{{ asset('/assets/illustrations/home/quiz-count.png') }}" alt="" class="w-14">
                 <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Create your own
+                    <h5
+                        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2 hover:scale-105 transition ease-in-out duration-30">
+                        Create your own
                         quizzes</h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise
@@ -76,7 +78,9 @@
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
                 <img src="{{ asset('/assets/illustrations/home/badges.png') }}" alt="" class="w-14">
                 <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Collect all goal
+                    <h5
+                        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2 hover:scale-105 transition ease-in-out duration-30">
+                        Collect all goal
                         badges</h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700">Accomplish various goals in order to obtain badges for every
@@ -96,7 +100,9 @@
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
                 <img src="{{ asset('/assets/illustrations/home/friends.png') }}" alt="" class="w-14">
                 <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Enjoy quizzes
+                    <h5
+                        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2 hover:scale-105 transition ease-in-out duration-30">
+                        Enjoy quizzes
                         with your friends and classmates.</h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700">Share and enjoy your own created quizzes with your colleagues.
@@ -113,12 +119,14 @@
                 </a>
             </div>
         </div>
-        <div class="flex flex-row gap-4 justify-between mt-10">
+        <div class="flex flex-wrap gap-8 justify-center mt-10">
             {{-- 4th feature --}}
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
                 <img src="{{ asset('/assets/illustrations/home/progress.png') }}" alt="" class="w-14">
                 <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Track your
+                    <h5
+                        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2 hover:scale-105 transition ease-in-out duration-30">
+                        Track your
                         progress</h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700">Maintain a steady progress and improve your knowledge through
@@ -138,7 +146,9 @@
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
                 <img src="{{ asset('/assets/illustrations/home/groups.png') }}" alt="" class="w-14">
                 <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Manage a class
+                    <h5
+                        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2 hover:scale-105 transition ease-in-out duration-30">
+                        Manage a class
                         using groups</h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700">Use groups to manage a number of students and propagate
@@ -158,7 +168,9 @@
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
                 <img src="{{ asset('/assets/illustrations/home/repeat.png') }}" alt="" class="w-14">
                 <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Repeat, enjoy,
+                    <h5
+                        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2 hover:scale-105 transition ease-in-out duration-30">
+                        Repeat, enjoy,
                         and master the quizzes all over again</h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700">The very soul of Intelliflex is to experience learning,
@@ -209,12 +221,15 @@
             </div>
         </div>
         {{-- Testimonial cards --}}
-        <div class="flex flex-row gap-4 justify-between mt-10 ">
+        <div class=" font-bold font-display text-3xl text-gray-900 text-center mb-6 mt-16">
+            Let's hear it from others</div>
+        <div class="mx-auto w-56 border-4 border-blue-600 rounded-lg mb-8"></div>
+        <div class="flex  flex-wrap gap-4 justify-evenly mt-10">
             {{-- 1st Testimonial --}}
             <div
                 class="max-w-sm rounded-lg bg-white shadow-md p-10 hover:scale-110 transition ease-in-out duration-30 hover:shadow-lg">
                 {{-- Stars --}}
-                <div class="flex flex-grow">
+                <div class="flex  flex-grow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20"
                         fill="currentColor">
                         <path
@@ -327,7 +342,7 @@
                             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                 </div>
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display">
                     Very intuitive.</h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing
@@ -341,7 +356,40 @@
             </div>
             </a>
         </div>
+
+    </div>
+    <div class="text-center bg-yellow-500 p-10 mt-24">
+        <p class="font-bold font-display text-4xl text-gray-900 text-center mb-4 mt-6">Ready to learn with us?</p>
+        <button type="button"
+            class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 mt-6 w-auto">LET'S
+            GET STARTED
+        </button>
     </div>
 </body>
+<footer class="p-4 bg-blue-800 shadow md:px-6 md:py-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="#" class="flex items-center mb-4 sm:mb-0">
+            <img src="{{ asset('/assets/logo/intelliflex_official-logo-h.png') }}" class="h-16 mt-2" alt="">
+        </a>
+        <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-100 sm:mb-0">
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+            </li>
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+            </li>
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6 ">Licensing</a>
+            </li>
+            <li>
+                <a href="#" class="hover:underline">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <hr class="my-6 border-gray-100 sm:mx-auto lg:my-8" />
+    <span class="block text-sm text-gray-200 sm:text-center">© 2022 <a href="https://flowbite.com"
+            class="hover:underline">Intelliflex</a>. All Rights Reserved.
+    </span>
+</footer>
 
 </html>
