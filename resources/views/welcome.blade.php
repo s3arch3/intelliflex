@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="/">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/logo/intelliflex-favicon.png') }}">
     <title>Intelliflex</title>
+    <link rel="stylesheet" href="">
     <nav class=" bg-white shadow-md border py-auto h-20">
         <div class="container flex flex-wrap justify-between items-center mx-auto">
             <a href="#" class="flex items-center">
@@ -29,7 +30,7 @@
         <img src="{{ asset('/assets/illustrations/landing-page/hero-image.png') }}" alt="hero-image"
             class="mt-10 sm:w-32 md:w-72 lg:w-96 xl:w-auto">
         <div class="py-8 px-10 text-gray-900">
-            <h1 class="text-5xl font-bold font-display tracking-tight my-4">Remaster your knowledge.</h1>
+            <h1 class="text-5xl font-bold font-display leading-tight tracking-tight my-4">Remaster your knowledge.</h1>
             <p class="mt-2 font-normal pr-4">Repeat, create, and share quizzes with your peers in the name of
                 knowledge and
                 learning on any device.</p>

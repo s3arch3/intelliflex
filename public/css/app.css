@@ -1802,6 +1802,12 @@ select {
 .leading-relaxed {
   line-height: 1.625;
 }
+.leading-3 {
+  line-height: .75rem;
+}
+.leading-normal {
+  line-height: 1.5;
+}
 .tracking-widest {
   letter-spacing: 0.1em;
 }
