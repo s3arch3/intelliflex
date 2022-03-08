@@ -11,8 +11,11 @@
             <label>GROUP DESC: {{ $groupProfessorItem->description }}</label> <br>
             <label>GROUP CODE: {{ $groupProfessorItem->code }}</label> <br>
             <label>ACTIVE: @if ($groupProfessorItem->is_active === '1')
-                YES @else NO
-                @endif</label> <br>
+                    YES
+                @else
+                    NO
+                @endif
+            </label> <br>
         </form>
     </div>
 
@@ -26,19 +29,40 @@
         {{-- QUIZZES ON THIS GROUP --}}
         <div class="block p-10 bg-white rounded-md shadow-sm">
             <label for="quizList"
-                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Quizzes List</label>
-                <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
-                    @foreach ($groupQuizzes as $groupQuiz)
-                        <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
-                            :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active" :id="$groupQuiz->quiz->id"
-                            :questionsCount="$groupQuiz->quiz->questions->count()"
-                            :groupQuizID="$groupQuiz->id"
-                            :groupProfessorID="$groupQuiz->group_professor_id"
-                            :userType="$userType"/>
-                    @endforeach
-                </ul>
+                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Quizzes
+                List</label>
+            <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
+                @foreach ($groupQuizzes as $groupQuiz)
+                    <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
+                        :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active"
+                        :id="$groupQuiz->quiz->id" :questionsCount="$groupQuiz->quiz->questions->count()"
+                        :groupQuizID="$groupQuiz->id" :groupProfessorID="$groupQuiz->group_professor_id"
+                        :userType="$userType" />
+                @endforeach
+            </ul>
         </div>
 
+
+        {{-- CLASSMATES LIST --}}
+        {{-- CLASSMATES LIST --}}
+        {{-- CLASSMATES LIST --}}
+        <div class="block p-10 bg-white rounded-md shadow-sm">
+            <label for="studentList"
+                class="text-xl font-medium text-gray-900 after:ml-0.5 after:text-red-500">My
+                Groupmates</label>
+            <br>
+
+            @foreach ($groupStudents as $groupStudent)
+                <div class="text-md leading-relaxed font-semibold text-gray-00 border-gray-500">
+                    {{-- <label>CLASSMATE ID: {{ $groupStudent->user_id }}</label> <br> --}}
+                    @if ($userID == $groupStudent->user_id)
+                    @else
+                        <label>CLASSMATE NAME: {{ $groupStudent->user->name }}</label> <br>
+                    @endif
+                </div>
+                <br>
+            @endforeach
+        </div>
     @elseif ($userType == 'professor')
         PROFESSOR INTERFACE
         <br>
@@ -60,17 +84,17 @@
         {{-- QUIZZES ON THIS GROUP --}}
         <div class="block p-10 bg-white rounded-md shadow-sm">
             <label for="quizList"
-                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Quizzes List</label>
-                <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
-                    @foreach ($groupQuizzes as $groupQuiz)
-                        <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
-                            :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active" :id="$groupQuiz->quiz->id"
-                            :questionsCount="$groupQuiz->quiz->questions->count()"
-                            :groupQuizID="$groupQuiz->id"
-                            :groupProfessorID="$groupQuiz->group_professor_id"
-                            :userType="$userType"/>
-                    @endforeach
-                </ul>
+                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Quizzes
+                List</label>
+            <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
+                @foreach ($groupQuizzes as $groupQuiz)
+                    <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
+                        :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active"
+                        :id="$groupQuiz->quiz->id" :questionsCount="$groupQuiz->quiz->questions->count()"
+                        :groupQuizID="$groupQuiz->id" :groupProfessorID="$groupQuiz->group_professor_id"
+                        :userType="$userType" />
+                @endforeach
+            </ul>
         </div>
 
         <br>

@@ -54,17 +54,12 @@ class GroupController extends Controller
             ::where('group_professor_id', $id)
             ->get();
 
-        // // get all quizzes that the professor created for this group
-        // $groupQuizzes = GroupQuiz
-        //     ::where('group_professor_id', $id)
-        //     ->where('user_id', $user->id)
-        //     ->get();
-
         return view('groups.show', [
             'groupProfessorItem' => $groupProfessorItem,
             'groupStudents' => $groupStudents,
             'userType' => $userType,
             'groupQuizzes' => $groupQuizzes,
+            'userID' => $user->id,
         ]);
     }
 
