@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
         <!-- Favicon -->
-        <link rel="icon" href="{{ url('favicon.ico') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/logo/intelliflex-favicon.png') }}">
 
         @livewireStyles
 
