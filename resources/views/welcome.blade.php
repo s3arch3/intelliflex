@@ -54,7 +54,7 @@
         {{-- 1st feature --}}
         <div class="flex flex-row gap-4 justify-between mt-10">
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
-                <img src="{{ asset('/assets/illustrations/confetti.png') }}" alt="" class="w-16">
+                <img src="{{ asset('/assets/illustrations/home/quiz-count.png') }}" alt="" class="w-14">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Create your own
                         quizzes</h5>
@@ -74,7 +74,7 @@
             </div>
             {{-- 2nd feature --}}
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
-                <img src="{{ asset('/assets/illustrations/confetti.png') }}" alt="" class="w-16">
+                <img src="{{ asset('/assets/illustrations/home/badges.png') }}" alt="" class="w-14">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Collect all goal
                         badges</h5>
@@ -94,7 +94,7 @@
             </div>
             {{-- 3rd feature --}}
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
-                <img src="{{ asset('/assets/illustrations/confetti.png') }}" alt="" class="w-16">
+                <img src="{{ asset('/assets/illustrations/home/friends.png') }}" alt="" class="w-14">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Enjoy quizzes
                         with your friends and classmates.</h5>
@@ -116,7 +116,7 @@
         <div class="flex flex-row gap-4 justify-between mt-10">
             {{-- 4th feature --}}
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
-                <img src="{{ asset('/assets/illustrations/confetti.png') }}" alt="" class="w-16">
+                <img src="{{ asset('/assets/illustrations/home/progress.png') }}" alt="" class="w-14">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Track your
                         progress</h5>
@@ -136,7 +136,7 @@
             </div>
             {{-- 5th feature --}}
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
-                <img src="{{ asset('/assets/illustrations/confetti.png') }}" alt="" class="w-16">
+                <img src="{{ asset('/assets/illustrations/home/groups.png') }}" alt="" class="w-14">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Manage a class
                         using groups</h5>
@@ -156,7 +156,7 @@
             </div>
             {{-- 6th feature --}}
             <div class="justify-start p-6 max-w-sm rounded-lg bg-slate-50">
-                <img src="{{ asset('/assets/illustrations/confetti.png') }}" alt="" class="w-16">
+                <img src="{{ asset('/assets/illustrations/home/repeat.png') }}" alt="" class="w-14">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 font-display mt-2">Repeat, enjoy,
                         and master the quizzes all over again</h5>
