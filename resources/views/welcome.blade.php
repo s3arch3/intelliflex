@@ -209,7 +209,7 @@
             </div>
         </div>
         {{-- For Students Section --}}
-        <div class="container mx-auto flex flex-initial items-center bg-yellow-500 rounded-lg p-10 m-10">
+        <div class="container mx-auto flex flex-initial items-center bg-yellow-400 rounded-lg p-10 m-10">
             <div class="px-10 text-gray-900">
                 <h1 class="text-5xl font-bold font-display leading-tight tracking-tight my-4 xl:text-5xl sm:text-3xl">
                     For
@@ -236,7 +236,7 @@
                     and
                     repeat the experience of learning.</p>
                 <button type="button"
-                    class="text-white bg-yellow-500 hover:bg-white hover:text-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 mt-6 w-auto">GET
+                    class="text-white bg-yellow-400 hover:bg-white hover:text-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 mt-6 w-auto">GET
                     STARTED
                 </button>
             </div>
@@ -379,7 +379,7 @@
         </div>
 
     </div>
-    <div class="text-center bg-yellow-500 p-10 mt-24">
+    <div class="text-center bg-yellow-400 p-10 mt-24">
         <p class="font-bold font-display text-4xl text-gray-900 text-center mb-4 mt-6">Ready to learn with us?</p>
         <button type="button"
             class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 mt-6 w-auto">LET'S
