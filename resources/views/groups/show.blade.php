@@ -22,7 +22,7 @@
             TOTAL ACCUMULATED QUIZ POINTS
         </form>
 
-        <div class="flex justify-center">
+        <div class="flex justify-center ">
             {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
             {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
             {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
