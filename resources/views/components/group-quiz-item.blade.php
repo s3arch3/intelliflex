@@ -21,6 +21,16 @@
                     [{{ $isActive }}]
                     Quiz ID:
                     [{{ $groupQuizID }}]
+
+                    <?php
+                    $totalQuizPoints = App\Models\QuizLog
+                        ::where('group_professor_id', $groupProfessorID)
+                        ->where('group_quiz_id', $groupQuizID)
+                        ->sum('score');
+                    ?>
+                    <br>
+                    Total Accumulated Points:
+                    [{{ $totalQuizPoints }}]
                 </div>
 
                 {{-- BUTTONS CONDITIONAL START --}}
