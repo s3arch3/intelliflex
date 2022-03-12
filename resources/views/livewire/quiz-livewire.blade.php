@@ -29,6 +29,12 @@
                             completed: {{ $quizItem->times_completed }}</p>
                         <p class="font-display ml-4 text-md font-bold text-gray-900 mb-2">Questions:
                             {{ $questionsCount }}</p>
+                        @if ($groupProfessorID != 0)
+                            <p class="font-display ml-4 text-md font-bold text-gray-900 mb-2"> Group Professor ID:
+                                {{ $groupProfessorID }}</p>
+                            <p class="font-display ml-4 text-md font-bold text-gray-900 mb-2"> Group Quiz ID:
+                                {{ $groupQuizID }}</p>
+                        @endif
                         <form wire:submit.prevent="startQuiz">
                             @csrf
                             <x-jet-button class="font-semibold">
@@ -150,9 +156,6 @@
                         <div class="text-lg inline-flex">
                             <p class="font-semibold text-gray-800">You completed this quiz
                             <p class="ml-2 font-bold text-blue-600">{{ $quizItem->times_completed }} times
-                        </div>
-                        <div class="mb-2">
-                            <b>Times Completed</b> {{ $quizItem->times_completed }}
                         </div>
                         <div class="mb-2">
                             <b>Questions</b> {{ $questionsCount }}
