@@ -22,7 +22,7 @@
                                 class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a> --}}
 
                         <a href="{{ url('/home') }}"
-                            class="text-blue-600 bg-slate-100 hover:bg-blue-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-slate-100 dark:hover:bg-blue-100 dark:focus:ring-slate-300">HOME
+                            class="text-blue-600 bg-slate-100 hover:bg-blue-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-3 md:mr-0 dark:bg-slate-100 dark:hover:bg-blue-100 dark:focus:ring-slate-300">LOGIN
                         </a>
                     @else
                         {{-- <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log
@@ -37,7 +37,7 @@
                                     class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a> --}}
 
                             <a href="{{ route('register') }}"
-                                class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-200 ml-4 shadow-lg">REGISTER
+                                class="text-white bg-blue-600 hover:bg-yellow-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-3 md:mr-0 shadow-lg shadow-blue-600/40 hover:shadow-yellow-600/40">REGISTER
                             </a>
                         @endif
                     @endauth
@@ -175,7 +175,7 @@
                 <p class="mb-3 font-normal text-gray-700">Use groups to manage a number of students and propagate
                     enjoyment of learning.</p>
                 <a href="#"
-                    class="inline-flex items-center py-2 text-sm font-medium text-center  text-blue-600 hover:text-yellow-500 focus:ring-4 focus:ring-blue-300">
+                    class="inline-flex items-center py-2 text-sm font-medium text-center text-blue-600 hover:text-yellow-500 focus:ring-4 focus:ring-blue-300">
                     Explore
                     <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -218,7 +218,7 @@
                     and
                     repeat the experience of learning.</p>
                 <button type="button"
-                    class="text-white bg-blue-600 hover:bg-white hover:text-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 mt-6 w-auto">GET
+                    class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 mt-6 w-auto">GET
                     STARTED
                 </button>
             </div>
@@ -236,7 +236,7 @@
                     and
                     repeat the experience of learning.</p>
                 <button type="button"
-                    class="text-white bg-yellow-400 hover:bg-white hover:text-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 mt-6 w-auto">GET
+                    class="text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 mt-6 w-auto">GET
                     STARTED
                 </button>
             </div>
