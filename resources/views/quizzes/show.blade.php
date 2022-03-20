@@ -4,12 +4,19 @@
             {{ __('Quiz Details') }}
         </h2>
     </x-slot>
-    <div class="block px-24 py-4 bg-yellow-400 rounded-md shadow-sm mx-auto">
-        <form class="text-md leading-relaxed font-semibold text-gray-00">
+    <div class="container mt-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md">
+        <form class="leading-relaxed text-center">
             <label>QUIZ ID: {{ $quizItem->id }}</label> <br>
-            <label>QUIZ NAME: {{ $quizItem->name }}</label> <br>
-            <label>QUIZ DESC: {{ $quizItem->description }}</label> <br>
-            <label>ACTIVE: @if ($quizItem->is_active === "1") YES @else NO @endif</label> <br>
+            <label class="font-semibold">{{ $quizItem->name }}</label> <br>
+            <label>{{ $quizItem->description }}</label> <br>
+            <label
+                class="bg-emerald-50 border border-emerald-300 px-4 rounded-full text-emerald-500 font-semibold text-sm">
+                @if ($quizItem->is_active === '1')
+                    ACTIVE
+                @else
+                    INACTIVE
+                @endif
+            </label> <br>
         </form>
     </div>
     {{-- BACK TO QUIZZES LIST --}}
@@ -21,7 +28,6 @@
                 </a>
             </x-jet-button>
             {{-- QUIZ DESCRIPTION --}}
-
             <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
                 @foreach ($questions as $question)
                     {{-- {{ $question }} --}}
