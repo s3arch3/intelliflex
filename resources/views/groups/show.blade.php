@@ -15,8 +15,37 @@
                 @else
                     NO
                 @endif
-            </label> <br>
+            </label>
+            <br>
+            {{ $totalGroupPoints }}
+            <br>
+            TOTAL ACCUMULATED QUIZ POINTS
         </form>
+
+        <div class="flex justify-center ">
+            {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
+            {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
+            {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
+
+            @if ($totalGroupPoints > 50)
+                <x-group-goal-item goalName="Iron Status" goalDescription="Achieve more than 50 points." />
+            @endif
+            @if ($totalGroupPoints > 100)
+                <x-group-goal-item goalName="Bronze Status" goalDescription="Achieve more than 100 points." />
+            @endif
+            @if ($totalGroupPoints > 150)
+                <x-group-goal-item goalName="Silver Status" goalDescription="Achieve more than 150 points." />
+            @endif
+            @if ($totalGroupPoints > 200)
+                <x-group-goal-item goalName="Gold Status" goalDescription="Achieve more than 200 points." />
+            @endif
+            @if ($totalGroupPoints > 400)
+                <x-group-goal-item goalName="Platinum Status" goalDescription="Achieve more than 400 points." />
+            @endif
+            @if ($totalGroupPoints > 500)
+                <x-group-goal-item goalName="Diamond Status" goalDescription="Achieve more than 500 points." />
+            @endif
+        </div>
     </div>
 
 
@@ -33,11 +62,28 @@
                 List</label>
             <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
                 @foreach ($groupQuizzes as $groupQuiz)
-                    <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
-                        :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active"
-                        :id="$groupQuiz->quiz->id" :questionsCount="$groupQuiz->quiz->questions->count()"
-                        :groupQuizID="$groupQuiz->id" :groupProfessorID="$groupQuiz->group_professor_id"
-                        :userType="$userType" />
+                    <div class="border border-bg-gray-200 rounded-sm">
+                        <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
+                            :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active"
+                            :id="$groupQuiz->quiz->id" :questionsCount="$groupQuiz->quiz->questions->count()"
+                            :groupQuizID="$groupQuiz->id" :groupProfessorID="$groupQuiz->group_professor_id"
+                            :userType="$userType" />
+
+                        {{-- LOCAL GOALS COUNTER --}}
+                        <div
+                            class="flex flex-wrap justify-center w-auto  text-center bg-white border border-bg-gray-200 rounded-md p-4">
+                            @foreach ($quizGoals as $quizGoal)
+                                @if ($quizGoal->is_achieved == '1' && $quizGoal->quiz_id == $groupQuiz->id && $quizGoal->user_id == Auth::user()->id)
+                                    <div
+                                        class="w-fit flex flex-wrap justify-start mx-2 px-1 border border-bg-gray-200 rounded-sm">
+                                        {{ $goals->where('id', $quizGoal->goal_id)->first()->name }}
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                    <br>
+                    <br>
                 @endforeach
             </ul>
         </div>
@@ -47,8 +93,7 @@
         {{-- CLASSMATES LIST --}}
         {{-- CLASSMATES LIST --}}
         <div class="block p-10 bg-white rounded-md shadow-sm">
-            <label for="studentList"
-                class="text-xl font-medium text-gray-900 after:ml-0.5 after:text-red-500">My
+            <label for="studentList" class="text-xl font-medium text-gray-900 after:ml-0.5 after:text-red-500">My
                 Groupmates</label>
             <br>
 
@@ -56,8 +101,23 @@
                 <div class="text-md leading-relaxed font-semibold text-gray-00 border-gray-500">
                     {{-- <label>CLASSMATE ID: {{ $groupStudent->user_id }}</label> <br> --}}
                     @if ($userID == $groupStudent->user_id)
+                        <label>{{ $groupStudent->user->name }} (YOU)</label>
+                        <?php
+                        $totalQuizPoints = App\Models\QuizLog::where('group_professor_id', $groupProfessorItem->id)
+                            ->where('user_id', Auth::user()->id)
+                            ->sum('score');
+                        ?>
+                        Total Contributed Points:
+                        [{{ $totalQuizPoints }}]
                     @else
-                        <label>CLASSMATE NAME: {{ $groupStudent->user->name }}</label> <br>
+                        <label>CLASSMATE NAME: {{ $groupStudent->user->name }}</label><br>
+                        <?php
+                        $totalQuizPoints = App\Models\QuizLog::where('group_professor_id', $groupProfessorItem->id)
+                            ->where('user_id', $groupStudent->user->id)
+                            ->sum('score');
+                        ?>
+                        Total Contributed Points:
+                        [{{ $totalQuizPoints }}]
                     @endif
                 </div>
                 <br>

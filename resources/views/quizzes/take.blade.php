@@ -5,6 +5,10 @@
         </h2>
     </x-slot>
 
-    @livewire('quiz-livewire', ['quizID' => $quizID])
+    @livewire('quiz-livewire', [
+    'quizID' => $quizID,
+    'groupProfessorID' => $groupProfessorID,
+    'groupQuizID' => $groupQuizID
+    ])
 
 </x-app-layout>

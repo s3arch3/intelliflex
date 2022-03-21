@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\User;
 use App\Models\QuizLog;
 use App\Models\Question;
 use App\Models\QuizGoal;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {
-    public function take($id)
+    public function take($id, Request $request)
     {
         // if $quizGoalPresent is NULL, then call setGoal()
         $quizGoalPresent = QuizGoal::where('quiz_id', $id)->exists();
@@ -22,7 +23,12 @@ class QuizController extends Controller
             // there are no quiz goals records in this quiz, adding them now
             app('App\Http\Controllers\GoalController')->setGoal($id);
         }
-        return view('quizzes.take', ['quizID' => $id]);
+        // also pass the groupProfessorID groupQuizID here
+        return view('quizzes.take', [
+        'quizID' => $id,
+        'groupProfessorID' => $request->groupProfessorID,
+        'groupQuizID' => $request->groupQuizID
+        ]);
     }
 
     public function log($id)
@@ -58,7 +64,8 @@ class QuizController extends Controller
 
     public function index()
     {
-        $quizzes = Auth::user()->quizzes()->withCount('questions')->paginate(100);
+        $user = User::findOrFail(Auth::user()->id);
+        $quizzes = $user->quizzes()->withCount('questions')->paginate(100);
         return view('quizzes.index', compact('quizzes'));
     }
 
@@ -70,7 +77,8 @@ class QuizController extends Controller
     public function store(Request $request)
     {
         // insert quiz
-        $quizItem = Auth::user()->quizzes()->create([
+        $user = User::findOrFail(Auth::user()->id);
+        $quizItem =$user->quizzes()->create([
             'name' => $request->quiz['name'],
             'description' => $request->quiz['description'],
             'is_active' => array_key_exists('is_active', $request->quiz) ? '1' : '0', // array_key_exists because is_active key is passed if the checkbox is checked only

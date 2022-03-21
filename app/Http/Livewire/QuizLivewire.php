@@ -10,6 +10,9 @@ use App\Models\QuizLogItem;
 
 class QuizLivewire extends Component
 {
+    public $groupProfessorID;
+    public $groupQuizID;
+
     public $quizID; // the id of the selected quiz ex. 1, 2, 3, so on...
     public $quizItem; // contains the name, and description ^_^
     public $questionsCount; // (quizSize) counts the $quizItem based on model relationship access on mount
@@ -40,12 +43,14 @@ class QuizLivewire extends Component
     // mount is to manually attach the parameters passed when the livewire component is called
     // same as __construct to blade components
     // for prepping the data before the quiz starts
-    public function mount($quizID)
+    public function mount($quizID, $groupProfessorID, $groupQuizID)
     {
         // mount is called to mount quizID to this quizID
         $this->quizID = $quizID; // just to make sure
         $this->quizItem = Quiz::findOrFail($quizID); // find the quiz using the id passed to this livewire component
         $this->questionsCount =  $this->quizItem->questions()->count(); // get all questions under that quiz
+        $this->groupProfessorID = $groupProfessorID;
+        $this->groupQuizID = $groupQuizID;
     }
 
     // this function is fired when the user clicks "Start Quiz" on quiz-livewire.blade.php
@@ -70,6 +75,8 @@ class QuizLivewire extends Component
         $this->quizLog = QuizLog::create([
             'user_id' => auth()->id(),
             'quiz_id' => $this->quizID,
+            'group_quiz_id' => $this->groupQuizID,
+            'group_professor_id' => $this->groupProfessorID,
         ]);
 
         $this->quizLog->save();

@@ -13,6 +13,8 @@ class QuizLog extends Model
     protected $fillable=[
         'user_id',
         'quiz_id',
+        'group_quiz_id',
+        'group_professor_id',
         'completed'
     ];
 

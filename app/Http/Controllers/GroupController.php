@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Goal;
 use App\Models\GroupProfessor;
 use App\Models\GroupStudent;
 use App\Models\GroupQuiz;
 use App\Models\Quiz;
+use App\Models\QuizGoal;
+use App\Models\QuizLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -54,12 +57,29 @@ class GroupController extends Controller
             ::where('group_professor_id', $id)
             ->get();
 
+        // sum of all the points earned in that group
+        $totalGroupPoints = QuizLog::where('group_professor_id', $id)->sum('score');
+        $quizGoals = QuizGoal::all();
+        $goals = Goal::all();
+        // get the top 3 scorers for each quiz in ascending order
+
+        // access quiz_log
+        // get entries that are only related
+        // "group_professor_id", and "group_quiz_id"
+        // $quizLogItems =  QuizLog::where('group_professor_id', $id)->with('user')->get();
+
+        // 1 entry = user_id and score (sum of user_id score)
+
         return view('groups.show', [
             'groupProfessorItem' => $groupProfessorItem,
             'groupStudents' => $groupStudents,
             'userType' => $userType,
             'groupQuizzes' => $groupQuizzes,
             'userID' => $user->id,
+            'totalGroupPoints' => $totalGroupPoints,
+            'quizGoals' => $quizGoals,
+            'goals' => $goals,
+            // 'quizLogItems' => $quizLogItems,
         ]);
     }
 

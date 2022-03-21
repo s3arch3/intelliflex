@@ -3,8 +3,7 @@
         <div class="flow-root">
             <div class="flex items-center space-x-4">
                 <div class="flex-shrink-0">
-                    <img class="w-12 rounded-full" src="{{ asset('assets/illustrations/quiz-logo.png') }}"
-                        alt="">
+                    <img class="w-12 rounded-full" src="{{ asset('assets/illustrations/quiz-logo.png') }}" alt="">
                 </div>
                 <div class="flex-1 min-w-0">
                     <a href={{ route('quizzes.show', $id) }}
@@ -28,8 +27,15 @@
                         </a>
                     </x-jet-button>
 
+                    {{-- <form method="POST" action="{{ route('take', $id, ['groupQuizID' => $groupQuizID, 'groupProfessorID' => $groupProfessorID]) }}"> --}}
                     <form method="POST" action="{{ route('take', $id) }}">
                         @csrf
+                        {{-- DON'T MODIFY --}}
+                        <input id="name" class="hidden" name="groupQuizID"
+                            value="{{ $groupQuizID }}"></input>
+                        {{-- DON'T MODIFY --}}
+                        <input id="name" class="hidden" name="groupProfessorID"
+                            value="{{ $groupProfessorID }}"></input>
                         <x-jet-button class="ml-4">
                             <input class="font-semibold" type="submit" value="TAKE">
                         </x-jet-button>
