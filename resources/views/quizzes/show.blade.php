@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Quiz Details') }}
+            {{ __('Quiz Questions') }}
         </h2>
     </x-slot>
     <div class="container mt-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md">
