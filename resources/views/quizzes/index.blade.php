@@ -6,7 +6,6 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
             <div class="mb-6">
                 <p class=" font-display font-bold text-3xl mb-2"> List of all your created
                     <span class="text-blue-600"> quizzes</span>.
