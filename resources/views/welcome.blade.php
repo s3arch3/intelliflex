@@ -44,6 +44,10 @@
                 @endif
             </div>
     </nav>
+
+    {{-- icon --}}
+    <meta name="theme-color" content="#0953BF" />
+    <link rel="apple-touch-icon" href="{{ asset('logo/intelliflex-favicon.png') }}">
 </head>
 
 <body>
