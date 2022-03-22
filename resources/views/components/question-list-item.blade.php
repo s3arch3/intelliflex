@@ -64,7 +64,7 @@
                 <span @if ($answer->is_checked == '1')  @endif>
 
                     Explanation: "{{ $answer->explanation }}"
-                    {{-- Correct?: @if ($answer->is_checked == '1') "YES" @else "NO" @endif --}}0
+                    {{-- Correct?: @if ($answer->is_checked == '1') "YES" @else "NO" @endif --}}
                 </span>
             </h1>
         @endforeach
