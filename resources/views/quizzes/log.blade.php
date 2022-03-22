@@ -7,7 +7,7 @@
     <div class="py-4">
         {{-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> --}}
         <div class="container mt-4 mx-auto block ">
-            <div class=" px-4 py-4 bg-white shadow-md rounded-md">
+            <div class="px-4 py-4 bg-white shadow-md rounded-md">
                 <div class="leading-relaxed text-center">
                     <form>
                         <label class="font-medium">QUIZ ID: {{ $quizLogID }}</label> <br>
