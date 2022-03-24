@@ -95,7 +95,11 @@
                                         alt="{{ Auth::user()->name }}" />
                                 </button>
                             @else
-                                <span class="inline-flex rounded-md">
+                            <span class="inline-flex rounded-md">
+                                    <!-- User Type Display -->
+                                    <div class="block px-4 py-2 text-xs text-white">
+                                        {{ __(ucfirst(Auth::user()->user_type) . ' Account') }}
+                                    </div>
                                     <button type="button"
                                         class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
                                         {{ Auth::user()->name }}
