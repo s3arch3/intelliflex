@@ -68,13 +68,13 @@
                     @endswitch
 
                     {{-- THE ANSWER ITSELF --}}
-                    <span class="font-bold text-blue-800">
+                    <span class="text-blue-800">
                         {{ $answer->answer }}
                     </span>
                     <br>
 
                     {{-- THIS IS TO SHOW EXPLANATION SECTION TO THE CORRECT ANSWER --}}
-                    @if ($answer->is_checked == '1')
+                    @if (($answer->is_checked == '1') && ($explanation != NULL))
                         Explanation: {{ $answer->explanation }}
                     @else
                         {{-- NO EXPLANAITION --}}

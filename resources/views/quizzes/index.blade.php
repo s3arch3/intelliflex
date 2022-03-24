@@ -12,6 +12,7 @@
                 </p>
                 <p>Manage all your quizzes here.</p>
             </div>
+
             {{-- QUIZZES LIST --}}
             <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
                 @foreach ($quizzes as $quiz)
@@ -20,6 +21,7 @@
                         :questionsCount="$quiz->questions_count" />
                 @endforeach
             </ul>
+
             {{-- CREATE QUIZ BUTTON --}}
             <x-jet-button>
                 <a href="{{ route('quizzes.create') }}">

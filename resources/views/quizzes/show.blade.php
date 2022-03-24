@@ -5,31 +5,10 @@
             {{ __('Quiz Questions') }}
         </h2>
     </x-slot>
-    <div class="container mt-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
-        {{-- QUIZ ID --}}
-        {{-- <label>QUIZ ID: {{ $quizItem->id }}</label>
-        <br> --}}
 
-        {{-- QUIZ NAME --}}
-        <label class="font-display font-bold text-3xl mb-2">{{ $quizItem->name }}</label>
-        <br>
-
-        {{-- QUIZ DESCRIPTION --}}
-        <label>{{ $quizItem->description }}</label>
-        <br>
-
-        {{-- ACTIVE/INACTIVE INDICATOR --}}
-        @if ($quizItem->is_active === '1')
-            <span class="bg-emerald-50 border border-emerald-300 px-4 rounded-full text-emerald-500 font-semibold text-sm w-28 mt-2 mx-2">
-                Active
-            </span>
-        @elseif ($quizItem->is_active === '0')
-            <span class="bg-amber-50 border border-amber-300 px-4 rounded-full text-amber-500 font-semibold text-sm w-28 mt-2 mx-2">
-                Inactive
-            </span>
-        @endif
-        <br>
-    </div>
+    {{-- QUIZ DETAIL ITEM --}}
+    <x-quiz-detail-item :quizName="$quizItem->name" :quizDescription="$quizItem->description"
+        :isActive="$quizItem->is_active" />
 
     {{-- CONTAINER FOR ALL QUESTIONS --}}
     <div class="py-4">
