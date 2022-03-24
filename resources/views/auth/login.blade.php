@@ -3,8 +3,8 @@
         <x-jet-validation-errors class="mb-4" />
         <div class="my-8 ">
             <img class="w-16 mx-auto" src="{{ asset('/assets/illustrations/hello.png') }}" alt="">
-            <p class="text-center text-3xl font-bold text-gray-800 mt-4">
-                Welcome to intelliflex!
+            <p class="text-center text-2xl font-bold text-gray-800 mt-4">
+                Welcome back to intelliflex!
             </p>
         </div>
         <div class="my-4 text-gray-800">
@@ -33,21 +33,24 @@
                     autocomplete="current-password" />
             </div>
 
-            <div class="block mt-4">
+            <div class="flex items-center justify-between mt-4">
                 <label for="remember_me" class="flex items-center">
                     <x-jet-checkbox id="remember_me" name="remember" />
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900"
+                    <a class="text-sm text-blue-600 font-medium hover:text-gray-900"
                         href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                        {{ __('I forgot my password.') }}
                     </a>
                 @endif
+            </div>
 
+            <div class="flex items-center justify-between mt-4">
+                <p class="text-sm text-gray-800">Need an account? <a
+                        class="text-blue-600 font-medium hover:text-gray-900" href="{{ route('register') }}">
+                        {{ __('Register') }}
+                    </a></p>
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}
                 </x-jet-button>
