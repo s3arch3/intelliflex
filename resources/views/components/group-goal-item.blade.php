@@ -3,4 +3,9 @@
         class="mx-auto w-16 h-16 mb-4" alt="">
     <b class="m-2 text-blue-600">{{ $goalName }} </b>
     <p class="m-2 text-sm text-gray-600">{{ $goalDescription }} </p>
+    @if ($achieved == true)
+        DONE  THIS
+    @else
+        NOT YET
+    @endif
 </div>

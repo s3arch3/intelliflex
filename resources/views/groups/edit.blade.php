@@ -98,7 +98,7 @@
                         <label>STUDENT NAME: {{ $groupStudent->user->name }}</label> <br>
 
 
-                        <form method="POST" action="{{ route('removeMember', $groupStudent->user_id) }}">
+                        <form method="POST" action="{{ route('removeStudent', $groupStudent->user_id) }}">
                             @csrf
                             @method('DELETE')
                             <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">

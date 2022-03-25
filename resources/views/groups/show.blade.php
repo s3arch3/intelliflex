@@ -4,8 +4,18 @@
             {{ __('Group Details') }}
         </h2>
     </x-slot>
+    <x-group-detail-item
+        :groupID="$groupProfessorItem->id"
+        :groupName="$groupProfessorItem->name"
+        :groupDescription="$groupProfessorItem->description"
+        :groupCode="$groupProfessorItem->code"
+        :isActive="$groupProfessorItem->is_active"
+        :totalGroupPoints="$totalGroupPoints"
+        :professorName="$groupProfessorOwner"
+        :numberOfStudents="$groupStudentCount"
+    />
     <div class="block px-24 py-4 bg-yellow-400 rounded-md shadow-sm mx-auto">
-        <form class="text-md leading-relaxed font-semibold text-gray-00">
+        {{-- <form class="text-md leading-relaxed font-semibold text-gray-00">
             <label>GROUP ID: {{ $groupProfessorItem->id }}</label> <br>
             <label>GROUP NAME: {{ $groupProfessorItem->name }}</label> <br>
             <label>GROUP DESC: {{ $groupProfessorItem->description }}</label> <br>
@@ -20,31 +30,57 @@
             {{ $totalGroupPoints }}
             <br>
             TOTAL ACCUMULATED QUIZ POINTS
-        </form>
+        </form> --}}
 
-        <div class="flex justify-center ">
-            {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
-            {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
-            {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
+        <div>
+            COLLECTIVE ACHIEVEMENTS
+            <div class="flex justify-center ">
+                {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
+                {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
+                {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
 
-            @if ($totalGroupPoints > 50)
-                <x-group-goal-item goalName="Iron Status" goalDescription="Achieve more than 50 points." />
-            @endif
-            @if ($totalGroupPoints > 100)
-                <x-group-goal-item goalName="Bronze Status" goalDescription="Achieve more than 100 points." />
-            @endif
-            @if ($totalGroupPoints > 150)
-                <x-group-goal-item goalName="Silver Status" goalDescription="Achieve more than 150 points." />
-            @endif
-            @if ($totalGroupPoints > 200)
-                <x-group-goal-item goalName="Gold Status" goalDescription="Achieve more than 200 points." />
-            @endif
-            @if ($totalGroupPoints > 400)
-                <x-group-goal-item goalName="Platinum Status" goalDescription="Achieve more than 400 points." />
-            @endif
-            @if ($totalGroupPoints > 500)
-                <x-group-goal-item goalName="Diamond Status" goalDescription="Achieve more than 500 points." />
-            @endif
+                {{-- 1 STATUS --}}
+                @if ($totalGroupPoints > 50)
+                    <x-group-goal-item :achieved="true" goalName="Iron Status" goalDescription="Achieve more than 50 points." />
+                @else
+                    <x-group-goal-item :achieved="false" goalName="Iron Status" goalDescription="Achieve more than 50 points." />
+                @endif
+
+                {{-- 2 STATUS --}}
+                @if ($totalGroupPoints > 100)
+                    <x-group-goal-item :achieved="true" goalName="Bronze Status" goalDescription="Achieve more than 100 points." />
+                @else
+                    <x-group-goal-item :achieved="false" goalName="Bronze Status" goalDescription="Achieve more than 100 points." />
+                @endif
+
+                {{-- 3 STATUS --}}
+                @if ($totalGroupPoints > 150)
+                    <x-group-goal-item :achieved="true" goalName="Silver Status" goalDescription="Achieve more than 150 points." />
+                @else
+                    <x-group-goal-item :achieved="false" goalName="Silver Status" goalDescription="Achieve more than 150 points." />
+                @endif
+
+                {{-- 4 STATUS --}}
+                @if ($totalGroupPoints > 200)
+                    <x-group-goal-item :achieved="true" goalName="Gold Status" goalDescription="Achieve more than 200 points." />
+                @else
+                    <x-group-goal-item :achieved="false" goalName="Gold Status" goalDescription="Achieve more than 200 points." />
+                @endif
+
+                {{-- 5 STATUS --}}
+                @if ($totalGroupPoints > 400)
+                    <x-group-goal-item :achieved="true" goalName="Platinum Status" goalDescription="Achieve more than 400 points." />
+                @else
+                    <x-group-goal-item :achieved="false" goalName="Platinum Status" goalDescription="Achieve more than 400 points." />
+                @endif
+
+                {{-- 6 STATUS --}}
+                @if ($totalGroupPoints > 500)
+                    <x-group-goal-item :achieved="true" goalName="Diamond Status" goalDescription="Achieve more than 500 points." />
+                @else
+                    <x-group-goal-item :achieved="false" goalName="Diamond Status" goalDescription="Achieve more than 500 points." />
+                @endif
+            </div>
         </div>
     </div>
 
