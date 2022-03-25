@@ -4,8 +4,18 @@
             {{ __('Group Details') }}
         </h2>
     </x-slot>
+    <x-group-detail-item
+        :groupID="$groupProfessorItem->id"
+        :groupName="$groupProfessorItem->name"
+        :groupDescription="$groupProfessorItem->description"
+        :groupCode="$groupProfessorItem->code"
+        :isActive="$groupProfessorItem->is_active"
+        :totalGroupPoints="$totalGroupPoints"
+        :professorName="$groupProfessorOwner"
+        :numberOfStudents="$groupStudentCount"
+    />
     <div class="block px-24 py-4 bg-yellow-400 rounded-md shadow-sm mx-auto">
-        <form class="text-md leading-relaxed font-semibold text-gray-00">
+        {{-- <form class="text-md leading-relaxed font-semibold text-gray-00">
             <label>GROUP ID: {{ $groupProfessorItem->id }}</label> <br>
             <label>GROUP NAME: {{ $groupProfessorItem->name }}</label> <br>
             <label>GROUP DESC: {{ $groupProfessorItem->description }}</label> <br>
@@ -20,7 +30,7 @@
             {{ $totalGroupPoints }}
             <br>
             TOTAL ACCUMULATED QUIZ POINTS
-        </form>
+        </form> --}}
 
         <div>
             COLLECTIVE ACHIEVEMENTS

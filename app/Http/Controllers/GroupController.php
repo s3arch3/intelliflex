@@ -51,6 +51,8 @@ class GroupController extends Controller
         $userType = $user->user_type;
         $groupProfessorItem = GroupProfessor::findOrFail($id); // get that group item
         $groupStudents = GroupStudent::where('group_professor_id', $id)->with('user')->get();
+        $groupStudentCount = GroupStudent::where('group_professor_id', $id)->count();
+        $groupProfessorOwner = GroupProfessor::findOrFail($id)->user()->first()->name;
 
         // get all quizzes that the professor created for this group
         $groupQuizzes = GroupQuiz
@@ -79,6 +81,8 @@ class GroupController extends Controller
             'totalGroupPoints' => $totalGroupPoints,
             'quizGoals' => $quizGoals,
             'goals' => $goals,
+            'groupStudentCount' => $groupStudentCount,
+            'groupProfessorOwner' => $groupProfessorOwner,
             // 'quizLogItems' => $quizLogItems,
         ]);
     }
