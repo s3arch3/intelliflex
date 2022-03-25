@@ -2,11 +2,11 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
-            <div class="flex">
+            <div class="flex flex-start">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <x-jet-application-mark />
                     </a>
                 </div>
 
@@ -95,13 +95,17 @@
                                         alt="{{ Auth::user()->name }}" />
                                 </button>
                             @else
-                            <span class="inline-flex rounded-md">
+                                <span class="inline-flex items-center rounded-sm">
                                     <!-- User Type Display -->
-                                    <div class="block px-4 py-2 text-xs text-white">
-                                        {{ __(ucfirst(Auth::user()->user_type) . ' Account') }}
-                                    </div>
                                     <button type="button"
-                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                        class="inline-flex items-center px-3 py-2 border border-transparent text-xs leading-4 font-medium rounded-md text-gray-700 bg-white hover:text-gray-blue-600 focus:outline-blue-200 h-8 ">
+                                        <div class="mr-2"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-5 w-5" viewBox="0 0 20 20" fill="rgb(55 65 81)">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                    clip-rule="evenodd" />
+                                            </svg></div>
+                                        {{ __(ucfirst(Auth::user()->user_type)) }}:
                                         {{ Auth::user()->name }}
 
                                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +118,6 @@
                                 </span>
                             @endif
                         </x-slot>
-
                         <x-slot name="content">
                             <!-- User Type Display -->
                             <div class="block px-4 py-2 text-xs text-blue-500">
@@ -174,10 +177,12 @@
             <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                 {{ __('Home') }}
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('quizzes.index') }}" :active="request()->routeIs('quizzes.index')">
+            <x-jet-responsive-nav-link href="{{ route('quizzes.index') }}"
+                :active="request()->routeIs('quizzes.index')">
                 {{ __('Quizzes') }}
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('groups.index') }}" :active="request()->routeIs('groups.index')">
+            <x-jet-responsive-nav-link href="{{ route('groups.index') }}"
+                :active="request()->routeIs('groups.index')">
                 {{ __('Groups') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('goals.index') }}" :active="request()->routeIs('goals.index')">
