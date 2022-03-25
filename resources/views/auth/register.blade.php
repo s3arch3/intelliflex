@@ -3,18 +3,19 @@
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
-
         <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
+        <div method="POST" action="{{ route('register') }}">
             @csrf
-            <div class="my-8 ">
-                <img class="w-16 mx-auto" src="{{ asset('/assets/illustrations/hello.png') }}" alt="">
-                <p class="text-center text-3xl font-bold text-gray-800 mt-4">
-                    Welcome to intelliflex!
-                </p>
+            <div class="my-6">
+                <div class="flex flex-start justify-center">
+                    <img class="h-10 w-10 mr-2" src="{{ asset('/assets/illustrations/hello.png') }}" alt="">
+                    <p class="text-3xl font-bold text-gray-800">
+                        Welcome to Intelliflex!
+                    </p>
+                </div>
             </div>
-            <div class="my-4 text-gray-800">
+            <div class="
+                    my-4 text-gray-800">
                 <p class="font-bold text-xl">Register</p>
                 <p class="mt-2 text-sm">Create an account to enjoy your new learning experience.
                 </p>
@@ -75,6 +76,6 @@
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
-        </form>
+            </form>
     </x-jet-authentication-card>
 </x-guest-layout>

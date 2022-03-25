@@ -1,11 +1,13 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-jet-validation-errors class="mb-4" />
-        <div class="my-8 ">
-            <img class="w-16 mx-auto" src="{{ asset('/assets/illustrations/hello.png') }}" alt="">
-            <p class="text-center text-2xl font-bold text-gray-800 mt-4">
-                Welcome back to intelliflex!
-            </p>
+        <div class="my-6">
+            <div class="flex flex-start justify-center">
+                <img class="h-10 w-10 mr-2" src="{{ asset('/assets/illustrations/hello.png') }}" alt="">
+                <p class="text-2xl font-bold text-gray-800 ">
+                    Welcome back to Intelliflex!
+                </p>
+            </div>
         </div>
         <div class="my-4 text-gray-800">
             <p class="font-bold text-xl">Login</p>
@@ -39,7 +41,7 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
                 @if (Route::has('password.request'))
-                    <a class="text-sm text-blue-600 font-medium hover:text-gray-900"
+                    <a class="text-sm text-blue-600 font-medium hover:text-gray-900 text-right"
                         href="{{ route('password.request') }}">
                         {{ __('I forgot my password.') }}
                     </a>
@@ -47,11 +49,13 @@
             </div>
 
             <div class="flex items-center justify-between mt-4">
-                <p class="text-sm text-gray-800">Need an account? <a
-                        class="text-blue-600 font-medium hover:text-gray-900" href="{{ route('register') }}">
+                <div class="text-sm text-gray-800 w-42">
+                    <label>Need an account? </label>
+                    <a class="text-blue-600 font-medium hover:text-gray-900" href="{{ route('register') }}">
                         {{ __('Register') }}
-                    </a></p>
-                <x-jet-button class="ml-4">
+                    </a>
+                </div>
+                <x-jet-button>
                     {{ __('Log in') }}
                 </x-jet-button>
             </div>
