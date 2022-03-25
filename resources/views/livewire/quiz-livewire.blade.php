@@ -4,71 +4,67 @@
     {{-- QUIZ START FRAME --}}
     @if ($quizInStart)
         <div class="py-6">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <x-jet-button>
-                    {{-- back button --}}
-                    <a href="{{ route('quizzes.index') }}">
-                        GO BACK
-                    </a>
-                </x-jet-button>
-            </div>
             <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
                 <br>
                 <div class="block p-10 bg-white rounded-md shadow-sm overflow-hidden">
                     <div class="flex flex-col items-center">
                         <div class="flex items-center">
-                            <div class="w-16 h-16 rounded-full p-4
-                        shadow-md bg-gray-200">
+                            {{-- QUIZ LOGO --}}
+                            <div class="flex-shrink-0">
+                                <img class="w-12 rounded-full" src="{{ asset('assets/illustrations/quiz-logo.png') }}" alt="">
                             </div>
-                            <p class="font-display ml-4 text-3xl font-bold text-blue-600">{{ $quizItem->name }}</p>
+
+                            {{-- QUIZ NAME --}}
+                            <p class="font-display ml-4 text-3xl font-bold text-blue-600">
+                                {{ $quizItem->name }}
+                            </p>
                         </div>
-                        <p class="mb-2">Quiz Livewire Start ID: {{ $quizID }}</p>
-                        <p class="ml-4 text-sm font-regular text-gray-700 mb-2">{{ $quizItem->description }}
+
+                        {{-- QUIZ DESCRIPTION --}}
+                        <p class="ml-4 text-sm font-regular text-gray-700 mb-2">
+                            {{ $quizItem->description }}
                         </p>
-                        <p class="font-display ml-4 text-md font-bold text-gray-900 mb-2">Times
-                            completed: {{ $quizItem->times_completed }}</p>
+
+                        {{-- TIMES COMPLETED --}}
+                        <p class="font-display ml-4 text-md font-bold text-gray-900 mb-2">
+                            Times Completed: {{ $quizItem->times_completed }}
+                        </p>
+
+                        {{-- QUESTIONS COUNT --}}
                         <p class="font-display ml-4 text-md font-bold text-gray-900 mb-2">Questions:
-                            {{ $questionsCount }}</p>
+                            {{ $questionsCount }}
+                        </p>
+
+                        {{-- WHEN THE QUIZ IS TAKEN FROM A GROUP --}}
                         @if ($groupProfessorID != 0)
                             <p class="font-display ml-4 text-md font-bold text-gray-900 mb-2"> Group Professor ID:
                                 {{ $groupProfessorID }}</p>
                             <p class="font-display ml-4 text-md font-bold text-gray-900 mb-2"> Group Quiz ID:
                                 {{ $groupQuizID }}</p>
                         @endif
-                        <form wire:submit.prevent="startQuiz">
-                            @csrf
-                            <x-jet-button class="font-semibold">
-                                <input type="submit" value="START QUIZ">
-                            </x-jet-button>
-                        </form>
+
                     </div>
-                    {{-- <div class="mx-auto text-lg text-gray-800">
-                        <div class="mb-2">
-                            <b>Quiz Livewire Start</b>
-                            ID: {{ $quizID }}
-                        </div>
-                        <div class="mb-2">
-                            <b>Quiz Title</b> {{ $quizItem->name }}
-                        </div>
-                        <div class="mb-2">
-                            <b>Description</b> {{ $quizItem->description }}
-                        </div>
-                        <div class="mb-2">
-                            <b>Times Completed</b> {{ $quizItem->times_completed }}
-                        </div>
-                        <div class="mb-2">
-                            <b>Questions</b> {{ $questionsCount }}
-                        </div>
-                    </div> --}}
-                    {{-- <x-jet-button>
-                        <a href="">
-                            START QUIZ
+                </div>
+                <div class="flex justify-center">
+                    {{-- START QUIZ BUTTON --}}
+                    <form wire:submit.prevent="startQuiz" class="mx-4">
+                        @csrf
+                        <x-jet-button class="font-semibold">
+                            <input type="submit" value="START QUIZ">
+                        </x-jet-button>
+                    </form>
+
+                    {{-- BACK BUTTON --}}
+                    <x-jet-button class="mx-4">
+                        <a href="{{ route('quizzes.index') }}">
+                            GO BACK
                         </a>
-                    </x-jet-button> --}}
+                    </x-jet-button>
                 </div>
             </div>
         </div>
     @endif
+
     {{-- QUIZ PROGRESS FRAME --}}
     {{-- QUIZ PROGRESS FRAME --}}
     {{-- QUIZ PROGRESS FRAME --}}
@@ -121,6 +117,7 @@
                 </div>
             </div>
     @endif
+
     {{-- QUIZ END FRAME --}}
     {{-- QUIZ END FRAME --}}
     {{-- QUIZ END FRAME --}}
@@ -133,40 +130,53 @@
                         {{-- IMPORTANT --}}
                         {{-- IMPORTANT --}}
                         {{-- IMPORTANT --}}
-                        {{-- enclose livewire stuff in a div --}}
+                        {{-- ENCLOSE LIVEWIRE STUFF IN A DIV --}}
+
+                        {{-- CONFETTI LOGO --}}
                         <img src="{{ asset('assets/illustrations/confetti.png') }}" class="w-10 h-10 mb-4" alt="">
-                        <p class="font-display font-semibold text-4xl text-gray-800">Congratulations, you
-                            completed the</p>
-                        {{-- ID: {{ $quizID }} --}}
+
+                        {{-- CONGRATS TEXT --}}
+                        <p class="font-display font-semibold text-4xl text-gray-800">
+                            Congratulations, you completed the
+                        </p>
                         <div class="mb-6 font-display text-4xl inline-flex">
                             <p class="font-bold text-blue-600">{{ $quizItem->name }} </p>
                             <p class="ml-2 font-semibold text-gray-800">quiz!
                         </div>
-                        {{-- <div class="mb-2">
-                            <b>Description</b> {{ $quizItem->description }}
-                        </div> --}}
-                        <div class="mb-2 text-gray-800">
-                            <p class="mb-2 text-lg font-semibold">Your score is</p>
-                            <p class="
-                               mb-4 text-4xl font-bold">
-                                {{ $correctAnswers }} out of
-                                {{ $questionsCount }}
 
+                        {{-- QUIZ DESCRIPTION --}}
+                        <div class="mb-2">
+                            {{ $quizItem->description }}
                         </div>
+
+                        {{-- YOUR SCORE IS X/X --}}
+                        <div class="mb-2 text-gray-800">
+                            <p class="mb-2 text-lg font-semibold">
+                                Your score is:
+                            </p>
+                            <p class=" mb-4 text-4xl font-bold">
+                                <span class="text-blue-600">
+                                    {{ $correctAnswers }}
+                                </span>
+                                 out of
+                                {{ $questionsCount }}
+                            </p>
+                        </div>
+
+                        {{-- TIMES COMPLETED --}}
                         <div class="text-lg inline-flex">
                             <p class="font-semibold text-gray-800">You completed this quiz
                             <p class="ml-2 font-bold text-blue-600">{{ $quizItem->times_completed }} times
                         </div>
-                        <div class="mb-2">
-                            <b>Questions</b> {{ $questionsCount }}
-                        </div>
 
-                        <div class="mb-2">
-                            <b>Percentage</b> {{ $quizPercentage }}
+                        {{-- QUIZ PERCENTAGE --}}
+                        <div class="font-semibold text-gray-800 text-lg inline-flex">
+                            Your accuracy level is {{ $quizPercentage . '%' }}
                         </div>
                     </div>
                 </div>
-                {{-- no submit.prevent to produce default action which is refreshing and going to details page --}}
+
+                {{-- NO "submit.prevent" INCLUDED TO PRODUCT DEFAULT ACTION WHICH IS REFRESHING AND GOING TO THE DETAILS PAGE --}}
                 <x-jet-button>
                     <a href="{{ route('log', $quizLog->id) }}">
                         Full Details
@@ -180,6 +190,7 @@
                     </a>
                 </x-jet-button>
 
+                {{-- REPEAT QUIZ BUTTON --}}
                 <form wire:submit.prevent="startQuiz">
                     @csrf
                     <x-jet-button class="font-semibold">
@@ -188,6 +199,5 @@
                 </form>
             </div>
         </div>
-</div>
-@endif
+    @endif
 </div>
