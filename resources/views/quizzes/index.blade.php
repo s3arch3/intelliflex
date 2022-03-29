@@ -14,7 +14,7 @@
             </div>
 
             {{-- QUIZZES LIST --}}
-            <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100">
+            <ul role="list" class="bg-white divide-y divide-slate-100 rounded-md shadow-sm">
                 @foreach ($quizzes as $quiz)
                     <x-quiz-list-item :name="$quiz->name" :description="$quiz->description"
                         :timesCompleted="$quiz->times_completed" :isActive="$quiz->is_active" :id="$quiz->id"
