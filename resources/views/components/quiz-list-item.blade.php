@@ -1,4 +1,5 @@
 {{-- THIS CODE IS A TEMPLATE FOR ALL THE QUIZZES CREATED --}}
+<script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 <div class="bg-white rounded-md border shadow-sm px-4 py-4 mb-2">
     <div class="flow-root">
         <div class="flex justify-between items-center space-x-2">
