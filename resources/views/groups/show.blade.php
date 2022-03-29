@@ -1,94 +1,103 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-display font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Group Details') }}
+            {{-- DISPLAY HEADER ACCORDING TO user_type --}}
+            @if ($userType == 'student')
+                {{ __('Group Details (Student)') }}
+            @elseif ($userType == 'professor')
+                {{ __('Group Details (Professor)') }}
+            @elseif ($userType == 'admin')
+                {{ __('Group Details (Admin)') }}
+            @endif
         </h2>
     </x-slot>
-    <x-group-detail-item
-        :groupID="$groupProfessorItem->id"
-        :groupName="$groupProfessorItem->name"
-        :groupDescription="$groupProfessorItem->description"
-        :groupCode="$groupProfessorItem->code"
-        :isActive="$groupProfessorItem->is_active"
-        :totalGroupPoints="$totalGroupPoints"
-        :professorName="$groupProfessorOwner"
-        :numberOfStudents="$groupStudentCount"
-    />
-    <div class="block px-24 py-4 bg-yellow-400 rounded-md shadow-sm mx-auto">
-        {{-- <form class="text-md leading-relaxed font-semibold text-gray-00">
-            <label>GROUP ID: {{ $groupProfessorItem->id }}</label> <br>
-            <label>GROUP NAME: {{ $groupProfessorItem->name }}</label> <br>
-            <label>GROUP DESC: {{ $groupProfessorItem->description }}</label> <br>
-            <label>GROUP CODE: {{ $groupProfessorItem->code }}</label> <br>
-            <label>ACTIVE: @if ($groupProfessorItem->is_active === '1')
-                    YES
-                @else
-                    NO
-                @endif
-            </label>
-            <br>
-            {{ $totalGroupPoints }}
-            <br>
-            TOTAL ACCUMULATED QUIZ POINTS
-        </form> --}}
 
-        <div>
-            COLLECTIVE ACHIEVEMENTS
-            <div class="flex justify-center ">
-                {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
-                {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
-                {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
+    {{-- GROUP DETAILS SUMMARY --}}
+    <x-group-detail-item :groupID="$groupProfessorItem->id" :groupName="$groupProfessorItem->name"
+        :groupDescription="$groupProfessorItem->description" :groupCode="$groupProfessorItem->code"
+        :isActive="$groupProfessorItem->is_active" :totalGroupPoints="$totalGroupPoints"
+        :professorName="$groupProfessorOwner" :numberOfStudents="$groupStudentCount" />
 
-                {{-- 1 STATUS --}}
-                @if ($totalGroupPoints > 50)
-                    <x-group-goal-item :achieved="true" goalName="Iron Status" goalDescription="Achieve more than 50 points." />
-                @else
-                    <x-group-goal-item :achieved="false" goalName="Iron Status" goalDescription="Achieve more than 50 points." />
-                @endif
+    {{-- DISPLAYS THE GROUP'S COLLECTIVE ACHIEVEMENTS --}}
+    <div class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
+        <label class="font-display font-bold text-3xl mb-2">
+            Collective Achievements
+        </label>
+    </div>
+    <div class="flex flex-wrap gap-4 justify-center">
+        {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
+        {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
+        {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
 
-                {{-- 2 STATUS --}}
-                @if ($totalGroupPoints > 100)
-                    <x-group-goal-item :achieved="true" goalName="Bronze Status" goalDescription="Achieve more than 100 points." />
-                @else
-                    <x-group-goal-item :achieved="false" goalName="Bronze Status" goalDescription="Achieve more than 100 points." />
-                @endif
+        {{-- 1 STATUS --}}
+        @if ($totalGroupPoints >= 50)
+            {{-- ACHIEVED STATUS --}}
+            <x-group-goal-item :goal="50" :totalGroupPoints="$totalGroupPoints" :achieved="true" goalName="Iron Status"
+                goalDescription="Achieve more than 50 points." />
+        @else
+            {{-- UNACHIEVED STATUS --}}
+            <x-group-goal-item :goal="50" :totalGroupPoints="$totalGroupPoints" :achieved="false" goalName="Iron Status"
+                goalDescription="Achieve more than 50 points." />
+        @endif
 
-                {{-- 3 STATUS --}}
-                @if ($totalGroupPoints > 150)
-                    <x-group-goal-item :achieved="true" goalName="Silver Status" goalDescription="Achieve more than 150 points." />
-                @else
-                    <x-group-goal-item :achieved="false" goalName="Silver Status" goalDescription="Achieve more than 150 points." />
-                @endif
+        {{-- 2 STATUS --}}
+        @if ($totalGroupPoints >= 100)
+            {{-- ACHIEVED STATUS --}}
+            <x-group-goal-item :goal="100" :totalGroupPoints="$totalGroupPoints" :achieved="true"
+                goalName="Bronze Status" goalDescription="Achieve more than 100 points." />
+        @else
+            {{-- UNACHIEVED STATUS --}}
+            <x-group-goal-item :goal="100" :totalGroupPoints="$totalGroupPoints" :achieved="false"
+                goalName="Bronze Status" goalDescription="Achieve more than 100 points." />
+        @endif
 
-                {{-- 4 STATUS --}}
-                @if ($totalGroupPoints > 200)
-                    <x-group-goal-item :achieved="true" goalName="Gold Status" goalDescription="Achieve more than 200 points." />
-                @else
-                    <x-group-goal-item :achieved="false" goalName="Gold Status" goalDescription="Achieve more than 200 points." />
-                @endif
+        {{-- 3 STATUS --}}
+        @if ($totalGroupPoints >= 150)
+            {{-- ACHIEVED STATUS --}}
+            <x-group-goal-item :goal="150" :totalGroupPoints="$totalGroupPoints" :achieved="true"
+                goalName="Silver Status" goalDescription="Achieve more than 150 points." />
+        @else
+            {{-- UNACHIEVED STATUS --}}
+            <x-group-goal-item :goal="150" :totalGroupPoints="$totalGroupPoints" :achieved="false"
+                goalName="Silver Status" goalDescription="Achieve more than 150 points." />
+        @endif
 
-                {{-- 5 STATUS --}}
-                @if ($totalGroupPoints > 400)
-                    <x-group-goal-item :achieved="true" goalName="Platinum Status" goalDescription="Achieve more than 400 points." />
-                @else
-                    <x-group-goal-item :achieved="false" goalName="Platinum Status" goalDescription="Achieve more than 400 points." />
-                @endif
+        {{-- 4 STATUS --}}
+        @if ($totalGroupPoints >= 200)
+            {{-- ACHIEVED STATUS --}}
+            <x-group-goal-item :goal="200" :totalGroupPoints="$totalGroupPoints" :achieved="true" goalName="Gold Status"
+                goalDescription="Achieve more than 200 points." />
+        @else
+            {{-- UNACHIEVED STATUS --}}
+            <x-group-goal-item :goal="200" :totalGroupPoints="$totalGroupPoints" :achieved="false"
+                goalName="Gold Status" goalDescription="Achieve more than 200 points." />
+        @endif
 
-                {{-- 6 STATUS --}}
-                @if ($totalGroupPoints > 500)
-                    <x-group-goal-item :achieved="true" goalName="Diamond Status" goalDescription="Achieve more than 500 points." />
-                @else
-                    <x-group-goal-item :achieved="false" goalName="Diamond Status" goalDescription="Achieve more than 500 points." />
-                @endif
-            </div>
-        </div>
+        {{-- 5 STATUS --}}
+        @if ($totalGroupPoints >= 400)
+            {{-- ACHIEVED STATUS --}}
+            <x-group-goal-item :goal="400" :totalGroupPoints="$totalGroupPoints" :achieved="true"
+                goalName="Platinum Status" goalDescription="Achieve more than 400 points." />
+        @else
+            {{-- UNACHIEVED STATUS --}}
+            <x-group-goal-item :goal="400" :totalGroupPoints="$totalGroupPoints" :achieved="false"
+                goalName="Platinum Status" goalDescription="Achieve more than 400 points." />
+        @endif
+
+        {{-- 6 STATUS --}}
+        @if ($totalGroupPoints >= 500)
+            {{-- ACHIEVED STATUS --}}
+            <x-group-goal-item :goal="500" :totalGroupPoints="$totalGroupPoints" :achieved="true"
+                goalName="Diamond Status" goalDescription="Achieve more than 500 points." />
+        @else
+            {{-- UNACHIEVED STATUS --}}
+            <x-group-goal-item :goal="500" :totalGroupPoints="$totalGroupPoints" :achieved="false"
+                goalName="Diamond Status" goalDescription="Achieve more than 500 points." />
+        @endif
     </div>
 
-
+    {{-- INTERFACE CHANGE BASED ON user_type --}}
     @if ($userType == 'student')
-        STUDENT INTERFACE
-        <br>
-        <br>
         {{-- QUIZZES ON THIS GROUP --}}
         {{-- QUIZZES ON THIS GROUP --}}
         {{-- QUIZZES ON THIS GROUP --}}
@@ -160,28 +169,16 @@
             @endforeach
         </div>
     @elseif ($userType == 'professor')
-        PROFESSOR INTERFACE
-        <br>
-        <br>
-
-
-        {{-- QUIZZES LIST --}}
-        {{-- QUIZZES LIST --}}
-        {{-- QUIZZES LIST --}}
-
-        <x-jet-button>
-            <a href="{{ route('addQuiz', ['id' => $groupProfessorItem->id]) }}">
-                {{ __('ADD QUIZ') }}
-            </a>
-        </x-jet-button>
+        {{-- DISPLAYS THE GROUP'S COLLECTIVE ACHIEVEMENTS --}}
+        <div class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
+            <label class="font-display font-bold text-3xl mb-2">
+                Quizzes in this Group
+            </label>
+        </div>
 
         {{-- QUIZZES ON THIS GROUP --}}
-        {{-- QUIZZES ON THIS GROUP --}}
-        {{-- QUIZZES ON THIS GROUP --}}
-        <div class="block p-10 bg-white rounded-md shadow-sm">
-            <label for="quizList"
-                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Quizzes
-                List</label>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            {{-- QUIZ LIST --}}
             <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
                 @foreach ($groupQuizzes as $groupQuiz)
                     <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
@@ -191,18 +188,24 @@
                         :userType="$userType" />
                 @endforeach
             </ul>
+
+            {{-- ADD QUIZ BUTTON --}}
+            <x-jet-button>
+                <a href="{{ route('addQuiz', ['id' => $groupProfessorItem->id]) }}">
+                    {{ __('ADD GROUP QUIZ') }}
+                </a>
+            </x-jet-button>
         </div>
 
-        <br>
-        <br>
+         {{-- STUDENT LIST TITLE --}}
+         <div class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
+            <label class="font-display font-bold text-3xl mb-2">
+                My Students
+            </label>
+        </div>
 
         {{-- STUDENT LIST --}}
-        {{-- STUDENT LIST --}}
-        {{-- STUDENT LIST --}}
-        <div class="block p-10 bg-white rounded-md shadow-sm">
-            <label for="studentList"
-                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Student
-                List</label>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($groupStudents as $groupStudent)
                 <div class="text-md leading-relaxed font-semibold text-gray-00 border-gray-500">
                     <label>STUDENT ID: {{ $groupStudent->user_id }}</label> <br>
@@ -218,10 +221,5 @@
             @endforeach
         </div>
     @elseif ($userType == 'admin')
-        ADMIN INTERFACE
-        <br>
-        <br>
-
     @endif
-
 </x-app-layout>

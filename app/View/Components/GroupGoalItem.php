@@ -9,12 +9,16 @@ class GroupGoalItem extends Component
     public $goalName;
     public $goalDescription;
     public $achieved;
+    public $totalGroupPoints;
+    public $goal;
 
-    public function __construct($goalName="", $goalDescription="", $achieved="")
+    public function __construct($goalName="", $goalDescription="", $achieved="", $totalGroupPoints="", $goal="")
     {
         $this->goalName = $goalName;
         $this->goalDescription = $goalDescription;
         $this->achieved = $achieved;
+        $this->totalGroupPoints = $totalGroupPoints;
+        $this->goal = $goal;
     }
 
     /**

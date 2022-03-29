@@ -14,22 +14,12 @@
                 <p>These are the available goals for you to achieve:</p>
             </div>
 
-            <div class="">
-                {{-- list all goals here --}}
-                <div class="flex flex-wrap gap-4 justify-center">
-                    @foreach ($goals as $goal)
-                        {{-- <div class="w-80 text-center bg-white rounded-md p-4 border border-bg-gray-300">
-                            <img src="{{ asset('assets/illustrations/goals-icon/move-up.png') }}"
-                                class="mx-auto w-16 h-16 mb-4" alt="">
-                            <b class="m-2 text-blue-600">{{ $goal->name }} </b>
-                            <p class="m-2 text-sm text-gray-600">{{ $goal->description }} </p>
-                            <b class="m-2 text-sm ">Requirement: {{ $goal->requirement }} </b>
-                            <br>
-                        </div> --}}
-                        <x-goal-item :goalID="$goal->id" :goalName="$goal->name" :goalDescription="$goal->description"
-                            :goalRequirement="$goal->requirement" />
-                    @endforeach
-                </div>
+            {{-- list all goals here --}}
+            <div class="flex flex-wrap gap-4 justify-center">
+                @foreach ($goals as $goal)
+                    <x-goal-item :goalID="$goal->id" :goalName="$goal->name" :goalDescription="$goal->description"
+                        :goalRequirement="$goal->requirement" />
+                @endforeach
             </div>
             <div class="py-12">
                 <p class=" font-display font-bold text-3xl mb-2"> Single quiz
