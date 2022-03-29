@@ -64,14 +64,24 @@
                     class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
                     <ul class="py-1" aria-labelledby="dropdownButton">
                         <li>
-                            <a href="#"
-                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
+                            {{-- Edit button --}}
+                            <a href="{{ route('quizzes.edit', $id) }}"
+                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                {{ __('Edit') }}
+                            </a>
                         </li>
                         <li>
-                            <a href="#"
-                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Take</a>
+                            {{-- Take button --}}
+                            <form method="POST" action="{{ route('take', $id) }}">
+
+                                @csrf
+                                <input type="submit" value="Take"
+                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+
+                            </form>
                         </li>
                         <li>
+                            {{-- Delete button --}}
                             <a href="#"
                                 class="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
                         </li>
@@ -89,11 +99,11 @@
 
             {{-- TAKE BUTTON --}}
             {{-- <form method="POST" action="{{ route('take', $id) }}">
-                    <x-jet-button class="ml-4">
-                        @csrf
-                        <input class="font-semibold" type="submit" value="TAKE">
-                    </x-jet-button>
-                </form> --}}
+                <x-jet-button class="ml-4">
+                    @csrf
+                    <input class="font-semibold" type="submit" value="TAKE">
+                </x-jet-button>
+            </form> --}}
 
             {{-- DELETE BUTTON --}}
             {{-- <form method="POST" action="{{ route('quizzes.destroy', $id) }}">
