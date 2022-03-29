@@ -87,8 +87,8 @@
                 </a>
             </div>
         </div>
-        <hr class="my-2 border-slate-100/20 sm:mx-auto lg:my-4" />
-        <span class="block text-xs font-light text-gray-200 text-center">© 2022 <a href="#"
+        <hr class="my-2 border-slate-100/20 sm:mx-auto lg:my-2" />
+        <span class="block text-xs font-light text-gray-200 text-center my-4">© 2022 <a href="#"
                 class="hover:underline">Intelliflex</a>. All Rights Reserved.
         </span>
     </footer>
