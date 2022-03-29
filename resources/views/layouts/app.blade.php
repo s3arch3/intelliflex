@@ -43,13 +43,14 @@
             {{ $slot }}
         </main>
     </div>
-    <footer class="p-4 bg-blue-800 shadow md:px-6 md:py-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <a href="#" class="flex items-center mb-4 sm:mb-0">
+    <footer class="px-6 py-2 bg-blue-800 shadow">
+        <div class="sm:flex sm:items-center justify-center md:justify-between">
+            <a href="#" class="flex mb-4 sm:mb-0 justify-center md:justify-start">
                 <img src="{{ asset('/assets/illustrations/landing-page/logo-intelliflex-white.png') }}"
-                    class="h-16 mt-2" alt="">
+                    class="h-14 md:h-16" alt="">
             </a>
-            <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+            {{-- Social media icons --}}
+            <div class="flex justify-center space-x-6 sm:mt-0 px-4">
                 <a href="#" class="text-gray-200 hover:text-gray-900 dark:hover:text-white">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill-rule="evenodd"
@@ -86,8 +87,8 @@
                 </a>
             </div>
         </div>
-        <hr class="my-6 border-gray-100 sm:mx-auto lg:my-8" />
-        <span class="block text-sm text-gray-200 sm:text-center">© 2022 <a href="#"
+        <hr class="my-2 border-slate-100/20 sm:mx-auto lg:my-4" />
+        <span class="block text-xs font-light text-gray-200 text-center">© 2022 <a href="#"
                 class="hover:underline">Intelliflex</a>. All Rights Reserved.
         </span>
     </footer>
