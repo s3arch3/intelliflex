@@ -98,23 +98,27 @@
 
     {{-- INTERFACE CHANGE BASED ON user_type --}}
     @if ($userType == 'student')
+        {{-- QUIZZES TITLE --}}
+        <div class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
+            <label class="font-display font-bold text-3xl mb-2">
+                Quizzes on this Group
+            </label>
+        </div>
+
         {{-- QUIZZES ON THIS GROUP --}}
-        {{-- QUIZZES ON THIS GROUP --}}
-        {{-- QUIZZES ON THIS GROUP --}}
-        <div class="block p-10 bg-white rounded-md shadow-sm">
-            <label for="quizList"
-                class="text-xl font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Quizzes
-                List</label>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            {{-- QUIZ LIST --}}
             <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
                 @foreach ($groupQuizzes as $groupQuiz)
                     <div class="border border-bg-gray-200 rounded-sm">
+                        {{-- LIST QUIZ --}}
                         <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description"
                             :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active"
                             :id="$groupQuiz->quiz->id" :questionsCount="$groupQuiz->quiz->questions->count()"
                             :groupQuizID="$groupQuiz->id" :groupProfessorID="$groupQuiz->group_professor_id"
                             :userType="$userType" />
 
-                        {{-- LOCAL GOALS COUNTER --}}
+                        {{-- LIST GOALS UNDER THAT QUIZ --}}
                         <div
                             class="flex flex-wrap justify-center w-auto  text-center bg-white border border-bg-gray-200 rounded-md p-4">
                             @foreach ($quizGoals as $quizGoal)
@@ -133,38 +137,20 @@
             </ul>
         </div>
 
+        {{-- CLASSMATE LIST TITLE --}}
+        <div class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
+            <label class="font-display font-bold text-3xl mb-2">
+                My Classmates
+            </label>
+        </div>
 
         {{-- CLASSMATES LIST --}}
-        {{-- CLASSMATES LIST --}}
-        {{-- CLASSMATES LIST --}}
-        <div class="block p-10 bg-white rounded-md shadow-sm">
-            <label for="studentList" class="text-xl font-medium text-gray-900 after:ml-0.5 after:text-red-500">My
-                Groupmates</label>
-            <br>
-
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($groupStudents as $groupStudent)
-                <div class="text-md leading-relaxed font-semibold text-gray-00 border-gray-500">
-                    {{-- <label>CLASSMATE ID: {{ $groupStudent->user_id }}</label> <br> --}}
-                    @if ($userID == $groupStudent->user_id)
-                        <label>{{ $groupStudent->user->name }} (YOU)</label>
-                        <?php
-                        $totalQuizPoints = App\Models\QuizLog::where('group_professor_id', $groupProfessorItem->id)
-                            ->where('user_id', Auth::user()->id)
-                            ->sum('score');
-                        ?>
-                        Total Contributed Points:
-                        [{{ $totalQuizPoints }}]
-                    @else
-                        <label>CLASSMATE NAME: {{ $groupStudent->user->name }}</label><br>
-                        <?php
-                        $totalQuizPoints = App\Models\QuizLog::where('group_professor_id', $groupProfessorItem->id)
-                            ->where('user_id', $groupStudent->user->id)
-                            ->sum('score');
-                        ?>
-                        Total Contributed Points:
-                        [{{ $totalQuizPoints }}]
-                    @endif
-                </div>
+                {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
+                <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id"
+                    :studentIDinGroup="$groupStudent->id" :studentIDinUser="$groupStudent->user_id"
+                    :name="$groupStudent->user->name" :userType="$userType" />
                 <br>
             @endforeach
         </div>
@@ -197,8 +183,8 @@
             </x-jet-button>
         </div>
 
-         {{-- STUDENT LIST TITLE --}}
-         <div class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
+        {{-- STUDENT LIST TITLE --}}
+        <div class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
             <label class="font-display font-bold text-3xl mb-2">
                 My Students
             </label>
@@ -207,17 +193,10 @@
         {{-- STUDENT LIST --}}
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($groupStudents as $groupStudent)
-                <div class="text-md leading-relaxed font-semibold text-gray-00 border-gray-500">
-                    <label>STUDENT ID: {{ $groupStudent->user_id }}</label> <br>
-                    <label>STUDENT NAME: {{ $groupStudent->user->name }}</label> <br>
-                </div>
-                <form method="POST" action="{{ route('removeStudent', ['groupStudentID' => $groupStudent->id]) }}">
-                    @csrf
-                    <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
-                        <input class="font-semibold" type="submit" value="REMOVE STUDENT">
-                    </x-jet-button>
-                </form>
-                <br>
+                {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
+                <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id"
+                    :studentIDinGroup="$groupStudent->id" :studentIDinUser="$groupStudent->user_id"
+                    :name="$groupStudent->user->name" :userType="$userType" />
             @endforeach
         </div>
     @elseif ($userType == 'admin')

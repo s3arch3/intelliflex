@@ -3,17 +3,38 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\QuizLog;
 
 class GroupStudentItem extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $myID;
+    public $groupProfessorID;
+    public $studentIDinGroup;
+    public $studentIDinUser;
+    public $name;
+    public $totalQuizPoints;
+    public $userType;
+
+    public function __construct(
+        $myID = "",
+        $groupProfessorID = "",
+        $studentIDinGroup = "",
+        $studentIDinUser = "",
+        $name = "",
+        $totalQuizPoints = "",
+        $userType = "",
+    )
     {
-        //
+        $this->myID = $myID;
+        $this->groupProfessorID = $groupProfessorID;
+        $this->studentIDinGroup = $studentIDinGroup;
+        $this->studentIDinUser = $studentIDinUser;
+        $this->name = $name;
+        $this->totalQuizPoints = $totalQuizPoints;
+        $this->userType = $userType;
+        $this->totalQuizPoints = QuizLog::where('group_professor_id', $groupProfessorID)
+        ->where('user_id', $studentIDinUser)
+        ->sum('score');
     }
 
     /**
