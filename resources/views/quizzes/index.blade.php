@@ -4,17 +4,17 @@
             {{ __('Quizzes') }}
         </h2>
     </x-slot>
-    <div class="py-12">
+    <div class="py-12 px-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-6">
                 <p class="font-display font-bold text-3xl mb-2"> List of all your created
-                    <span class="text-blue-600"> quizzes</span>.
+                    <span class="text-blue-600"> quizzes.</span>
                 </p>
-                <p>Manage all your quizzes here.</p>
+                <p class="text-sm">Manage all your quizzes here.</p>
             </div>
 
             {{-- QUIZZES LIST --}}
-            <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
+            <ul role="list" class="bg-white divide-y divide-slate-100 rounded-md shadow-sm">
                 @foreach ($quizzes as $quiz)
                     <x-quiz-list-item :name="$quiz->name" :description="$quiz->description"
                         :timesCompleted="$quiz->times_completed" :isActive="$quiz->is_active" :id="$quiz->id"

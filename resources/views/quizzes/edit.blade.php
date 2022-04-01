@@ -4,20 +4,17 @@
             {{ __('Edit Quiz') }}
         </h2>
     </x-slot>
-
-    {{-- QUIZ DETAIL ITEM --}}
-    <x-quiz-detail-item :quizName="$quizItem->name" :quizDescription="$quizItem->description"
-        :isActive="$quizItem->is_active" />
-
-    <div class="">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{-- BACK TO QUIZZES LIST --}}
-            <x-jet-button>
-                <a href="{{ route('quizzes.index') }}">
-                    GO BACK
-                </a>
-            </x-jet-button>
-
+    <div class="py-4 px-4">
+        <x-jet-button>
+            <a href="{{ route('quizzes.index') }}">
+                GO BACK
+            </a>
+        </x-jet-button>
+        {{-- QUIZ DETAIL ITEM --}}
+        <x-quiz-detail-item :quizName="$quizItem->name" :quizDescription="$quizItem->description"
+            :isActive="$quizItem->is_active" />
+        {{-- BACK TO QUIZZES LIST --}}
+        <div class="py-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
             {{-- FORM FOR QUIZ EDITION --}}
             <div class="block p-10 bg-white rounded-md shadow-sm">
                 <form method="POST" action="{{ route('quizzes.update', $quizItem->id) }}">
@@ -42,7 +39,6 @@
                             border-gray-300 focus:ring-blue-500 focus:border-blue-500">
 
                     </div>
-
                     {{-- QUIZ ACTIVE CHECKBOX --}}
                     <div class="flex items-center mb-4">
                         <input id="is_active" name="quiz[is_active]" type="checkbox"
@@ -50,7 +46,6 @@
                             @if ($quizItem->is_active === '1') checked="checked" @endif>
                         <label for="is_active" class="ml-3 text-sm font-medium text-gray-900">Set Active Status</label>
                     </div>
-
                     {{-- UPLOAD ICON BUTTON --}}
                     {{-- <div class=" flex items-center mb-4">
                         <div> <svg xmlns=" http://www.w3.org/2000/svg"
