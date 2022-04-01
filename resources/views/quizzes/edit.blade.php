@@ -39,8 +39,6 @@
                             border-gray-300 focus:ring-blue-500 focus:border-blue-500">
 
                     </div>
-
-
                     {{-- QUIZ ACTIVE CHECKBOX --}}
                     <div class="flex items-center mb-4">
                         <input id="is_active" name="quiz[is_active]" type="checkbox"
@@ -48,7 +46,6 @@
                             @if ($quizItem->is_active === '1') checked="checked" @endif>
                         <label for="is_active" class="ml-3 text-sm font-medium text-gray-900">Set Active Status</label>
                     </div>
-
                     {{-- UPLOAD ICON BUTTON --}}
                     {{-- <div class=" flex items-center mb-4">
                         <div> <svg xmlns=" http://www.w3.org/2000/svg"

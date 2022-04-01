@@ -788,6 +788,9 @@ input[type=file]::file-selector-button:hover{
 .h-14{
   height: 3.5rem;
 }
+.h-40{
+  height: 10rem;
+}
 .min-h-screen{
   min-height: 100vh;
 }
