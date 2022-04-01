@@ -196,7 +196,7 @@
                 {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
                 <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id"
                     :studentIDinGroup="$groupStudent->id" :studentIDinUser="$groupStudent->user_id"
-                    :name="$groupStudent->user->name" :userType="$userType" />
+                    :name="$groupStudent->user->name" :userType="$userType" :quizGoals="$quizGoals"/>
             @endforeach
         </div>
     @elseif ($userType == 'admin')

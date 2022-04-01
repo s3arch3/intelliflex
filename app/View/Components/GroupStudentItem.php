@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 use App\Models\QuizLog;
+use App\Models\Goal;
 
 class GroupStudentItem extends Component
 {
@@ -14,6 +15,8 @@ class GroupStudentItem extends Component
     public $name;
     public $totalQuizPoints;
     public $userType;
+    public $quizGoals;
+    public $goals;
 
     public function __construct(
         $myID = "",
@@ -23,6 +26,8 @@ class GroupStudentItem extends Component
         $name = "",
         $totalQuizPoints = "",
         $userType = "",
+        $quizGoals= "",
+        $goals= "",
     )
     {
         $this->myID = $myID;
@@ -32,9 +37,11 @@ class GroupStudentItem extends Component
         $this->name = $name;
         $this->totalQuizPoints = $totalQuizPoints;
         $this->userType = $userType;
+        $this->quizGoals = $quizGoals;
         $this->totalQuizPoints = QuizLog::where('group_professor_id', $groupProfessorID)
         ->where('user_id', $studentIDinUser)
         ->sum('score');
+        $this->goals = Goal::all();
     }
 
     /**

@@ -38,5 +38,23 @@
             @elseif ($userType == 'student')
             @endif
         </div>
+
+        {{-- STUDENT GOALS DISPLAY --}}
+        <div>
+            @if ($userType == 'professor')
+                {{-- LIST ALL GOALS UNDER THAT GROUP AND IN ALL QUIZZES --}}
+                <div
+                    class="flex flex-wrap justify-center w-auto  text-center bg-white border border-bg-gray-200 rounded-md p-4">
+                    @foreach ($quizGoals as $quizGoal)
+                        @if ($quizGoal->is_achieved == '1' && $quizGoal->user_id == $studentIDinUser)
+                            <div
+                                class="w-fit flex flex-wrap justify-start mx-2 px-1 border border-bg-gray-200 rounded-sm">
+                                {{ $goals->where('id', $quizGoal->goal_id)->first()->name }}
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            @endif
+        </div>
     </div>
 </div>
