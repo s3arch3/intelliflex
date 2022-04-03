@@ -589,6 +589,9 @@ input[type=file]::file-selector-button:hover{
 .top-0{
   top: 0px;
 }
+.left-9{
+  left: 2.25rem;
+}
 .z-0{
   z-index: 0;
 }
@@ -736,8 +739,11 @@ input[type=file]::file-selector-button:hover{
 .mb-10{
   margin-bottom: 2.5rem;
 }
-.mb-0{
-  margin-bottom: 0px;
+.mr-10{
+  margin-right: 2.5rem;
+}
+.ml-10{
+  margin-left: 2.5rem;
 }
 .block{
   display: block;
@@ -1279,10 +1285,6 @@ input[type=file]::file-selector-button:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(251 213 213 / var(--tw-bg-opacity));
 }
-.bg-orange-50{
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 248 241 / var(--tw-bg-opacity));
-}
 .bg-opacity-25{
   --tw-bg-opacity: 0.25;
 }
@@ -1322,9 +1324,6 @@ input[type=file]::file-selector-button:hover{
 }
 .p-8{
   padding: 2rem;
-}
-.p-3{
-  padding: 0.75rem;
 }
 .px-4{
   padding-left: 1rem;
