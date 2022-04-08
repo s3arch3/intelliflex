@@ -3,33 +3,33 @@
         {{-- QUESTION AND EXPLANATION SECTION --}}
         <div class="items-center space-x-2 mt-4">
             {{-- QUESTION NUMBER AND QUESTION --}}
-            <div class="px-4 hover:underline font-medium text-gray-700">
-                <a href="{{ route('questions.edit', $id) }}">
-                    {{-- ACTIVE/INACTIVE INDICATOR --}}
-                    @if ($isActive == 1)
+            <div class="px-4 font-medium text-gray-700">
+                {{-- ACTIVE/INACTIVE INDICATOR --}}
+                @if ($isActive == 1)
                     <span
                         class="bg-emerald-50 border border-emerald-300 px-4 rounded-full text-emerald-500 font-semibold text-sm mt-2 mr-2">
                         Active
                     </span>
-                    @elseif ($isActive == 0)
-                        <span
-                            class="bg-amber-50 border border-amber-300 px-4 rounded-full text-amber-500 font-semibold text-sm mt-2 mr-2">
-                            Inactive
-                        </span>
-                    @endif
-
-                    {{-- QUESTION#: --}}
-                    <span class="font-bold text-blue-800">
-                        {{ 'Question #' . $index . ': ' }}
+                @elseif ($isActive == 0)
+                    <span
+                        class="bg-amber-50 border border-amber-300 px-4 rounded-full text-amber-500 font-semibold text-sm mt-2 mr-2">
+                        Inactive
                     </span>
+                @endif
+                <div class="hover:underline my-4 text-base">
+                    <a href="{{ route('questions.edit', $id) }}">
+                        {{-- QUESTION#: --}}
+                        <span class="font-bold text-blue-800">
+                            {{ 'Question #' . $index . ': ' }}
+                        </span>
 
-                    {{-- THE ACTUAL QUESTION --}}
-                    {{ $question }}
-                </a>
+                        {{-- THE ACTUAL QUESTION --}}
+                        {{ $question }}
+                    </a>
+                </div>
             </div>
-
             {{-- QUESTION EXPLANATION --}}
-            @if ($explanation != NULL)
+            @if ($explanation != null)
                 <p class="px-2 text-gray-500 truncate dark:text-gray-400">
                     <span class="font-bold text-blue-800">
                         {{ 'Explanation: ' }}
@@ -42,7 +42,7 @@
         </div>
 
         {{-- ANSWERS LIST --}}
-        <div class="bg-white text-gray-700 rounded-b-md text-sm p-4">
+        <div class="bg-white text-gray-700 rounded-b-md text-base px-4 ">
             @foreach ($answers as $answer)
                 <p
                     @if ($answer->is_checked == '1') class="border border-emerald-400 bg-emerald-50 font-semibold p-2 my-2 text-emerald-900" @endif>
@@ -74,7 +74,7 @@
                     <br>
 
                     {{-- THIS IS TO SHOW EXPLANATION SECTION TO THE CORRECT ANSWER --}}
-                    @if (($answer->is_checked == '1') && ($explanation != NULL))
+                    @if ($answer->is_checked == '1' && $explanation != null)
                         Explanation: {{ $answer->explanation }}
                     @else
                         {{-- NO EXPLANAITION --}}
@@ -84,7 +84,7 @@
         </div>
 
         {{-- CONTROL BUTTONS --}}
-        <div class="flex items-center text-base font-semibold text-gray-900">
+        <div class="flex justify-end items-center text-base font-semibold text-gray-900 px-4">
             {{-- EDIT BUTTON --}}
             <x-jet-button class="ml-4">
                 <a href="{{ route('questions.edit', $id) }}">
