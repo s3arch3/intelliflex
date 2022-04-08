@@ -6,6 +6,7 @@
     </x-slot>
     <div class="py-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="py-4 px-4 lg:px-0">
+            {{-- BACK TO THAT QUIZ ITEM DETAILS --}}
             <x-jet-button>
                 <a href="{{ route('quizzes.index') }}">
                     GO BACK
@@ -37,12 +38,11 @@
                             value="{{ $questionItem->explanation }}"
                             class="mb-4 mt-2 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     </div>
-
                     <input id=" is_active" name="question[is_active]" type="checkbox"
                         class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300"
                         @if ($questionItem->is_active === '1') checked="checked" @endif>
                     <label for="is_active" class=" ml-2 text-sm font-medium text-gray-900">Set Active
-                        Status</label></label>
+                        Status</label>
             </div>
             <div class="py-8">
                 <p class="font-display font-bold text-2xl mb-2">Choices
@@ -85,7 +85,7 @@
                             placeholder="explanation for letter C" value="{{ $answers[2]['explanation'] }}"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                     </div>
-                    <div>
+                    <div class="mb-4">
                         <input type="radio" id="answerD" name="question[is_selected]" value="D"
                             checked="{{ $questionItem->is_checked }}">
                         <label for="" class="font-display text-md font-bold text-blue-800">D
@@ -100,7 +100,6 @@
                     <x-jet-button>
                         <input type="submit" value="SAVE" class="text-md font-medium">
                     </x-jet-button>
-                    </form>
                 </div>
             </div>
         </div>
