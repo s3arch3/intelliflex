@@ -1,4 +1,5 @@
 {{-- THIS CODE IS A TEMPLATE FOR ALL THE QUIZZES CREATED --}}
+{{-- FLOWBITE JAVASCRIPT FOR DROPDOWN MENU --}}
 <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 <div class="p-4 mb-2">
     <div class="flow-root">
@@ -47,9 +48,9 @@
                     times.
                 </div>
             </div>
-
             {{-- QUIZ CONTROLS: EDIT, TAKE, DELETE --}}
-            <!-- Dropdown menu for mobile -->
+            {{-- NOT YET DONE NEEDS SOME FIX --}}
+            <!-- DROPDOWN MENU-->
             <div class="">
                 <button id="dropdownButton" data-dropdown-toggle="dropdown"
                     class="sm:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4  focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
@@ -73,30 +74,32 @@
                         <li>
                             {{-- Take button --}}
                             <form method="POST" action="{{ route('take', $id) }}">
-
                                 @csrf
                                 <input type="submit" value="Take"
-                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-
+                                    class="block py-2 w-44 text-left px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                             </form>
                         </li>
                         <li>
                             {{-- Delete button --}}
-                            <a href="#"
-                                class="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
+                            <form method="POST" action="{{ route('quizzes.destroy', $id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <input
+                                    class="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100
+                                    dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                                    type="submit" value="Delete">
+                            </form>
                         </li>
                     </ul>
                 </div>
             </div>
-
             {{-- <div class="relative inline-flex text-base font-semibold text-gray-900 "> --}}
             {{-- EDIT BUTTON --}}
             {{-- <x-jet-button class="ml-4">
-                    <a href="{{ route('quizzes.edit', $id) }}">
-                        {{ __('Edit') }}
-                    </a>
-                </x-jet-button> --}}
-
+                <a href="{{ route('quizzes.edit', $id) }}">
+                    {{ __('Edit') }}
+                </a>
+            </x-jet-button> --}}
             {{-- TAKE BUTTON --}}
             {{-- <form method="POST" action="{{ route('take', $id) }}">
                 <x-jet-button class="ml-4">

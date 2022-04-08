@@ -1,4 +1,4 @@
-<div class="mx-auto mt-4 block px-4 py-4 bg-white rounded-md leading-relaxed text-center">
+<div class="mx-auto my-2 block px-4 py-4 bg-white rounded-md leading-relaxed text-center">
     {{-- QUIZ ID --}}
     {{-- <label>QUIZ ID: {{ $quizItem->id }}</label>
     <br> --}}
