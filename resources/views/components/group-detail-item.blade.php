@@ -4,7 +4,7 @@
     <br> --}}
 
     {{-- GROUP NAME --}}
-    <p class="font-display font-bold text-3xl">
+    <p class="font-display font-bold text-3xl mb-2">
         {{ $groupName }}
     </p>
 

@@ -6,7 +6,7 @@
         <div class="flex flex-grow justify-between space-x-2">
             {{-- QUIZ DEFAULT LOGO --}}
             <div class="flex-shrink-0">
-                <img src="{{ asset('assets/illustrations/home/quiz-count.png') }}" class="mb-2 mx-auto w-10" alt="">
+                <img src="{{ asset('assets/illustrations/home/quiz-count.png') }}" class="w-12 rounded-full" alt="">
             </div>
 
             {{-- QUIZ MAIN DETAILS --}}

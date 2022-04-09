@@ -22,7 +22,7 @@
                 Collective Achievements
             </p>
         </div>
-        <div class="flex flex-wrap gap-4 justify-center">
+        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
             {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
             {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
             {{-- STATIC PARAMETERS HAVE NO COLON IN THEIR NAMES --}}
@@ -153,12 +153,9 @@
             </div>
         @elseif ($userType == 'professor')
             {{-- DISPLAYS THE GROUP'S COLLECTIVE ACHIEVEMENTS --}}
-            <div
-                class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
-                <label class="font-display font-bold text-3xl mb-2">
-                    Quizzes in this Group
-                </label>
-            </div>
+            <p class="font-semibold text-xl mt-8 mb-4 sm:text-left lg:text-left md:text-left text-center">
+                Quizzes in this Group
+            </p>
 
             {{-- QUIZZES ON THIS GROUP --}}
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -172,11 +169,13 @@
                 </ul>
 
                 {{-- ADD QUIZ BUTTON --}}
-                <x-jet-button>
-                    <a href="{{ route('addQuiz', ['id' => $groupProfessorItem->id]) }}">
-                        {{ __('ADD GROUP QUIZ') }}
-                    </a>
-                </x-jet-button>
+                <div class="flex justify-end px-4">
+                    <x-jet-button>
+                        <a href="{{ route('addQuiz', ['id' => $groupProfessorItem->id]) }}">
+                            {{ __('ADD GROUP QUIZ') }}
+                        </a>
+                    </x-jet-button>
+                </div>
             </div>
 
             {{-- STUDENT LIST TITLE --}}
