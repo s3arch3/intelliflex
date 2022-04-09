@@ -44,7 +44,7 @@
             @if ($userType == 'professor')
                 {{-- LIST ALL GOALS UNDER THAT GROUP AND IN ALL QUIZZES --}}
                 <div
-                    class="flex flex-wrap justify-center w-auto  text-center bg-white border border-bg-gray-200 rounded-md p-4">
+                    class="flex flex-wrap justify-center w-auto text-center bg-white border border-bg-gray-200 rounded-md p-4 mt-4">
                     @foreach ($quizGoals as $quizGoal)
                         @if ($quizGoal->is_achieved == '1' && $quizGoal->user_id == $studentIDinUser)
                             <div

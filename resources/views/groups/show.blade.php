@@ -11,7 +11,7 @@
             @endif
         </h2>
     </x-slot>
-    <div class="container mx-auto py-4 px-4">
+    <div class="container mx-auto pt-4 pb-8 px-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             {{-- GROUP DETAILS SUMMARY --}}
             <x-group-detail-item :groupID="$groupProfessorItem->id" :groupName="$groupProfessorItem->name" :groupDescription="$groupProfessorItem->description" :groupCode="$groupProfessorItem->code"
@@ -143,7 +143,7 @@
             </div>
 
             {{-- CLASSMATES LIST --}}
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div>
                 @foreach ($groupStudents as $groupStudent)
                     {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
                     <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id" :studentIDinGroup="$groupStudent->id" :studentIDinUser="$groupStudent->user_id"
@@ -158,7 +158,7 @@
             </p>
 
             {{-- QUIZZES ON THIS GROUP --}}
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div>
                 {{-- QUIZ LIST --}}
                 <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
                     @foreach ($groupQuizzes as $groupQuiz)
@@ -177,17 +177,13 @@
                     </x-jet-button>
                 </div>
             </div>
-
             {{-- STUDENT LIST TITLE --}}
-            <div
-                class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
-                <label class="font-display font-bold text-3xl mb-2">
-                    My Students
-                </label>
-            </div>
+            <p class="font-semibold text-xl mt-8 mb-4 sm:text-left lg:text-left md:text-left text-center">
+                My Students
+            </p>
 
             {{-- STUDENT LIST --}}
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div>
                 @foreach ($groupStudents as $groupStudent)
                     {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
                     <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id" :studentIDinGroup="$groupStudent->id" :studentIDinUser="$groupStudent->user_id"
