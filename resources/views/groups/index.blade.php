@@ -12,7 +12,7 @@
         {{-- <br>
         <br> --}}
         {{-- JOIN CLASS FEATURE FOR STUDENT ONLY --}}
-        <div class="py-12">
+        <div class="py-4 px-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
                 <div class="block p-10 bg-white rounded-md shadow-sm">
@@ -55,13 +55,10 @@
 
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
+                        <ul role="list" class="bg-white divide-y divide-slate-100 rounded-md shadow-sm">
                             @foreach ($groupStudents as $groupStudent)
-                                <x-group-list-item userType="student" :name="$groupStudent->groupProfessor->name"
-                                    :description="$groupStudent->groupProfessor->description"
-                                    :isActive="$groupStudent->groupProfessor->is_active"
-                                    :groupProfessorID="$groupStudent->groupProfessor->id"
-                                    :groupStudentID="$groupStudent->id" :code="$groupStudent->groupProfessor->code" />
+                                <x-group-list-item userType="student" :name="$groupStudent->groupProfessor->name" :description="$groupStudent->groupProfessor->description"
+                                    :isActive="$groupStudent->groupProfessor->is_active" :groupProfessorID="$groupStudent->groupProfessor->id" :groupStudentID="$groupStudent->id" :code="$groupStudent->groupProfessor->code" />
                             @endforeach
                         </ul>
                     </div>
@@ -74,29 +71,26 @@
         {{-- PROFESSOR INTERFACE --}}
         {{-- PROFESSOR INTERFACE --}}
         {{-- LIST ALL GROUPS THAT PROFESSOR CURRENTLY OWN --}}
-        <div class="py-12">
+        <div class="pt-8 px-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-                <div class="mb-6">
-                    <p class=" font-display font-bold text-3xl mb-2"> List of all your created
-                        <span class="text-blue-600"> groups</span>.
-                    </p>
-                    <p>Manage all your groups here.</p>
-                </div>
-
-                <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
+                <p class=" font-display font-bold text-3xl mb-4"> List of all your created
+                    <span class="text-blue-600"> groups</span>.
+                </p>
+                <p class="mb-4">Manage all your groups here.</p>
+                <ul role="list" class="bg-white divide-y divide-slate-100 rounded-md shadow-sm">
                     @foreach ($groupProfessors as $groupProfessor)
-                        <x-group-list-item userType="professor" :groupProfessorID="$groupProfessor->id"
-                            :name="$groupProfessor->name" :description="$groupProfessor->description"
+                        <x-group-list-item userType="professor" :groupProfessorID="$groupProfessor->id" :name="$groupProfessor->name" :description="$groupProfessor->description"
                             :isActive="$groupProfessor->is_active" :code="$groupProfessor->code" :groupStudentID="0" />
                     @endforeach
                 </ul>
                 {{-- CREATE A GROUP --}}
-                <x-jet-button>
-                    <a href="{{ route('groups.create') }}">
-                        {{ __('CREATE GROUP') }}
-                    </a>
-                </x-jet-button>
+                <div class="flex justify-end px-4">
+                    <x-jet-button>
+                        <a href="{{ route('groups.create') }}">
+                            {{ __('CREATE GROUP') }}
+                        </a>
+                    </x-jet-button>
+                </div>
             </div>
         </div>
     @elseif ($userType == 'admin')
@@ -104,8 +98,5 @@
         {{-- ADMIN INTERFACE --}}
         {{-- ADMIN INTERFACE --}}
         ADMIN INTERFACE
-        <br>
-        <br>
-
     @endif
 </x-app-layout>

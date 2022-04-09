@@ -13,7 +13,7 @@
             <div class="flex-1 px-4">
                 {{-- NAME OF THE QUIZ --}}
                 <div><a href={{ route('quizzes.show', $id) }}
-                        class="font-display hover:underline text-md font-bold text-blue-800  mr-2">
+                        class="font-display hover:underline text-md font-bold text-blue-800 mr-2">
                         {{ $name }}
                     </a>
                 </div>

@@ -1,35 +1,35 @@
 {{-- THIS CODE IS A TEMPLATE FOR ALL THE GROUPS CREATED --}}
-<div class="bg-white rounded-md border shadow-sm px-4 py-4 mb-2">
+<div class="p-4">
     <div class="flow-root">
-        <div class="flex justify-between items-center space-x-2">
+        <div class="flex flex-grow justify-between space-x-2">
             {{-- GROUP DEFAULT LOGO --}}
             <div class="flex-shrink-0">
-                <img class="w-12" src="{{ asset('assets/illustrations/group-logo.png') }}" alt="">
+                <img src="{{ asset('assets/illustrations/group-logo.png') }}" class="mb-2 mx-auto w-10" alt="">
             </div>
 
             {{-- QUIZ MAIN DETAILS --}}
             <div class="flex-1 px-4">
                 {{-- NAME OF THE GROUP --}}
-                <a href={{ route('groups.show', $groupProfessorID) }}
-                    class="font-display hover:underline text-md font-bold text-blue-800 truncate ">
-                    {{ $name }}
-                </a>
-
+                <div><a href={{ route('groups.show', $groupProfessorID) }}
+                        class="font-display hover:underline text-md font-bold text-blue-800 mr-2">
+                        {{ $name }}
+                    </a></div>
                 {{-- ACTIVE/INACTIVE INDICATOR --}}
-                @if ($isActive == 1)
-                    <span
-                        class="bg-emerald-50 border border-emerald-300 px-4 rounded-full text-emerald-500 font-semibold text-sm w-28 mt-2 mx-2">
-                        Active
-                    </span>
-                @elseif ($isActive == 0)
-                    <span
-                        class="bg-amber-50 border border-amber-300 px-4 rounded-full text-amber-500 font-semibold text-sm w-28 mt-2 mx-2">
-                        Inactive
-                    </span>
-                @endif
-
+                <div>
+                    @if ($isActive == 1)
+                        <span
+                            class="bg-emerald-50 border border-emerald-300 px-4 rounded-full text-emerald-500 font-semibold text-sm w-28 mt-2">
+                            Active
+                        </span>
+                    @elseif ($isActive == 0)
+                        <span
+                            class="bg-amber-50 border border-amber-300 px-4 rounded-full text-amber-500 font-semibold text-sm w-28 mt-2">
+                            Inactive
+                        </span>
+                    @endif
+                </div>
                 {{-- DESCRIPTION OF THE GROUP --}}
-                <p class=" text-sm text-gray-600">
+                <p class="text-sm text-gray-600">
                     {{ $description }}
                 </p>
 
@@ -56,37 +56,34 @@
                     </script>
                 @endif
             </div>
-
-            {{-- QUIZ CONTROLS: EDIT, TAKE, DELETE --}}
-            <div class="relative inline-flex text-base font-semibold text-gray-900 ">
-                {{-- CHANGE DISPLAY BUTTONS FOR STUDENT --}}
-                @if ($userType == 'student')
-                    {{-- STUDENT LEAVE GROUP BUTTON --}}
-                    <form method="POST" action="{{ route('removeStudent', ['groupStudentID' => $groupStudentID]) }}">
-                        @csrf
-                        <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
-                            <input class="font-semibold" type="submit" value="LEAVE GROUP">
-                        </x-jet-button>
-                    </form>
-                    {{-- CHANGE DISPLAY BUTTONS FOR PROFESSOR --}}
-                @elseif ($userType == 'professor')
-                    {{-- PROFESSOR EDIT GROUP BUTTON --}}
-                    <x-jet-button class="ml-4">
-                        <a href="{{ route('groups.edit', $groupProfessorID) }}">
-                            {{ __('Edit') }}
-                        </a>
+        </div>
+        {{-- QUIZ CONTROLS: EDIT, TAKE, DELETE --}}
+        <div class="flex justify-end items-center text-base font-semibold text-gray-900 px-4 py-2">
+            {{-- CHANGE DISPLAY BUTTONS FOR STUDENT --}}
+            @if ($userType == 'student')
+                {{-- STUDENT LEAVE GROUP BUTTON --}}
+                <form method="POST" action="{{ route('removeStudent', ['groupStudentID' => $groupStudentID]) }}">
+                    @csrf
+                    <x-jet-button class="ml-2 bg-red-500 hover:bg-red-300">
+                        <input class="font-semibold" type="submit" value="LEAVE GROUP">
                     </x-jet-button>
+                </form>
+                {{-- CHANGE DISPLAY BUTTONS FOR PROFESSOR --}}
+            @elseif ($userType == 'professor')
+                {{-- PROFESSOR EDIT GROUP BUTTON --}}
+                <a href="{{ route('groups.edit', $groupProfessorID) }}"
+                    class="font-semibold text-sm text-blue-800 px-4 hover:text-blue-300">
+                    {{ __('EDIT') }}
+                </a>
 
-                    {{-- PROFESSOR DELETE GROUP BUTTON --}}
-                    <form method="POST" action="{{ route('groups.destroy', $groupProfessorID) }}">
-                        @csrf
-                        @method('DELETE')
-                        <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
-                            <input class="font-semibold" type="submit" value="DELETE">
-                        </x-jet-button>
-                    </form>
-                @endif
-            </div>
+                {{-- PROFESSOR DELETE GROUP BUTTON --}}
+                <form method="POST" action="{{ route('groups.destroy', $groupProfessorID) }}"
+                    class="font-semibold text-sm text-red-500 px-4 hover:text-red-300">
+                    @csrf
+                    @method('DELETE')
+                    <input class="font-semibold" type="submit" value="DELETE">
+                </form>
+            @endif
         </div>
     </div>
 </div>
