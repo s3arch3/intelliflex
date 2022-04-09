@@ -32,19 +32,20 @@
                 <p class="text-sm text-gray-600">
                     {{ $description }}
                 </p>
-                <div class="flex-auto items-center lg:flex md:flex text-blue-800">
+                <div class="flex-auto items-center lg:flex md:flex text-blue-800 text-sm">
                     {{-- IF PROFESSOR, SHOW CODE FOR GROUP INVITATION --}}
                     @if ($userType == 'professor')
                         Invite students using the code:
-                        <div class="inline-flex items-center cursor-pointer" role="group">
+                        <div class="inline-flex items-center" role="group">
                             <span
-                                class="font-bold cursor-pointer hover:underline ml-0 lg:ml-2 md:ml-2 p-1 px-2 border-t border-b border-l border-sky-300 bg-sky-50 rounded-l-md text-sm"
-                                onclick="setClipboard('{{ $code }}')">
+                                class="font-bold ml-0 mt-1 lg:mt-0 md:mt-0 lg:ml-2 md:ml-2 p-1 px-2 border-t border-b border-l bg-sky-50 rounded-l-md text-sm">
                                 {{ $code }}
                             </span>
                             {{-- CLIPBOARD ICON --}}
-                            <div
-                                class="border border-blue-300 rounded-r-lg p-1 hover:bg-blue-600 hover:text-white bg-sky-50">
+                            <div class="
+
+                                border bg-sky-50 rounded-r-lg mt-1 lg:mt-0 md:mt-0 p-1 hover:bg-blue-600 hover:text-white cursor-pointer"
+                                onclick="setClipboard('{{ $code }}')">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-4" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"

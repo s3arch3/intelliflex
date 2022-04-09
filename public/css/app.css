@@ -639,6 +639,10 @@ input[type=file]::file-selector-button:hover{
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+.mx-7{
+  margin-left: 1.75rem;
+  margin-right: 1.75rem;
+}
 .ml-3{
   margin-left: 0.75rem;
 }
@@ -975,8 +979,14 @@ input[type=file]::file-selector-button:hover{
 .justify-between{
   justify-content: space-between;
 }
+.justify-around{
+  justify-content: space-around;
+}
 .justify-evenly{
   justify-content: space-evenly;
+}
+.justify-items-center{
+  justify-items: center;
 }
 .gap-6{
   gap: 1.5rem;
@@ -1029,6 +1039,11 @@ input[type=file]::file-selector-button:hover{
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
+.divide-y-2 > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(2px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(2px * var(--tw-divide-y-reverse));
+}
 .divide-slate-700 > :not([hidden]) ~ :not([hidden]){
   --tw-divide-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-divide-opacity));
@@ -1044,6 +1059,9 @@ input[type=file]::file-selector-button:hover{
 .divide-slate-100 > :not([hidden]) ~ :not([hidden]){
   --tw-divide-opacity: 1;
   border-color: rgb(241 245 249 / var(--tw-divide-opacity));
+}
+.self-center{
+  align-self: center;
 }
 .justify-self-start{
   justify-self: start;
@@ -1320,6 +1338,10 @@ input[type=file]::file-selector-button:hover{
 .bg-sky-50{
   --tw-bg-opacity: 1;
   background-color: rgb(240 249 255 / var(--tw-bg-opacity));
+}
+.bg-sky-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(125 211 252 / var(--tw-bg-opacity));
 }
 .bg-opacity-25{
   --tw-bg-opacity: 0.25;
@@ -2456,6 +2478,9 @@ input[type=file]::file-selector-button:hover{
   .md\:ml-2{
     margin-left: 0.5rem;
   }
+  .md\:ml-3{
+    margin-left: 0.75rem;
+  }
   .md\:flex{
     display: flex;
   }
@@ -2522,6 +2547,12 @@ input[type=file]::file-selector-button:hover{
   }
   .lg\:ml-2{
     margin-left: 0.5rem;
+  }
+  .lg\:mt-0{
+    margin-top: 0px;
+  }
+  .lg\:ml-3{
+    margin-left: 0.75rem;
   }
   .lg\:flex{
     display: flex;
