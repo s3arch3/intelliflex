@@ -38,7 +38,7 @@
                         </span>
                     @endif
                 </span>
-                <ul class="pt-2 mt-2 space-y-2 border-t border-gray-200 dark:border-gray-700">
+                <ul class="pt-2 mt-2 space-y-2 border-t border-gray-200">
                     {{-- DESCRIPTION OF THE GROUP --}}
                     <p class="text-sm text-gray-600">
                         {{ $description }}
