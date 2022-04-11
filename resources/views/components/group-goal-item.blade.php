@@ -6,12 +6,11 @@
     {{-- ACHIEVEMENT STATUS CHIPS --}}
     @if ($achieved == true)
         <div
-            class="mx-auto bg-emerald-50 border border-emerald-300 rounded-full text-emerald-500 font-semibold text-sm w-28 my-2">
+            class="mx-auto bg-emerald-50 border border-emerald-300 rounded text-emerald-500 font-semibold text-sm w-auto my-2">
             Acquired
         </div>
     @else
-        <div
-            class="mx-auto bg-amber-50 border border-amber-300 rounded-full text-amber-500 font-semibold text-sm w-28 my-2">
+        <div class="mx-auto bg-amber-50 border border-amber-300 rounded text-amber-500 font-semibold text-sm w-20 my-2">
             {{ $totalGroupPoints . '/' . $goal }}
         </div>
     @endif

@@ -82,7 +82,8 @@
         </div>
         {{-- QUIZ CONTROLS: EDIT, TAKE, DELETE --}}
         <div class="flex justify-end p-4">
-            <div class="inline-flex rounded-md" role="group">
+            {{-- BUTTON GROUP --}}
+            <div class="inline-flex" role="group">
                 {{-- CHANGE DISPLAY BUTTONS FOR STUDENT --}}
                 @if ($userType == 'student')
                     {{-- STUDENT LEAVE GROUP BUTTON --}}
@@ -110,5 +111,6 @@
                 @endif
             </div>
         </div>
+
     </div>
 </div>

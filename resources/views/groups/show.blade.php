@@ -159,7 +159,7 @@
                 {{-- QUIZZES ON THIS GROUP --}}
                 <div>
                     {{-- QUIZ LIST --}}
-                    <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
+                    <ul role="list" class="divide-y divide-slate-100">
                         @foreach ($groupQuizzes as $groupQuiz)
                             <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description" :timesCompleted="$groupQuiz->quiz->times_completed"
                                 :isActive="$groupQuiz->quiz->is_active" :id="$groupQuiz->quiz->id" :questionsCount="$groupQuiz->quiz->questions->count()" :groupQuizID="$groupQuiz->id"

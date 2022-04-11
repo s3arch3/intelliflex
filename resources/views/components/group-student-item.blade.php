@@ -4,7 +4,7 @@
         <div class="flex justify-between items-center space-x-2">
             {{-- STUDENT DEFAULT LOGO --}}
             <div class="flex-shrink-0">
-                <img class="w-12 rounded-full" src="{{ asset('assets/illustrations/student.png') }}" alt="">
+                <img class="w-12 rounded" src="{{ asset('assets/illustrations/student.png') }}" alt="">
             </div>
 
             {{-- STUDENT DETAILS --}}

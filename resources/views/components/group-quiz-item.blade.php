@@ -4,7 +4,7 @@
         <div class="flex flex-grow justify-between space-x-2">
             {{-- QUIZ DEFAULT LOGO --}}
             <div class="flex-shrink-0">
-                <img class="w-12 rounded-full" src="{{ asset('assets/illustrations/quiz-logo.png') }}" alt="">
+                <img class="w-12 rounded" src="{{ asset('assets/illustrations/home/quiz-count.png') }}" alt="">
             </div>
 
             {{-- QUIZ MAIN DETAILS --}}
@@ -16,27 +16,29 @@
                 </a>
 
                 {{-- ACTIVE/INACTIVE INDICATOR --}}
-                @if ($isActive == 1)
-                    <span
-                        class="inline-flex items-center bg-emerald-50 border border-emerald-300 px-2 rounded text-emerald-500 font-semibold text-sm w-auto mt-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clip-rule="evenodd" />
-                        </svg>ACTIVE
-                    </span>
-                @elseif ($isActive == 0)
-                    <span
-                        class="inline-flex items-center bg-amber-50 border border-amber-300 px-2 rounded text-amber-500 font-semibold text-sm w-auto mt-2 ">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                                clip-rule="evenodd" />
-                        </svg>INACTIVE
-                    </span>
-                @endif
+                <span>
+                    @if ($isActive == 1)
+                        <span
+                            class="inline-flex items-center bg-emerald-50 border border-emerald-300 px-2 rounded text-emerald-500 font-semibold text-sm w-auto mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd" />
+                            </svg>ACTIVE
+                        </span>
+                    @elseif ($isActive == 0)
+                        <span
+                            class="inline-flex items-center bg-amber-50 border border-amber-300 px-2 rounded text-amber-500 font-semibold text-sm w-auto mt-2 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                                    clip-rule="evenodd" />
+                            </svg>INACTIVE
+                        </span>
+                    @endif
+                </span>
                 {{-- DESCRIPTION OF THE QUIZ --}}
                 <p class="text-sm text-gray-600 mt-2">
                     {{ $description }}
@@ -66,6 +68,7 @@
         </div>
         {{-- QUIZ CONTROLS: EDIT, TAKE, DELETE --}}
         <div class="flex justify-end p-4">
+            {{-- BUTTON GROUP --}}
             <div class="inline-flex rounded-md" role="group">
                 {{-- BUTTONS CONDITIONAL START DEPENDING ON USER TYPE --}}
                 @if ($userType == 'student')
@@ -95,9 +98,9 @@
                         @csrf
                         @method('DELETE')
                         <input
-                            class="font-semibold text-xs text-red-500 px-4 hover:text-red-400 py-2 bg-white rounded-r-lg border-t border-b border-r border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-red-400 focus:text-red-500"
+                            class="font-semibold text-xs text-red-500 px-4 hover:text-red-400 py-2 bg-white rounded-r-lg border-t border-b border-r border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-red-400 focus:text-red-500 cursor-pointer"
                             type="
-                            submit" value="DELETE">
+                            submit" class="font-semibold" value=" DELETE">
                     </form>
                 @endif
             </div>
