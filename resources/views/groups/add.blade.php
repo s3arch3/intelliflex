@@ -16,7 +16,6 @@
                 @foreach ($quizzes as $quiz)
                     <div class="px-4 py-4">
                         <p class="items-center font-semibold text-blue-700">{{ $quiz->name }}
-
                         </p>
                         <p
                             class="inline-flex items-center bg-blue-50 border border-blue-300 px-2 rounded text-blue-600 font-semibold text-sm w-auto my-2 lg:ml-2">

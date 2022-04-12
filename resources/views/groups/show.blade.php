@@ -152,7 +152,7 @@
                 </div>
             @elseif ($userType == 'professor')
                 {{-- DISPLAYS THE GROUP'S COLLECTIVE ACHIEVEMENTS --}}
-                <p class="font-semibold text-xl mt-8 mb-4 sm:text-left lg:text-left md:text-left text-center">
+                <p class="font-semibold text-xl my-4 sm:text-left lg:text-left md:text-left text-center">
                     Quizzes in this Group
                 </p>
 
@@ -177,10 +177,9 @@
                     </div>
                 </div>
                 {{-- STUDENT LIST TITLE --}}
-                <p class="font-semibold text-xl mt-8 mb-4 sm:text-left lg:text-left md:text-left text-center">
+                <p class="font-semibold text-xl my-4 sm:text-left lg:text-left md:text-left text-center">
                     My Students
                 </p>
-
                 {{-- STUDENT LIST --}}
                 <div>
                     @foreach ($groupStudents as $groupStudent)

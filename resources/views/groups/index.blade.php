@@ -49,7 +49,7 @@
                     <p class=" font-display font-bold text-3xl mb-2"> List of all the
                         <span class="text-blue-600"> groups </span>you joined.
                     </p>
-                    <p>Manage all your groups here.</p>
+                    <p class="text-sm">Manage all your groups here.</p>
                 </div>
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
