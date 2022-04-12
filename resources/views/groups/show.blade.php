@@ -106,7 +106,7 @@
                 {{-- QUIZZES ON THIS GROUP --}}
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     {{-- QUIZ LIST --}}
-                    <ul role="list" class="divide-y divide-slate-700 dark:divide-slate-100 ">
+                    <ul role="list" class="divide-y divide-slate-100">
                         @foreach ($groupQuizzes as $groupQuiz)
                             <div class="border border-bg-gray-200 rounded-sm">
                                 {{-- LIST QUIZ --}}

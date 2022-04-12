@@ -627,6 +627,10 @@ input[type=file]::file-selector-button:hover{
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
+.my-1{
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
 .mx-4{
   margin-left: 1rem;
   margin-right: 1rem;
@@ -638,10 +642,6 @@ input[type=file]::file-selector-button:hover{
 .my-8{
   margin-top: 2rem;
   margin-bottom: 2rem;
-}
-.my-1{
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
 }
 .ml-3{
   margin-left: 0.75rem;
@@ -718,6 +718,9 @@ input[type=file]::file-selector-button:hover{
 .-mt-px{
   margin-top: -1px;
 }
+.mr-1{
+  margin-right: 0.25rem;
+}
 .ml-0{
   margin-left: 0px;
 }
@@ -739,8 +742,8 @@ input[type=file]::file-selector-button:hover{
 .mb-10{
   margin-bottom: 2.5rem;
 }
-.mr-1{
-  margin-right: 0.25rem;
+.mr-8{
+  margin-right: 2rem;
 }
 .block{
   display: block;
@@ -789,9 +792,6 @@ input[type=file]::file-selector-button:hover{
 }
 .h-14{
   height: 3.5rem;
-}
-.h-3{
-  height: 0.75rem;
 }
 .min-h-screen{
   min-height: 100vh;
@@ -864,12 +864,6 @@ input[type=file]::file-selector-button:hover{
 .w-7{
   width: 1.75rem;
 }
-.w-3{
-  width: 0.75rem;
-}
-.w-24{
-  width: 6rem;
-}
 .min-w-0{
   min-width: 0px;
 }
@@ -893,9 +887,6 @@ input[type=file]::file-selector-button:hover{
 }
 .flex-1{
   flex: 1 1 0%;
-}
-.flex-auto{
-  flex: 1 1 auto;
 }
 .flex-initial{
   flex: 0 1 auto;
@@ -1024,15 +1015,15 @@ input[type=file]::file-selector-button:hover{
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
-.space-x-4 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
 .space-y-2 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+.space-x-4 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .divide-y > :not([hidden]) ~ :not([hidden]){
   --tw-divide-y-reverse: 0;
@@ -1054,10 +1045,6 @@ input[type=file]::file-selector-button:hover{
 .divide-gray-200 > :not([hidden]) ~ :not([hidden]){
   --tw-divide-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-divide-opacity));
-}
-.divide-gray-300 > :not([hidden]) ~ :not([hidden]){
-  --tw-divide-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-divide-opacity));
 }
 .justify-self-start{
   justify-self: start;
@@ -1210,6 +1197,10 @@ input[type=file]::file-selector-button:hover{
 .border-slate-200{
   --tw-border-opacity: 1;
   border-color: rgb(226 232 240 / var(--tw-border-opacity));
+}
+.border-blue-300{
+  --tw-border-opacity: 1;
+  border-color: rgb(164 202 254 / var(--tw-border-opacity));
 }
 .bg-white{
   --tw-bg-opacity: 1;
@@ -1462,6 +1453,9 @@ input[type=file]::file-selector-button:hover{
 .pb-8{
   padding-bottom: 2rem;
 }
+.pr-2{
+  padding-right: 0.5rem;
+}
 .text-left{
   text-align: left;
 }
@@ -1693,6 +1687,10 @@ input[type=file]::file-selector-button:hover{
 .text-blue-900{
   --tw-text-opacity: 1;
   color: rgb(35 56 118 / var(--tw-text-opacity));
+}
+.text-blue-700{
+  --tw-text-opacity: 1;
+  color: rgb(26 86 219 / var(--tw-text-opacity));
 }
 .underline{
   -webkit-text-decoration-line: underline;
@@ -2127,10 +2125,6 @@ input[type=file]::file-selector-button:hover{
   --tw-divide-opacity: 1;
   border-color: rgb(55 65 81 / var(--tw-divide-opacity));
 }
-.dark .dark\:border-gray-700{
-  --tw-border-opacity: 1;
-  border-color: rgb(55 65 81 / var(--tw-border-opacity));
-}
 .dark .dark\:bg-gray-900{
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
@@ -2357,9 +2351,6 @@ input[type=file]::file-selector-button:hover{
   .md\:mr-0{
     margin-right: 0px;
   }
-  .md\:flex{
-    display: flex;
-  }
   .md\:grid{
     display: grid;
   }
@@ -2426,9 +2417,6 @@ input[type=file]::file-selector-button:hover{
   }
   .lg\:ml-2{
     margin-left: 0.5rem;
-  }
-  .lg\:flex{
-    display: flex;
   }
   .lg\:w-96{
     width: 24rem;

@@ -18,7 +18,7 @@
                 <span>
                     @if ($isActive == 1)
                         <span
-                            class="inline-flex items-center bg-emerald-50 border border-emerald-300 px-2 rounded text-emerald-500 font-semibold text-sm w-28 mt-2">
+                            class="inline-flex items-center bg-emerald-50 border border-emerald-300 px-2 rounded text-emerald-500 font-semibold text-sm w-auto mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"

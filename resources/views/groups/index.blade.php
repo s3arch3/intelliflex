@@ -14,7 +14,6 @@
         {{-- JOIN CLASS FEATURE FOR STUDENT ONLY --}}
         <div class="py-4 px-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
                 <div class="block p-10 bg-white rounded-md shadow-sm">
                     <form method="POST" action="{{ route('join') }}">
                         @csrf {{-- Little csrf guy protecting us from cross site attacks <3 --}}
@@ -52,7 +51,6 @@
                     </p>
                     <p>Manage all your groups here.</p>
                 </div>
-
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <ul role="list" class="bg-white divide-y divide-slate-100 rounded-md shadow-sm">
