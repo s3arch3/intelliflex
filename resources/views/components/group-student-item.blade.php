@@ -1,7 +1,7 @@
 {{-- THIS SECTION IS FOR GROUP STUDENTS FOR PROFESSORS, CLASSMATES FOR STUDENTS --}}
 <div class="bg-white rounded-md border shadow-sm px-4 py-4 mb-2">
     <div class="flow-root">
-        <div class="flex justify-between items-center space-x-2">
+        <div class="flex justify-between items-center">
             {{-- STUDENT DEFAULT LOGO --}}
             <div class="flex-shrink-0">
                 <img class="w-12 rounded" src="{{ asset('assets/illustrations/student.png') }}" alt="">
@@ -12,7 +12,7 @@
                 {{-- NAME OF THE STUDENT --}}
                 <p class="font-display text-md font-bold text-blue-800 truncate">
                     @if ($myID == $studentIDinUser)
-                        {{ $name . ' (YOU)' }}
+                        {{ $name . ' (You)' }}
                     @else
                         {{ $name }}
                     @endif

@@ -20,14 +20,14 @@
                         :id="$quiz->id" :questionsCount="$quiz->questions_count" />
                 @endforeach
             </ul>
-        </div>
-        {{-- CREATE QUIZ BUTTON --}}
-        <div class="flex justify-end">
-            <x-jet-button>
-                <a href="{{ route('quizzes.create') }}">
-                    {{ __('CREATE QUIZ') }}
-                </a>
-            </x-jet-button>
+            {{-- CREATE QUIZ BUTTON --}}
+            <div class="flex justify-end">
+                <x-jet-button>
+                    <a href="{{ route('quizzes.create') }}">
+                        {{ __('CREATE QUIZ') }}
+                    </a>
+                </x-jet-button>
+            </div>
         </div>
     </div>
 </x-app-layout>

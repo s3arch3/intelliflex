@@ -96,15 +96,11 @@
             {{-- INTERFACE CHANGE BASED ON user_type --}}
             @if ($userType == 'student')
                 {{-- QUIZZES TITLE --}}
-                <div
-                    class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
-                    <label class="font-display font-bold text-3xl mb-2">
-                        Quizzes on this Group
-                    </label>
-                </div>
-
-                {{-- QUIZZES ON THIS GROUP --}}
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <p class="font-semibold text-xl my-4 sm:text-left lg:text-left md:text-left text-center">
+                    Quizzes in this Group
+                </p>
+                {{-- QUIZZES IN THIS GROUP --}}
+                <div>
                     {{-- QUIZ LIST --}}
                     <ul role="list" class="divide-y divide-slate-100">
                         @foreach ($groupQuizzes as $groupQuiz)
@@ -116,80 +112,74 @@
 
                                 {{-- LIST GOALS UNDER THAT QUIZ --}}
                                 <div
-                                    class="flex flex-wrap justify-center w-auto text-center bg-white border border-bg-gray-200 rounded-md p-4">
+                                    class="flex justify-center w-auto text-center bg-white border-t border-bg-gray-200 py-4">
                                     @foreach ($quizGoals as $quizGoal)
                                         @if ($quizGoal->is_achieved == '1' && $quizGoal->quiz_id == $groupQuiz->id && $quizGoal->user_id == Auth::user()->id)
                                             <div
-                                                class="w-fit flex flex-wrap justify-start mx-2 px-1 border border-bg-gray-200 rounded-sm">
+                                                class="w-fit flex flex-wrap justify-start mx-2 border border-bg-gray-200 rounded-sm">
                                                 {{ $goals->where('id', $quizGoal->goal_id)->first()->name }}
                                             </div>
                                         @endif
                                     @endforeach
                                 </div>
                             </div>
-                            <br>
-                            <br>
                         @endforeach
                     </ul>
                 </div>
-
-                {{-- CLASSMATE LIST TITLE --}}
-                <div
-                    class="container my-4 mx-auto block px-4 py-4 bg-white shadow-md rounded-md leading-relaxed text-center">
-                    <label class="font-display font-bold text-3xl mb-2">
-                        My Classmates
-                    </label>
-                </div>
-
-                {{-- CLASSMATES LIST --}}
-                <div>
-                    @foreach ($groupStudents as $groupStudent)
-                        {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
-                        <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id" :studentIDinGroup="$groupStudent->id"
-                            :studentIDinUser="$groupStudent->user_id" :name="$groupStudent->user->name" :userType="$userType" />
-                        <br>
-                    @endforeach
-                </div>
-            @elseif ($userType == 'professor')
-                {{-- DISPLAYS THE GROUP'S COLLECTIVE ACHIEVEMENTS --}}
-                <p class="font-semibold text-xl my-4 sm:text-left lg:text-left md:text-left text-center">
-                    Quizzes in this Group
-                </p>
-
-                {{-- QUIZZES ON THIS GROUP --}}
-                <div>
-                    {{-- QUIZ LIST --}}
-                    <ul role="list" class="divide-y divide-slate-100">
-                        @foreach ($groupQuizzes as $groupQuiz)
-                            <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description" :timesCompleted="$groupQuiz->quiz->times_completed"
-                                :isActive="$groupQuiz->quiz->is_active" :id="$groupQuiz->quiz->id" :questionsCount="$groupQuiz->quiz->questions->count()" :groupQuizID="$groupQuiz->id"
-                                :groupProfessorID="$groupQuiz->group_professor_id" :userType="$userType" />
-                        @endforeach
-                    </ul>
-
-                    {{-- ADD QUIZ BUTTON --}}
-                    <div class="flex justify-end px-4">
-                        <x-jet-button>
-                            <a href="{{ route('addQuiz', ['id' => $groupProfessorItem->id]) }}">
-                                {{ __('ADD GROUP QUIZ') }}
-                            </a>
-                        </x-jet-button>
-                    </div>
-                </div>
-                {{-- STUDENT LIST TITLE --}}
-                <p class="font-semibold text-xl my-4 sm:text-left lg:text-left md:text-left text-center">
-                    My Students
-                </p>
-                {{-- STUDENT LIST --}}
-                <div>
-                    @foreach ($groupStudents as $groupStudent)
-                        {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
-                        <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id" :studentIDinGroup="$groupStudent->id"
-                            :studentIDinUser="$groupStudent->user_id" :name="$groupStudent->user->name" :userType="$userType" :quizGoals="$quizGoals" />
-                    @endforeach
-                </div>
-            @elseif ($userType == 'admin')
-            @endif
         </div>
+        {{-- CLASSMATE LIST TITLE --}}
+        <p class="font-semibold text-xl my-4 sm:text-left lg:text-left md:text-left text-center">
+            My Classmates
+        </p>
+        {{-- CLASSMATES LIST --}}
+        <div>
+            @foreach ($groupStudents as $groupStudent)
+                {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
+                <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id" :studentIDinGroup="$groupStudent->id" :studentIDinUser="$groupStudent->user_id"
+                    :name="$groupStudent->user->name" :userType="$userType" />
+                <br>
+            @endforeach
+        </div>
+    @elseif ($userType == 'professor')
+        {{-- DISPLAYS THE GROUP'S COLLECTIVE ACHIEVEMENTS --}}
+        <p class="font-semibold text-xl my-4 sm:text-left lg:text-left md:text-left text-center">
+            Quizzes in this Group
+        </p>
+
+        {{-- QUIZZES ON THIS GROUP --}}
+        <div>
+            {{-- QUIZ LIST --}}
+            <ul role="list" class="divide-y divide-slate-100">
+                @foreach ($groupQuizzes as $groupQuiz)
+                    <x-group-quiz-item :name="$groupQuiz->quiz->name" :description="$groupQuiz->quiz->description" :timesCompleted="$groupQuiz->quiz->times_completed" :isActive="$groupQuiz->quiz->is_active"
+                        :id="$groupQuiz->quiz->id" :questionsCount="$groupQuiz->quiz->questions->count()" :groupQuizID="$groupQuiz->id" :groupProfessorID="$groupQuiz->group_professor_id"
+                        :userType="$userType" />
+                @endforeach
+            </ul>
+
+            {{-- ADD QUIZ BUTTON --}}
+            <div class="flex justify-end px-4">
+                <x-jet-button>
+                    <a href="{{ route('addQuiz', ['id' => $groupProfessorItem->id]) }}">
+                        {{ __('ADD GROUP QUIZ') }}
+                    </a>
+                </x-jet-button>
+            </div>
+        </div>
+        {{-- STUDENT LIST TITLE --}}
+        <p class="font-semibold text-xl my-4 sm:text-left lg:text-left md:text-left text-center">
+            My Students
+        </p>
+        {{-- STUDENT LIST --}}
+        <div>
+            @foreach ($groupStudents as $groupStudent)
+                {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
+                <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id" :studentIDinGroup="$groupStudent->id" :studentIDinUser="$groupStudent->user_id"
+                    :name="$groupStudent->user->name" :userType="$userType" :quizGoals="$quizGoals" />
+            @endforeach
+        </div>
+    @elseif ($userType == 'admin')
+        @endif
+    </div>
     </div>
 </x-app-layout>
