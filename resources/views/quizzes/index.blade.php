@@ -22,10 +22,12 @@
             </ul>
         </div>
         {{-- CREATE QUIZ BUTTON --}}
-        <x-jet-button>
-            <a href="{{ route('quizzes.create') }}">
-                {{ __('CREATE QUIZ') }}
-            </a>
-        </x-jet-button>
+        <div class="flex justify-end">
+            <x-jet-button>
+                <a href="{{ route('quizzes.create') }}">
+                    {{ __('CREATE QUIZ') }}
+                </a>
+            </x-jet-button>
+        </div>
     </div>
 </x-app-layout>
