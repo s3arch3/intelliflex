@@ -43,7 +43,7 @@
                     {{ $description }}
                 </p>
                 <ul class="pt-2 mt-2 space-y-2 border-t border-gray-200"></ul>
-                <p class="text-sm my-2"> Invite students using the code below:</p>
+                <p class="text-sm"> Invite students using the code below:</p>
                 <div class="text-blue-800 text-sm">
                     {{-- IF PROFESSOR, SHOW CODE FOR GROUP INVITATION --}}
                     @if ($userType == 'professor')
@@ -81,7 +81,7 @@
             </div>
         </div>
         {{-- QUIZ CONTROLS: EDIT, TAKE, DELETE --}}
-        <div class="flex justify-end p-4">
+        <div class="flex justify-end pt-4">
             {{-- BUTTON GROUP --}}
             <div class="inline-flex" role="group">
                 {{-- CHANGE DISPLAY BUTTONS FOR STUDENT --}}
