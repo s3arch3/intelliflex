@@ -183,11 +183,12 @@
 
                 {{-- STUDENT LIST --}}
                 <div>
-                    @foreach ($groupStudents as $groupStudent)
-                        {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
-                        <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id" :studentIDinGroup="$groupStudent->id"
-                            :studentIDinUser="$groupStudent->user_id" :name="$groupStudent->user->name" :userType="$userType" :quizGoals="$quizGoals" />
-                    @endforeach
+                    <ul role="list" class="divide-y divide-slate-100 rounded-md">
+                        @foreach ($groupStudents as $groupStudent)
+                            {{-- GROUP STUDENT ITEM COMPONENT FOR STUDENT/CLASSMATES --}}
+                            <x-group-student-item :myID="Auth::user()->id" :groupProfessorID="$groupProfessorItem->id" :studentIDinGroup="$groupStudent->id"
+                                :studentIDinUser="$groupStudent->user_id" :name="$groupStudent->user->name" :userType="$userType" :quizGoals="$quizGoals" />
+                        @endforeach
                 </div>
             @elseif ($userType == 'admin')
             @endif
