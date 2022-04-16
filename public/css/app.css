@@ -882,6 +882,12 @@ input[type=file]::file-selector-button:hover{
 .max-w-sm{
   max-width: 24rem;
 }
+.max-w-lg{
+  max-width: 32rem;
+}
+.max-w-md{
+  max-width: 28rem;
+}
 .flex-1{
   flex: 1 1 0%;
 }
@@ -1136,6 +1142,9 @@ input[type=file]::file-selector-button:hover{
 }
 .border-r-0{
   border-right-width: 0px;
+}
+.border-l-0{
+  border-left-width: 0px;
 }
 .border-gray-300{
   --tw-border-opacity: 1;
@@ -2423,6 +2432,10 @@ input[type=file]::file-selector-button:hover{
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
+  .lg\:mx-0{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
   .lg\:ml-2{
     margin-left: 0.5rem;
   }
@@ -2431,6 +2444,9 @@ input[type=file]::file-selector-button:hover{
   }
   .lg\:w-96{
     width: 24rem;
+  }
+  .lg\:max-w-md{
+    max-width: 28rem;
   }
   .lg\:justify-start{
     justify-content: flex-start;

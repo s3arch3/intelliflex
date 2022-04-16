@@ -16,12 +16,10 @@
                         <x-jet-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                             {{ __('Home') }}
                         </x-jet-nav-link>
-                        <x-jet-nav-link href="{{ route('quizzes.index') }}"
-                            :active="request()->routeIs('quizzes.index')">
+                        <x-jet-nav-link href="{{ route('quizzes.index') }}" :active="request()->routeIs('quizzes.index')">
                             {{ __('Quizzes') }}
                         </x-jet-nav-link>
-                        <x-jet-nav-link href="{{ route('groups.index') }}"
-                            :active="request()->routeIs('groups.index')">
+                        <x-jet-nav-link href="{{ route('groups.index') }}" :active="request()->routeIs('groups.index')">
                             {{ __('Groups') }}
                         </x-jet-nav-link>
                         <x-jet-nav-link href="{{ route('goals.index') }}" :active="request()->routeIs('goals.index')">
@@ -102,7 +100,7 @@
                                         <!-- USER TYPE INDICATOR -->
                                         <button type="button"
                                             class="inline-flex items-center px-3 py-2 border border-transparent text-xs leading-4 font-medium rounded-md text-gray-700 bg-white hover:text-gray-blue-600 focus:outline-blue-200 h-8 ">
-                                            <div class="mr-2">
+                                            <div class="mr-2 text-blue-800">
                                                 @if (Auth::user()->user_type == 'student')
                                                     {{-- STUDENT LOGO --}}
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
@@ -189,12 +187,10 @@
                     <button @click="open = ! open"
                         class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
                         <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                            <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
+                            <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
@@ -221,16 +217,13 @@
                     <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-jet-responsive-nav-link>
-                    <x-jet-responsive-nav-link href="{{ route('quizzes.index') }}"
-                        :active="request()->routeIs('quizzes.index')">
+                    <x-jet-responsive-nav-link href="{{ route('quizzes.index') }}" :active="request()->routeIs('quizzes.index')">
                         {{ __('Quizzes') }}
                     </x-jet-responsive-nav-link>
-                    <x-jet-responsive-nav-link href="{{ route('groups.index') }}"
-                        :active="request()->routeIs('groups.index')">
+                    <x-jet-responsive-nav-link href="{{ route('groups.index') }}" :active="request()->routeIs('groups.index')">
                         {{ __('Groups') }}
                     </x-jet-responsive-nav-link>
-                    <x-jet-responsive-nav-link href="{{ route('goals.index') }}"
-                        :active="request()->routeIs('goals.index')">
+                    <x-jet-responsive-nav-link href="{{ route('goals.index') }}" :active="request()->routeIs('goals.index')">
                         {{ __('Goals') }}
                     </x-jet-responsive-nav-link>
                 </div>
@@ -239,14 +232,12 @@
 
                 <div class="mt-3 space-y-1 pt-4 pb-1 border-t border-gray-50/10">
                     <!-- Account Management -->
-                    <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
-                        :active="request()->routeIs('profile.show')">
+                    <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                         {{ __('Profile') }}
                     </x-jet-responsive-nav-link>
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                        <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}"
-                            :active="request()->routeIs('api-tokens.index')">
+                        <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                             {{ __('API Tokens') }}
                         </x-jet-responsive-nav-link>
                     @endif
@@ -276,8 +267,7 @@
                         </x-jet-responsive-nav-link>
 
                         @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                            <x-jet-responsive-nav-link href="{{ route('teams.create') }}"
-                                :active="request()->routeIs('teams.create')">
+                            <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
                                 {{ __('Create New Team') }}
                             </x-jet-responsive-nav-link>
                         @endcan

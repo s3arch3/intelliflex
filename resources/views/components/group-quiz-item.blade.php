@@ -44,30 +44,32 @@
                     {{ $description }}
                 </p>
                 {{-- QUESTION COUNT --}}
-                <span class="font-bold text-blue-800">
-                    {{ $questionsCount }}
-                </span>
-                questions, completed
-                {{-- TIMES COMPLETED --}}
-                <span class="font-bold text-blue-800">
-                    {{ $timesCompleted }}
-                </span>
-                times.
+                <div class="text-sm mt-2">
+                    <span class="font-bold text-blue-800">
+                        {{ $questionsCount }}
+                    </span>
+                    questions, completed
+                    {{-- TIMES COMPLETED --}}
+                    <span class="font-bold text-blue-800">
+                        {{ $timesCompleted }}
+                    </span>
+                    times.
 
-                <?php
-                $totalQuizPoints = App\Models\QuizLog::where('group_professor_id', $groupProfessorID)
-                    ->where('group_quiz_id', $groupQuizID)
-                    ->sum('score');
-                ?>
-                <br>
-                <span class="font-bold text-blue-800">
-                    {{ $totalQuizPoints }}
-                </span>
-                total accumulated points.
+                    <?php
+                    $totalQuizPoints = App\Models\QuizLog::where('group_professor_id', $groupProfessorID)
+                        ->where('group_quiz_id', $groupQuizID)
+                        ->sum('score');
+                    ?>
+                    <br>
+                    <span class="font-bold text-blue-800">
+                        {{ $totalQuizPoints }}
+                    </span>
+                    total accumulated points.
+                </div>
             </div>
         </div>
         {{-- QUIZ CONTROLS: EDIT, TAKE, DELETE --}}
-        <div class="flex justify-end p-4">
+        <div class="flex justify-end">
             {{-- BUTTON GROUP --}}
             <div class="inline-flex rounded-md" role="group">
                 {{-- BUTTONS CONDITIONAL START DEPENDING ON USER TYPE --}}
@@ -82,7 +84,7 @@
                         <input id="name" class="hidden" name="groupProfessorID"
                             value="{{ $groupProfessorID }}">
                         </input>
-                        <x-jet-button class="ml-4">
+                        <x-jet-button>
                             <input class="font-semibold" type="submit" value="TAKE">
                         </x-jet-button>
                     </form>
