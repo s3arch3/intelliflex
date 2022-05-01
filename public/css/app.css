@@ -724,11 +724,11 @@ input[type=file]::file-selector-button:hover{
 .ml-0{
   margin-left: 0px;
 }
-.mb-3{
-  margin-bottom: 0.75rem;
-}
 .mr-4{
   margin-right: 1rem;
+}
+.mb-3{
+  margin-bottom: 0.75rem;
 }
 .mt-16{
   margin-top: 4rem;
@@ -876,17 +876,11 @@ input[type=file]::file-selector-button:hover{
 .max-w-6xl{
   max-width: 72rem;
 }
-.max-w-4xl{
-  max-width: 56rem;
-}
 .max-w-sm{
   max-width: 24rem;
 }
-.max-w-lg{
-  max-width: 32rem;
-}
-.max-w-md{
-  max-width: 28rem;
+.max-w-4xl{
+  max-width: 56rem;
 }
 .flex-1{
   flex: 1 1 0%;
@@ -1045,10 +1039,6 @@ input[type=file]::file-selector-button:hover{
   --tw-divide-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-divide-opacity));
 }
-.divide-slate-700 > :not([hidden]) ~ :not([hidden]){
-  --tw-divide-opacity: 1;
-  border-color: rgb(51 65 85 / var(--tw-divide-opacity));
-}
 .justify-self-start{
   justify-self: start;
 }
@@ -1109,10 +1099,6 @@ input[type=file]::file-selector-button:hover{
   border-bottom-right-radius: 0.375rem;
   border-bottom-left-radius: 0.375rem;
 }
-.rounded-t-md{
-  border-top-left-radius: 0.375rem;
-  border-top-right-radius: 0.375rem;
-}
 .border{
   border-width: 1px;
 }
@@ -1139,12 +1125,6 @@ input[type=file]::file-selector-button:hover{
 }
 .border-l{
   border-left-width: 1px;
-}
-.border-r-0{
-  border-right-width: 0px;
-}
-.border-l-0{
-  border-left-width: 0px;
 }
 .border-gray-300{
   --tw-border-opacity: 1;
@@ -1411,6 +1391,10 @@ input[type=file]::file-selector-button:hover{
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 .px-5{
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -1422,14 +1406,6 @@ input[type=file]::file-selector-button:hover{
 .px-10{
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-}
-.py-16{
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-.px-8{
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 .pt-6{
   padding-top: 1.5rem;
@@ -1484,9 +1460,6 @@ input[type=file]::file-selector-button:hover{
 }
 .indent-10{
   text-indent: 2.5rem;
-}
-.indent-0{
-  text-indent: 0px;
 }
 .font-sans{
   font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -2141,10 +2114,6 @@ input[type=file]::file-selector-button:hover{
   --tw-divide-opacity: 1;
   border-color: rgb(55 65 81 / var(--tw-divide-opacity));
 }
-.dark .dark\:divide-slate-100 > :not([hidden]) ~ :not([hidden]){
-  --tw-divide-opacity: 1;
-  border-color: rgb(241 245 249 / var(--tw-divide-opacity));
-}
 .dark .dark\:bg-gray-900{
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
@@ -2428,13 +2397,13 @@ input[type=file]::file-selector-button:hover{
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
-  .lg\:my-8{
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
   .lg\:mx-0{
     margin-left: 0px;
     margin-right: 0px;
+  }
+  .lg\:my-8{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
   .lg\:ml-2{
     margin-left: 0.5rem;

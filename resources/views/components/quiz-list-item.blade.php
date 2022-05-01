@@ -48,10 +48,11 @@
                     times.
                 </div>
             </div>
-            {{-- QUIZ CONTROLS: EDIT, TAKE, DELETE --}}
-            {{-- NOT YET DONE NEEDS SOME FIX --}}
-            <!-- DROPDOWN MENU-->
-            <div class="">
+        </div>
+        {{-- QUIZ CONTROLS: EDIT, TAKE, DELETE --}}
+        {{-- NOT YET DONE NEEDS SOME FIX --}}
+        <!-- DROPDOWN MENU-->
+        {{-- <div class="">
                 <button id="dropdownButton" data-dropdown-toggle="dropdown"
                     class="sm:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4  focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
                     type="button">
@@ -64,59 +65,64 @@
                 <div id="dropdown"
                     class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
                     <ul class="py-1" aria-labelledby="dropdownButton">
-                        <li>
-                            {{-- Edit button --}}
-                            <a href="{{ route('quizzes.edit', $id) }}"
+                        <li> --}}
+        {{-- Edit button --}}
+        {{-- <a href="{{ route('quizzes.edit', $id) }}"
                                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                 {{ __('Edit') }}
                             </a>
                         </li>
-                        <li>
-                            {{-- Take button --}}
-                            <form method="POST" action="{{ route('take', $id) }}">
+                        <li> --}}
+        {{-- Take button --}}
+        {{-- <form method="POST" action="{{ route('take', $id) }}">
                                 @csrf
                                 <input type="submit" value="Take"
                                     class="block py-2 w-44 text-left px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                             </form>
                         </li>
-                        <li>
-                            {{-- Delete button --}}
-                            <form method="POST" action="{{ route('quizzes.destroy', $id) }}">
+                        <li> --}}
+        {{-- Delete button --}}
+        {{-- <form method="POST" action="{{ route('quizzes.destroy', $id) }}">
                                 @csrf
                                 @method('DELETE')
                                 <input
-                                    class="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100
+                                class="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100
                                     dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                                     type="submit" value="Delete">
                             </form>
                         </li>
                     </ul>
                 </div>
-            </div>
-            {{-- <div class="relative inline-flex text-base font-semibold text-gray-900 "> --}}
-            {{-- EDIT BUTTON --}}
-            {{-- <x-jet-button class="ml-4">
-                <a href="{{ route('quizzes.edit', $id) }}">
-                    {{ __('Edit') }}
-                </a>
-            </x-jet-button> --}}
-            {{-- TAKE BUTTON --}}
-            {{-- <form method="POST" action="{{ route('take', $id) }}">
-                <x-jet-button class="ml-4">
-                    @csrf
-                    <input class="font-semibold" type="submit" value="TAKE">
-                </x-jet-button>
-            </form> --}}
+            </div> --}}
 
-            {{-- DELETE BUTTON --}}
-            {{-- <form method="POST" action="{{ route('quizzes.destroy', $id) }}">
+        <div class="flex justify-end pt-4">
+            {{-- BUTTON GROUP --}}
+            <div class="inline-flex" role="group">
+                {{-- EDIT BUTTON --}}
+                <a href="{{ route('quizzes.edit', $id) }}"
+                    class=" font-semibold text-xs
+                            text-blue-800 px-4 hover:text-blue-600 py-2 bg-white rounded-l-lg border border-gray-200
+                            hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-300 focus:text-blue-700">
+                    {{ __('EDIT') }}
+                </a>
+                {{-- TAKE BUTTON --}}
+                <form method="POST" action="{{ route('take', $id) }}">
+                    @csrf
+                    <input
+                        class="font-semibold text-xs text-blue-800 px-4 hover:text-blue-600 py-2 bg-white border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-300 focus:text-blue-700"
+                        type="submit" value="TAKE">
+                </form>
+
+                {{-- DELETE BUTTON --}}
+                <form method="POST" action="{{ route('quizzes.destroy', $id) }}"
+                    class="font-semibold text-xs text-red-500 px-4 hover:text-red-400 py-2 bg-white rounded-r-lg border-t border-b border-r border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-red-400 focus:text-red-500">
                     @csrf
                     @method('DELETE')
-                    <x-jet-button class="ml-4 bg-red-500 hover:bg-red-300">
-                        <input class="font-semibold" type="submit" value="DELETE">
-                    </x-jet-button>
+
+                    <input class="font-semibold" type="submit" value="DELETE">
+
                 </form>
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>
